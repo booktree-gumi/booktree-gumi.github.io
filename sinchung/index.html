@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>책나무 산동독서논술학원 보강·결석·시간·차량 변경 신청</title>
+<link rel="icon" href="../img/logo.png">
+<base target="_top">
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#F7F5F0;--card:#FFFFFF;--ink:#262626;--sub:#7A7A72;--line:#E6E2D8;--green:#1F3D2B;--green-soft:#E8EFE9;--gold:#A8874E;}
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:'Noto Sans KR',-apple-system,sans-serif;font-size:16px;line-height:1.5}
+  .wrap{max-width:480px;margin:0 auto;padding:20px 16px 130px}
+  header{padding:8px 4px 16px;text-align:center}
+  header .brand{font-size:14px;color:var(--green);font-weight:700;letter-spacing:.02em}
+  header h1{margin:4px 0 0;font-size:24px;font-weight:700;color:var(--green)}
+  .tabs{display:grid;grid-template-columns:repeat(3,1fr);background:#ECE9E1;border-radius:12px;padding:4px;margin-bottom:14px}
+  .tab{border:none;background:none;border-radius:9px;padding:11px;font:inherit;font-weight:500;color:var(--sub)}
+  .tab.on{background:#fff;color:var(--green);font-weight:700;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 16px;margin-bottom:12px}
+  .label{font-size:15px;font-weight:700;margin-bottom:12px;display:flex;align-items:baseline;gap:8px}
+  .label .opt-t{color:var(--sub);font-size:13px;font-weight:400}
+  .field+.field{margin-top:16px}
+  input[type=text],input[type=tel],textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:13px 14px;font:inherit;background:#FCFBF8;outline:none}
+  input:focus,textarea:focus{border-color:var(--green)}
+  textarea{min-height:72px;resize:vertical}
+  .cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+  .cal-head b{font-size:17px}
+  .nav{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:#fff;font-size:18px;color:var(--ink)}
+  .nav:disabled{opacity:.3}
+  .grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center}
+  .dow{font-size:12px;color:var(--sub);padding:4px 0}
+  .day{aspect-ratio:1;border:none;background:none;border-radius:50%;font:inherit;font-size:15px;color:var(--ink)}
+  .day:disabled{color:#CFCBC2}
+  .day.today{box-shadow:inset 0 0 0 1px var(--gold)}
+  .day.sel{background:var(--green);color:#fff;font-weight:700;box-shadow:none}
+  .seg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .opt{border:1px solid var(--line);background:#fff;border-radius:10px;padding:13px;font:inherit;font-weight:500;color:var(--ink)}
+  .opt.on{border-color:var(--green);background:var(--green-soft);color:var(--green);font-weight:700}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 14px;font:inherit;font-size:15px;color:var(--ink)}
+  .chip.on{border-color:var(--green);background:var(--green);color:#fff}
+  .times{display:grid;gap:8px;margin-top:14px}
+  .time{display:flex;justify-content:space-between;align-items:center;border:1px solid var(--line);background:#fff;border-radius:10px;padding:12px 14px;font:inherit;text-align:left;color:var(--ink)}
+  .time strong{font-size:18px}
+  .time span{font-size:13px;color:var(--sub)}
+  .time.on{border-color:var(--green);background:var(--green-soft)}
+  .time.on span{color:var(--green)}
+  .time:disabled{background:#F2F0EB;color:#B5B1A8;border-color:#ECE9E1}
+  .time:disabled span{color:#B5B1A8}
+  .check{display:flex;align-items:center;gap:10px;font-weight:700;font-size:15px}
+  .check input{width:22px;height:22px;accent-color:var(--green)}
+  .sub-l{font-size:14px;color:var(--sub);margin:14px 0 10px}
+  .hidden{display:none}
+  .note{font-size:13px;color:var(--sub);text-align:center;margin:18px 0 0;line-height:1.7}
+  .bar{position:fixed;left:0;right:0;bottom:0;background:rgba(247,245,240,.96);border-top:1px solid var(--line);padding:12px 16px calc(12px + env(safe-area-inset-bottom))}
+  .bar-in{max-width:480px;margin:0 auto}
+  .summary{font-size:13px;color:var(--sub);margin-bottom:8px;min-height:19px}
+  .submit{width:100%;border:none;border-radius:12px;padding:15px;font:inherit;font-size:17px;font-weight:700;background:var(--green);color:#fff}
+  .submit:disabled{background:#B9C2BB}
+  .err{color:#9A3B2E;font-size:14px;margin-top:6px}
+  .done{text-align:center;padding:50px 8px}
+  .done .mark{width:64px;height:64px;border-radius:50%;background:var(--green);color:#fff;font-size:32px;line-height:64px;margin:0 auto 18px}
+  .done h2{margin:0 0 8px;color:var(--green)}
+  .done p{color:var(--sub);margin:0}
+  .done .box{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;margin:22px 0;text-align:left;font-size:15px;line-height:1.8}
+  .ghost{width:100%;border:1px solid var(--green);background:#fff;color:var(--green);border-radius:12px;padding:14px;font:inherit;font-weight:700}
+  /* ── 책나무 테마 ── */
+  :root{--bg:#F5F2EA;--line:#E4DED0;--green:#176943;--green-d:#0F4F31;--green-soft:#EAF2EC;--gold:#B08D57;--ink:#22261F;--sub:#7C7A70}
+  .hero{display:block;text-align:left;margin:-20px -16px 18px;background:var(--green-d);color:#fff;padding:26px 22px 22px;position:relative;border-bottom:3px solid var(--gold)}
+  .hero::after{content:"";position:absolute;left:22px;right:22px;bottom:9px;border-top:1px solid rgba(176,141,87,.55)}
+  .hero-in{display:flex;align-items:center;gap:16px;max-width:480px;margin:0 auto}
+  .hero .mark{width:46px;height:auto;flex:none;opacity:.96}
+  .hero .bar-v{width:1px;align-self:stretch;background:rgba(176,141,87,.7)}
+  .hero .brand{font-size:13px;letter-spacing:.12em;color:#E9DCC3;font-weight:500}
+  .hero h1{margin:3px 0 0;font-family:'Noto Serif KR',serif;font-size:25px;font-weight:700;letter-spacing:.02em;color:#fff}
+  .tabs{background:#fff;border:1px solid var(--line);border-radius:12px;padding:4px}
+  .tab.on{background:var(--green);color:#fff;box-shadow:none}
+  .card{border-color:var(--line);border-radius:12px;box-shadow:0 1px 2px rgba(34,38,31,.04)}
+  .label{color:var(--ink);font-size:15px;letter-spacing:-.01em}
+  .label::before{content:"";width:3px;height:14px;background:var(--gold);border-radius:2px;align-self:center;margin-right:-2px}
+  .day.sel{background:var(--green)}
+  .opt.on,.time.on{border-color:var(--green)}
+  .chip.on{background:var(--green);border-color:var(--green)}
+  .submit{background:var(--green);letter-spacing:.02em}
+  .submit:disabled{background:#BFC8C1}
+  .note{color:#8B887D}
+  .done .mark{background:var(--green)}
+  .done h2{font-family:'Noto Serif KR',serif;color:var(--green-d)}
+  .hint{font-size:13px;color:var(--sub);margin:12px 0 0;line-height:1.6}
+  .tab{padding:11px 4px;letter-spacing:-.02em}
+  .tabs{grid-template-columns:repeat(4,1fr)}
+  .tab{font-size:14px;white-space:nowrap;padding:11px 2px}
+  .hero h1{font-size:22px;letter-spacing:0;white-space:nowrap;line-height:1.4}
+  .seg3{grid-template-columns:repeat(3,1fr)}
+  .kinds{display:grid;gap:8px}
+  .kinds .opt{text-align:left;padding:14px}
+  .kinds .opt small{font-size:13px;font-weight:400;color:var(--sub)}
+  .urgent{margin:12px 0 0;padding:10px 12px;border-radius:10px;background:#FBEAE7;color:#8A2B22;font-size:13px;line-height:1.6}
+
+  /* 2026-11-17 원장 요청: 학부모 화면 보기 편하게(글씨 키움·탭 2줄) */
+  body{font-size:17px}
+  .tabs{grid-template-columns:repeat(2,1fr)!important;gap:4px;padding:5px}
+  .tab{font-size:16.5px!important;padding:13px 4px!important;font-weight:600}
+  .label{font-size:17px!important;margin-bottom:14px}
+  .label .opt-t{font-size:14px}
+  input,textarea,select{font-size:17px!important}
+  .opt{font-size:16.5px}
+  .kinds .opt small{font-size:14px}
+  .chip{font-size:16px;padding:10px 15px}
+  .sub-l{font-size:15.5px}
+  .dow{font-size:13.5px}
+  .day{font-size:16.5px}
+  .cal-head b{font-size:18px}
+  .time strong{font-size:19px}
+  .time span{font-size:14px}
+  .check{font-size:16px}
+  .note,.hint{font-size:14.5px;line-height:1.75}
+  .summary{font-size:14.5px}
+  .urgent{font-size:14.5px}
+  .err{font-size:15px}
+  .done .box{font-size:16px}
+  #carBlock a[href^="tel:"]{color:var(--green);font-weight:700}
+
+  /* 2026-11-17 원장: 버튼 폭 줄여 스크롤 덜 하게 */
+  .chips{gap:6px!important}
+  .chip{font-size:15px!important;padding:7px 11px!important}
+  #carStops .chip{font-size:14.5px!important;padding:6px 10px!important}
+  #nextCars > div{padding:7px 10px!important;margin-top:6px!important}
+  #nextCars b[style*="font-size:18px"]{font-size:17px!important}
+
+  /* 2026-11-17 원장: 머리 한 줄로 얇게 */
+  .hero{padding:10px 14px!important}
+  .hero-in{gap:10px!important;align-items:center!important}
+  .hero .mark{width:30px!important;height:auto!important}
+  .hero .brand{font-size:11px!important;letter-spacing:.06em!important}
+  .hero h1{font-size:15.5px!important;line-height:1.35!important;white-space:normal!important;margin:1px 0 0!important;letter-spacing:-.01em!important}
+  .bar-v{display:none!important}
+
+  .tabs{grid-template-columns:repeat(3,1fr)!important}
+  .tab{font-size:15px!important;padding:11px 2px!important}
+
+  /* 2026-11-17 원장: 로고 작게 학원 이름 앞, 제목 조금 크게 */
+  .hero{padding:14px 16px!important}
+  .hero .brand{display:flex!important;align-items:center;gap:6px;font-size:12.5px!important}
+  .hero .mark-s{width:18px;height:auto;display:inline-block}
+  .hero h1{font-size:19px!important;margin:6px 0 0!important;line-height:1.35!important}
+
+  /* 학습 상담 탭 숨김(2026-11-17 원장) → 탭 4개 2×2 */
+  .tabs{grid-template-columns:repeat(2,1fr)!important}
+</style>
+</head>
+<body>
+<div class="wrap" id="app">
+  <div id="done" class="done hidden"></div>
+  <div id="form">
+  <header class="hero"><div class="hero-in">
+    <span class="bar-v"></span>
+    <div><div class="brand"><img class="mark-s" alt="책나무" src="data:image/png;base64,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">책나무 산동독서논술학원</div><h1>보강·결석·시간·차량 변경 신청</h1></div>
+  </div></header>
+
+  <div class="tabs">
+    <button class="tab on" data-tab="보강">보강 신청</button>
+    <button class="tab" data-tab="결석">결석 알림</button>
+    <button class="tab" data-tab="시간변경">시간 변경</button>
+    <button class="tab" data-tab="차량">차량 변경</button>
+    <button class="tab hidden" data-tab="상담" id="askTab" style="grid-column:1/-1">학습 상담 <small style="font-weight:400">(상담 주간)</small></button>
+  </div>
+    <div class="card hidden" id="nextCard" style="border:2px solid var(--green)">
+      <div class="label">다음 차 찾기 <span class="opt-t">차를 놓쳤을 때</span></div>
+      <div class="chips" id="carStops"></div>
+      <div id="nextCars" style="margin-top:12px;font-size:15.5px;line-height:1.6"></div>
+    </div>
+
+  <div class="card">
+    <div class="field">
+      <div class="label">학생 이름</div>
+      <input type="text" id="name" placeholder="이름을 입력해 주세요" autocomplete="off">
+    </div>
+    <div class="field" style="margin-top:14px">
+      <div class="label">학부모 연락처 <span class="opt-t">알림톡 받을 번호</span></div>
+      <input type="tel" id="phone" inputmode="numeric" placeholder="010-0000-0000" autocomplete="tel">
+    </div>
+  </div>
+
+  <!-- 학습 상담 전용 -->
+  <div id="askBlock" class="hidden">
+    <div class="card">
+      <div class="label">궁금한 점 <span class="opt-t">여러 개 골라도 됩니다</span></div>
+      <div class="chips" id="askTopics"></div>
+      <div class="field" style="margin-top:14px">
+        <div class="label">통화 편한 시간 <span class="opt-t">선택</span></div>
+        <input type="text" id="askWhen" placeholder="예: 평일 저녁 7시 이후" autocomplete="off">
+      </div>
+      <p class="hint">남겨 주시면 확인 후 원장이 직접 전화드립니다.</p>
+    </div>
+  </div>
+
+  <!-- 시간 변경 전용 -->
+  <div id="tcBlock" class="hidden">
+    <div class="card">
+      <div class="label">변경 방식</div>
+      <div class="seg">
+        <button class="opt" data-kind="이번만">이번만 변경</button>
+        <button class="opt" data-kind="계속">정규 시간 변경</button>
+      </div>
+      <p class="hint" id="kindHint">이번 한 번만 바꾸실지, 정규 수업 시간을 바꾸실지 선택해 주세요.</p>
+      <div class="field" style="margin-top:16px">
+        <div class="label">지금 수업 <span class="opt-t">요일·시간</span></div>
+        <input type="text" id="from" placeholder="예: 월·수 3:00" autocomplete="off">
+      </div>
+      <div id="dayBox" class="hidden">
+        <div class="sub-l">바꿀 요일 <span style="font-size:13px">(여러 개 선택 가능)</span></div>
+        <div class="chips" id="days"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="label" id="dateLabel">보강 날짜</div>
+    <div class="cal-head">
+      <button class="nav" id="prev" aria-label="이전 달">‹</button>
+      <b id="ym"></b>
+      <button class="nav" id="next" aria-label="다음 달">›</button>
+    </div>
+    <div class="grid" id="cal"></div>
+  </div>
+
+  <!-- 보강 전용 -->
+  <div id="mkBlock">
+    <div class="card">
+      <div class="label" id="rideLabel">등원</div>
+      <div class="seg">
+        <button class="opt" data-mode="차량">등원 차량</button>
+        <button class="opt" data-mode="직접">직접 등원</button>
+      </div>
+      <div id="stopBox" class="hidden">
+        <div class="sub-l">탑승 정류장</div>
+        <div class="chips" id="stops"></div>
+      </div>
+      <div class="times hidden" id="times"></div>
+    </div>
+
+    <div class="card" id="lenCard">
+      <div class="label">수업 길이</div>
+      <div class="seg">
+        <button class="opt on" data-len="기본">기본 수업</button>
+        <button class="opt" data-len="연강">연강 90분</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <label class="check"><input type="checkbox" id="dropChk"> 하원 차량 이용</label>
+      <div id="dropBox" class="hidden">
+        <div class="sub-l">하차 정류장</div>
+        <div class="chips" id="drops"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 차량 변경 전용 -->
+  <div id="carBlock" class="hidden">
+    <div class="card">
+      <div class="label">등원 / 하원</div>
+      <div class="seg">
+        <button class="opt" data-dir="등원">등원</button>
+        <button class="opt" data-dir="하원">하원</button>
+      </div>
+      <div class="sub-l">차량</div>
+      <div class="seg seg3">
+        <button class="opt" data-car="블랙">블랙</button>
+        <button class="opt" data-car="퍼플">퍼플</button>
+        <button class="opt" data-car="그린">그린</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="label">어떤 변경인가요?</div>
+      <div class="kinds">
+        <button class="opt" data-ck="오늘 차량 안 타요">오늘 차량 안 타요</button>
+        <button class="opt" data-ck="차량 탈게요 (원래 안 타는 날)">차량 탈게요 <small>(원래 안 타는 날)</small></button>
+        <button class="opt" data-ck="차를 놓쳤어요">차를 놓쳤어요</button>
+      </div>
+      <p class="urgent hidden" id="urgentNote">차를 놓쳤을 때는 아래 도우미 선생님께 바로 전화해 주세요.</p>
+      <div style="margin-top:12px;padding:12px 14px;border:1px solid #d9dfd6;border-radius:12px;line-height:1.9;font-size:15px"><b>도우미 선생님 연락처</b><br>블랙 <a href="tel:01022678645">010-2267-8645</a><br>퍼플 <a href="tel:01052992348">010-5299-2348</a><br>그린 <a href="tel:01025123482">010-2512-3482</a><br><span style="color:#666;font-size:13.5px">직접 연락하시면 더 빠르게 도와드릴 수 있습니다.</span></div>
+    </div>
+  </div>
+
+  <!-- 결석 전용 -->
+  <div id="abBlock" class="hidden">
+    <div class="card">
+      <div class="label">사유 <span class="opt-t">선택</span></div>
+      <div class="chips" id="reasons"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="label"><span id="memoTitle">전달 사항</span> <span class="opt-t">선택</span></div>
+    <textarea id="memo" placeholder="필요한 경우에만 적어 주세요"></textarea>
+  </div>
+
+  <p class="note" id="noteMain">보강·시간 변경은 원장 확인 후 확정되면<br>카카오톡 알림톡으로 안내드립니다.<br><br>결석은 가급적 하루 전까지 알려주세요.<br>당일 보강은 어렵습니다.</p>
+  <p class="note hidden" id="noteCar">급한 차량 변경은 도우미 선생님께 직접 연락하시면<br>더 빠르게 도와드릴 수 있습니다.<br>신청을 남겨 주시면 학원에서도 함께 확인합니다.</p>
+  </div>
+</div>
+
+<div class="bar" id="bar">
+  <div class="bar-in">
+    <div class="summary" id="summary"></div>
+    <button class="submit" id="submit" disabled>보내기</button>
+    <div class="err" id="err"></div>
+  </div>
+</div>
+
+<script>
+const API = 'https://script.google.com/macros/s/AKfycbyHF7n45c1megX__O8njci1_iwdSp65hH0Q23R0VwfR_oBo5C1ZOeNhqhpjyyjwI_Zh/exec';
+const DATA = (function(){ let c = null; try { c = JSON.parse(localStorage.getItem('bt_data') || 'null'); } catch (e) {} return (c && c.stops) ? c : {"map":{"해마루초":[{"t":"1:30","car":"퍼플","at":"1:43","arr":"2:00"},{"t":"1:45","car":"그린","at":"2:00","arr":"2:00"},{"t":"2:18","car":"그린","at":"2:32","arr":"2:30"},{"t":"2:41","car":"그린","at":"2:55","arr":"3:00"},{"t":"3:15","car":"퍼플","at":"3:25","arr":"3:30"},{"t":"3:40","car":"퍼플","at":"3:55","arr":"4:00"},{"t":"4:10","car":"퍼플","at":"4:25","arr":"4:30"},{"t":"4:40","car":"퍼플","at":"5:00","arr":"5:00"},{"t":"5:10","car":"그린","at":"5:25","arr":"5:30"},{"t":"5:47","car":"그린","at":"6:02","arr":"6:00"}],"중흥1차":[{"t":"1:33","car":"퍼플","at":"1:43","arr":"2:00"},{"t":"2:13","car":"그린","at":"2:32","arr":"2:30"},{"t":"2:45","car":"퍼플","at":"3:00","arr":"3:00"},{"t":"3:18","car":"퍼플","at":"3:25","arr":"3:30"},{"t":"3:44","car":"퍼플","at":"3:55","arr":"4:00"},{"t":"4:15","car":"퍼플","at":"4:25","arr":"4:30"},{"t":"4:45","car":"퍼플","at":"5:00","arr":"5:00"},{"t":"5:15","car":"그린","at":"5:25","arr":"5:30"},{"t":"5:53","car":"그린","at":"6:02","arr":"6:00"}],"현진 103동":[{"t":"1:36","car":"퍼플","at":"1:43","arr":"2:00"},{"t":"3:07","car":"그린","at":"3:20","arr":"3:30"},{"t":"4:50","car":"퍼플","at":"5:00","arr":"5:00"},{"t":"5:40","car":"그린","at":"6:02","arr":"6:00"}],"현진 108동":[{"t":"1:38","car":"퍼플","at":"1:43","arr":"2:00"}],"중흥3차":[{"t":"1:38","car":"블랙","at":"1:50","arr":"2:00"},{"t":"2:05","car":"블랙","at":"2:20","arr":"2:30"},{"t":"2:33","car":"블랙","at":"2:48","arr":"3:00"},{"t":"3:05","car":"블랙","at":"3:25","arr":"3:30"},{"t":"3:35","car":"블랙","at":"3:57","arr":"4:00"},{"t":"4:05","car":"블랙","at":"4:26","arr":"4:30"},{"t":"4:35","car":"블랙","at":"4:55","arr":"5:00"},{"t":"5:18","car":"블랙","at":"5:28","arr":"5:30"},{"t":"5:44","car":"블랙","at":"5:55","arr":"6:00"}],"중흥2차":[{"t":"1:40","car":"블랙","at":"1:50","arr":"2:00"},{"t":"2:07","car":"블랙","at":"2:20","arr":"2:30"},{"t":"2:35","car":"블랙","at":"2:48","arr":"3:00"},{"t":"3:07","car":"블랙","at":"3:25","arr":"3:30"},{"t":"3:38","car":"블랙","at":"3:57","arr":"4:00"},{"t":"4:07","car":"블랙","at":"4:26","arr":"4:30"},{"t":"4:37","car":"블랙","at":"4:55","arr":"5:00"},{"t":"5:20","car":"블랙","at":"5:28","arr":"5:30"},{"t":"5:46","car":"블랙","at":"5:55","arr":"6:00"}],"인덕초":[{"t":"1:42","car":"블랙","at":"1:50","arr":"2:00"},{"t":"2:09","car":"블랙","at":"2:20","arr":"2:30"},{"t":"2:37","car":"블랙","at":"2:48","arr":"3:00"},{"t":"3:09","car":"블랙","at":"3:25","arr":"3:30"},{"t":"3:40","car":"블랙","at":"3:57","arr":"4:00"},{"t":"4:39","car":"블랙","at":"4:55","arr":"5:00"}],"우미3차 103동":[{"t":"1:44","car":"블랙","at":"1:50","arr":"2:00"},{"t":"2:11","car":"블랙","at":"2:20","arr":"2:30"},{"t":"2:39","car":"블랙","at":"2:48","arr":"3:00"},{"t":"3:12","car":"블랙","at":"3:25","arr":"3:30"},{"t":"3:44","car":"블랙","at":"3:57","arr":"4:00"},{"t":"4:13","car":"블랙","at":"4:26","arr":"4:30"},{"t":"4:43","car":"블랙","at":"4:55","arr":"5:00"},{"t":"5:22","car":"블랙","at":"5:28","arr":"5:30"},{"t":"5:48","car":"블랙","at":"5:55","arr":"6:00"}],"우미3차 108동":[{"t":"1:44","car":"블랙","at":"1:50","arr":"2:00"},{"t":"2:11","car":"블랙","at":"2:20","arr":"2:30"},{"t":"2:39","car":"블랙","at":"2:48","arr":"3:00"},{"t":"3:12","car":"블랙","at":"3:25","arr":"3:30"},{"t":"3:44","car":"블랙","at":"3:57","arr":"4:00"},{"t":"4:13","car":"블랙","at":"4:26","arr":"4:30"},{"t":"4:43","car":"블랙","at":"4:55","arr":"5:00"},{"t":"5:22","car":"블랙","at":"5:28","arr":"5:30"},{"t":"5:48","car":"블랙","at":"5:55","arr":"6:00"}],"동부초":[{"t":"1:49","car":"그린","at":"2:00","arr":"2:00"},{"t":"2:22","car":"그린","at":"2:32","arr":"2:30"},{"t":"2:45","car":"그린","at":"2:55","arr":"3:00"},{"t":"3:10","car":"그린","at":"3:20","arr":"3:30"}],"우미1차":[{"t":"1:54","car":"그린","at":"2:00","arr":"2:00"},{"t":"2:10","car":"퍼플","at":"2:20","arr":"2:30"},{"t":"3:04","car":"그린","at":"3:20","arr":"3:30"},{"t":"3:47","car":"퍼플","at":"3:55","arr":"4:00"},{"t":"4:45","car":"그린","at":"4:52","arr":"5:00"},{"t":"5:18","car":"그린","at":"5:25","arr":"5:30"}],"원당초":[{"t":"1:58","car":"그린","at":"2:00","arr":"2:00"},{"t":"2:28","car":"그린","at":"2:32","arr":"2:30"},{"t":"2:50","car":"그린","at":"2:55","arr":"3:00"},{"t":"3:15","car":"그린","at":"3:20","arr":"3:30"},{"t":"3:50","car":"그린","at":"3:55","arr":"4:00"},{"t":"4:20","car":"퍼플","at":"4:25","arr":"4:30"}],"쌍용예가":[{"t":"1:55","car":"퍼플","at":"2:04","arr":"2:00"},{"t":"2:17","car":"퍼플","at":"2:20","arr":"2:30"},{"t":"2:53","car":"퍼플","at":"3:00","arr":"3:00"},{"t":"3:16","car":"블랙","at":"3:25","arr":"3:30"},{"t":"3:48","car":"블랙","at":"3:57","arr":"4:00"},{"t":"4:17","car":"블랙","at":"4:26","arr":"4:30"},{"t":"4:47","car":"블랙","at":"4:55","arr":"5:00"},{"t":"5:17","car":"퍼플","at":"5:20","arr":"5:30"}],"신당초":[{"t":"1:57","car":"퍼플","at":"2:04","arr":"2:00"},{"t":"2:18","car":"퍼플","at":"2:20","arr":"2:30"},{"t":"2:35","car":"퍼플","at":"2:38","arr":"2:30"},{"t":"2:58","car":"퍼플","at":"3:00","arr":"3:00"},{"t":"3:18","car":"블랙","at":"3:25","arr":"3:30"},{"t":"3:48","car":"블랙","at":"3:57","arr":"4:00"},{"t":"4:17","car":"블랙","at":"4:26","arr":"4:30"},{"t":"4:47","car":"블랙","at":"4:55","arr":"5:00"}],"우미5차":[{"t":"2:00","car":"퍼플","at":"2:04","arr":"2:00"},{"t":"2:17","car":"블랙","at":"2:20","arr":"2:30"},{"t":"2:29","car":"퍼플","at":"2:38","arr":"2:30"},{"t":"2:45","car":"블랙","at":"2:48","arr":"3:00"},{"t":"3:21","car":"블랙","at":"3:25","arr":"3:30"},{"t":"3:53","car":"블랙","at":"3:57","arr":"4:00"},{"t":"4:22","car":"블랙","at":"4:26","arr":"4:30"},{"t":"4:52","car":"블랙","at":"4:55","arr":"5:00"},{"t":"5:13","car":"블랙","at":"5:28","arr":"5:30"},{"t":"5:39","car":"블랙","at":"5:55","arr":"6:00"}],"호반 102동":[{"t":"2:13","car":"퍼플","at":"2:20","arr":"2:30"},{"t":"3:21","car":"퍼플","at":"3:25","arr":"3:30"},{"t":"3:50","car":"퍼플","at":"3:55","arr":"4:00"},{"t":"4:48","car":"그린","at":"4:52","arr":"5:00"},{"t":"5:21","car":"그린","at":"5:25","arr":"5:30"}],"호반 110동":[{"t":"2:13","car":"퍼플","at":"2:20","arr":"2:30"},{"t":"3:21","car":"퍼플","at":"3:25","arr":"3:30"},{"t":"3:50","car":"퍼플","at":"3:55","arr":"4:00"},{"t":"4:48","car":"그린","at":"4:52","arr":"5:00"},{"t":"5:21","car":"그린","at":"5:25","arr":"5:30"}],"더힐":[{"t":"2:25","car":"그린","at":"2:32","arr":"2:30"},{"t":"2:48","car":"그린","at":"2:55","arr":"3:00"},{"t":"3:12","car":"그린","at":"3:20","arr":"3:30"},{"t":"4:55","car":"퍼플","at":"5:00","arr":"5:00"}],"골클":[{"t":"2:29","car":"퍼플","at":"2:38","arr":"2:30"},{"t":"5:13","car":"퍼플","at":"5:20","arr":"5:30"}],"현진 정문":[{"t":"2:38","car":"그린","at":"2:55","arr":"3:00"},{"t":"3:35","car":"그린","at":"3:55","arr":"4:00"}],"다이소(편의점)":[{"t":"2:58","car":"그린","at":"3:20","arr":"3:30"}],"숲은성":[{"t":"3:40","car":"그린","at":"3:55","arr":"4:00"}],"보눔":[{"t":"4:15","car":"그린","at":"4:35","arr":"4:30"}],"옥계":[{"t":"4:20","car":"그린","at":"4:35","arr":"4:30"}],"늘푸른":[{"t":"4:25","car":"그린","at":"4:35","arr":"4:30"}],"양포도서관":[{"t":"4:18","car":"퍼플","at":"4:25","arr":"4:30"}]},"stops":["중흥3차","중흥2차","인덕초","우미3차 103동","우미3차 108동","우미5차","쌍용예가","신당초","골클","호반 102동","호반 110동","우미1차","중흥1차","해마루초","현진 103동","현진 108동","동부초","원당초","더힐","양포도서관","현진 정문","다이소(편의점)","숲은성","보눔","옥계","늘푸른"],"drops":["중흥3차","중흥2차","인덕초","우미3차 103동","우미3차 108동","우미5차","쌍용예가","신당초","골클","호반 102동","호반 110동","우미1차","중흥1차","해마루초","현진 103동","현진 108동","우미스카이","동부초","원당초","더힐","양포도서관","현진 정문","다이소(편의점)","숲은성","보눔","옥계","늘푸른","산동"],"starts":["1:30","2:00","2:30","3:00","3:30","4:00","4:30","5:00","5:30","6:00"],"reasons":["아파서","학교 행사","가족 일정","기타"],"closed":{"weekly":[],"weeklyT":{"1":["3:00","3:30","4:30"],"2":["4:00","4:30"],"3":["3:00","3:30"],"4":["2:00","3:00","3:30","4:30"],"5":["3:30","3:00","4:00","4:30"]},"own":{},"days":{"2026-11-30":["3:00","3:30","4:30"],"2026-12-01":["4:00","4:30"],"2026-12-02":["3:00","3:30"],"2026-12-03":["2:00","3:00","3:30","4:30"],"2026-12-04":["3:30","3:00","4:00","4:30"],"2026-12-07":["3:00","3:30","4:30"],"2026-12-08":["4:00","4:30"],"2026-12-09":["3:00","3:30"],"2026-12-10":["2:00","3:00","3:30","4:30"],"2026-12-11":["3:30","3:00","4:00","4:30"],"2026-12-14":["3:00","3:30","4:30"],"2026-12-15":["4:00","4:30"],"2026-12-16":["3:00","3:30"],"2026-12-17":["2:00","3:00","3:30","4:30"],"2026-12-18":["3:30","3:00","4:00","4:30"],"2026-12-21":["3:00","3:30","4:30"],"2026-12-22":["4:00","4:30"],"2026-12-23":["3:00","3:30"],"2026-12-24":["2:00","3:00","3:30","4:30"],"2026-12-25":["3:30","3:00","4:00","4:30"],"2026-12-28":["3:00","3:30","4:30"],"2026-12-29":["4:00","4:30"],"2026-12-30":["3:00","3:30"],"2026-12-31":["2:00","3:00","3:30","4:30"],"2027-01-01":["3:30","3:00","4:00","4:30"],"2027-01-04":["3:00","3:30","4:30"],"2027-01-05":["4:00","4:30"],"2027-01-06":["3:00","3:30"],"2027-01-07":["2:00","3:00","3:30","4:30"],"2027-01-08":["3:30","3:00","4:00","4:30"],"2027-01-11":["3:00","3:30","4:30"],"2027-01-12":["4:00","4:30"],"2027-01-13":["3:00","3:30"],"2027-01-14":["2:00","3:00","3:30","4:30"],"2027-01-15":["3:30","3:00","4:00","4:30"],"2027-01-18":["3:00","3:30","4:30"],"2027-01-19":["4:00","4:30"],"2027-01-20":["3:00","3:30"],"2027-01-21":["2:00","3:00","3:30","4:30"],"2027-01-22":["3:30","3:00","4:00","4:30"],"2027-01-25":["3:00","3:30","4:30"],"2027-01-26":["4:00","4:30"],"2027-01-27":["3:00","3:30"],"2027-01-28":["2:00","3:00","3:30","4:30"],"2027-01-29":["3:30","3:00","4:00","4:30"],"2027-02-01":["3:00","3:30","4:30"],"2027-02-02":["4:00","4:30"],"2027-02-03":["3:00","3:30"],"2027-02-04":["2:00","3:00","3:30","4:30"],"2027-02-05":["3:30","3:00","4:00","4:30"],"2027-02-08":["3:00","3:30","4:30"],"2027-02-09":["4:00","4:30"],"2027-02-10":["3:00","3:30"],"2027-02-11":["2:00","3:00","3:30","4:30"],"2027-02-12":["3:30","3:00","4:00","4:30"],"2027-02-15":["3:00","3:30","4:30"],"2027-02-16":["4:00","4:30"],"2027-02-17":["3:00","3:30"],"2027-02-18":["2:00","3:00","3:30","4:30"],"2027-02-19":["3:30","3:00","4:00","4:30"],"2027-02-22":["3:00","3:30","4:30"],"2027-02-23":["4:00","4:30"],"2027-02-24":["3:00","3:30"],"2027-02-25":["2:00","3:00","3:30","4:30"],"2027-02-26":["3:30","3:00","4:00","4:30"]}},"arrivals":[{"at":"1:43","cls":"2:00","cars":"퍼플"},{"at":"1:50","cls":"2:00","cars":"블랙"},{"at":"2:00","cls":"2:00","cars":"그린"},{"at":"2:04","cls":"2:00","cars":"퍼플"},{"at":"2:20","cls":"2:30","cars":"블랙·퍼플"},{"at":"2:32","cls":"2:30","cars":"그린"},{"at":"2:38","cls":"2:30","cars":"퍼플"},{"at":"2:48","cls":"3:00","cars":"블랙"},{"at":"2:55","cls":"3:00","cars":"그린"},{"at":"3:00","cls":"3:00","cars":"퍼플"},{"at":"3:20","cls":"3:30","cars":"그린"},{"at":"3:25","cls":"3:30","cars":"블랙·퍼플"},{"at":"3:55","cls":"4:00","cars":"퍼플·그린"},{"at":"3:57","cls":"4:00","cars":"블랙"},{"at":"4:25","cls":"4:30","cars":"퍼플"},{"at":"4:26","cls":"4:30","cars":"블랙"},{"at":"4:35","cls":"4:30","cars":"그린"},{"at":"4:52","cls":"5:00","cars":"그린"},{"at":"4:55","cls":"5:00","cars":"블랙"},{"at":"5:00","cls":"5:00","cars":"퍼플"},{"at":"5:20","cls":"5:30","cars":"퍼플"},{"at":"5:25","cls":"5:30","cars":"그린"},{"at":"5:28","cls":"5:30","cars":"블랙"},{"at":"5:55","cls":"6:00","cars":"블랙"},{"at":"6:02","cls":"6:00","cars":"그린"}],"askOpen":false,"execUrl":"https://script.google.com/macros/s/AKfycbyHF7n45c1megX__O8njci1_iwdSp65hH0Q23R0VwfR_oBo5C1ZOeNhqhpjyyjwI_Zh/exec"}; })();
+const S = { len:'기본', type:'보강', name:'', phone:'', date:null, mode:null, stop:null, time:null, drop:null, reason:null, kind:null, dates:[], days:[], dir:null, car:null, ck:null };
+const $ = id => document.getElementById(id);
+const pad = n => String(n).padStart(2,'0');
+const DOW = ['일','월','화','수','목','금','토'];
+const now = new Date();
+const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+const tomorrow = new Date(today.getFullYear(), today.getMonth(), today.getDate()+1);
+const minView = new Date(today.getFullYear(), today.getMonth(), 1);
+const maxView = new Date(today.getFullYear(), today.getMonth()+2, 1);
+let view = new Date(minView);
+
+const noClose = () => S.type === '결석' || S.type === '차량';
+const minDate = () => noClose() ? today : tomorrow;
+const multi = () => S.type === '시간변경' && S.kind === '이번만';
+const selDates = () => multi() ? S.dates : (S.date ? [S.date] : []);
+function isSel(k){ return multi() ? S.dates.includes(k) : S.date === k; }
+function pickDate(k){
+  if (multi()) {
+    S.dates = S.dates.includes(k) ? S.dates.filter(x => x !== k) : S.dates.concat(k).slice(-8);
+    S.dates.sort(); S.date = S.dates[0] || null;
+  } else {
+    S.date = k;
+    if (S.type === '시간변경' && S.kind === '계속' && !S.days.length) {
+      const [y,m,d] = k.split('-').map(Number); const w = DOW[new Date(y,m-1,d).getDay()];
+      if (TC_DAYS.includes(w)) { S.days = [w]; renderDays(); }
+    }
+  }
+  if (S.time && slotClosed(S.time)) S.time = null;
+  renderCal(); if (S.mode === '직접' || (S.mode === '차량' && S.stop)) renderTimes(); update();
+}
+const TC_DAYS = ['월','화','수','목','금'];
+function renderDays(){
+  const box = $('days'); box.innerHTML = '';
+  TC_DAYS.forEach(v => {
+    const b = document.createElement('button');
+    b.className = 'chip' + (S.days.includes(v) ? ' on' : '');
+    b.textContent = v;
+    b.onclick = () => { S.days = S.days.includes(v) ? S.days.filter(x => x !== v) : TC_DAYS.filter(x => x === v || S.days.includes(x)); renderDays(); update(); };
+    box.appendChild(b);
+  });
+}
+function dateTitle(){
+  if (S.type === '보강') return '보강 날짜';
+  if (S.type === '결석') return '결석 날짜';
+  if (S.type === '차량') return '날짜';
+  if (S.kind === '계속') return '변경 시작일';
+  if (S.kind === '이번만') return '바꿀 날짜 (모두 눌러 주세요)';
+  return '날짜';
+}
+function setKind(k){
+  S.kind = k; S.dates = []; S.date = null; S.days = []; S.time = null;
+  document.querySelectorAll('.opt[data-kind]').forEach(x => x.classList.toggle('on', x.dataset.kind === k));
+  $('dayBox').classList.toggle('hidden', k !== '계속');
+  $('kindHint').textContent = k === '계속'
+    ? '변경 시작일과 요일을 고르시면 그날부터 매주 바뀐 시간으로 수업합니다.'
+    : '바꿀 날짜를 달력에서 모두 눌러 주세요. 선택한 날만 시간이 바뀌고, 나머지는 원래 시간대로 수업합니다.';
+  renderDays(); $('dateLabel').textContent = dateTitle();
+  renderCal(); if (S.mode === '직접' || (S.mode === '차량' && S.stop)) renderTimes(); update();
+}
+document.querySelectorAll('.opt[data-kind]').forEach(b => b.onclick = () => setKind(b.dataset.kind));
+const key = dt => `${dt.getFullYear()}-${pad(dt.getMonth()+1)}-${pad(dt.getDate())}`;
+
+function renderCal(){
+  $('ym').textContent = `${view.getFullYear()}년 ${view.getMonth()+1}월`;
+  $('prev').disabled = view <= minView;
+  $('next').disabled = view >= maxView;
+  const cal = $('cal'); cal.innerHTML = '';
+  DOW.forEach(d => { const e = document.createElement('div'); e.className='dow'; e.textContent=d; cal.appendChild(e); });
+  for (let i=0;i<view.getDay();i++) cal.appendChild(document.createElement('div'));
+  const days = new Date(view.getFullYear(), view.getMonth()+1, 0).getDate();
+  for (let d=1; d<=days; d++){
+    const dt = new Date(view.getFullYear(), view.getMonth(), d);
+    const k = key(dt);
+    const b = document.createElement('button');
+    b.className = 'day' + (+dt === +today ? ' today' : '') + (isSel(k) ? ' sel' : '');
+    b.textContent = d;
+    b.disabled = dt < minDate() || (!noClose() && dayClosed(k));
+    b.onclick = () => pickDate(k);
+    cal.appendChild(b);
+  }
+}
+$('prev').onclick = () => { view = new Date(view.getFullYear(), view.getMonth()-1, 1); renderCal(); };
+$('next').onclick = () => { view = new Date(view.getFullYear(), view.getMonth()+1, 1); renderCal(); };
+
+function setTab(t){
+  S.type = t;
+  document.querySelectorAll('.tab').forEach(x => x.classList.toggle('on', x.dataset.tab === t));
+  $('mkBlock').classList.toggle('hidden', t === '결석' || t === '차량');
+  $('abBlock').classList.toggle('hidden', t !== '결석');
+  $('tcBlock').classList.toggle('hidden', t !== '시간변경');
+  $('carBlock').classList.toggle('hidden', t !== '차량'); if ($('nextCard')) $('nextCard').classList.toggle('hidden', t !== '차량');
+  $('memoTitle').textContent = t === '차량' ? '남길 말' : '전달 사항';
+  $('memo').placeholder = t === '차량' ? '예: 우미5차에서 3:21에 탈게요' : '필요한 경우에만 적어 주세요';
+  $('noteMain').classList.toggle('hidden', t === '차량');
+  $('noteCar').classList.toggle('hidden', t !== '차량');
+  $('rideLabel').textContent = t === '시간변경' ? '바뀐 시간 등원' : '등원';
+  { const ask = t === '상담'; $('askBlock').classList.toggle('hidden', !ask); const cc = $('dateLabel').closest('.card'); if (cc) cc.classList.toggle('hidden', ask); if (ask) { $('mkBlock').classList.add('hidden'); $('noteMain').classList.add('hidden'); $('memoTitle').textContent = '기타'; $('memo').placeholder = '그 밖에 궁금하신 점을 적어 주세요'; } }
+  if (t !== '시간변경') S.dates = [];
+  else if (multi()) S.dates = S.date ? [S.date] : [];
+  $('dateLabel').textContent = dateTitle();
+  if (S.date && (new Date(S.date.replace(/-/g,'/')) < minDate() || (!noClose() && dayClosed(S.date)))) { S.date = null; S.dates = []; }
+  if (t === '차량' && !S.date) S.date = key(today);
+  renderCal(); update();
+}
+document.querySelectorAll('.tab').forEach(b => b.onclick = () => setTab(b.dataset.tab));
+// 우리 아이 방에서 들어오면 아이 이름·학부모 번호를 미리 채움 (2026-11-22)
+if (DATA.prefill) { try { $('name').value = DATA.prefill.name; $('phone').value = DATA.prefill.phone; ['name','phone'].forEach(i => { $(i).dispatchEvent(new Event('input',{bubbles:true})); $(i).dispatchEvent(new Event('change',{bubbles:true})); }); if (DATA.prefill.tab) setTab(DATA.prefill.tab); } catch (e) {} }
+if (DATA.askOpen && $('askTab')) $('askTab').classList.remove('hidden');
+const ASK_TOPICS = ['수업 내용·진도', '수업 태도·학습 습관', '숙제·교재', '독서 지도·책 추천']; S.topics = [];
+function renderTopics(){ const box = $('askTopics'); if (!box) return; box.innerHTML = ''; ASK_TOPICS.forEach(v => { const c = document.createElement('button'); c.type = 'button'; c.className = 'chip' + (S.topics.includes(v) ? ' on' : ''); c.textContent = (S.topics.includes(v) ? '✓ ' : '') + v; c.onclick = () => { S.topics = S.topics.includes(v) ? S.topics.filter(x => x !== v) : S.topics.concat(v); renderTopics(); update(); }; box.appendChild(c); }); }
+renderTopics();
+$('memo').addEventListener('input', () => { if (S.type === '상담') update(); });
+
+function chips(boxId, list, cur, onPick){
+  const box = $(boxId); box.innerHTML = '';
+  list.forEach(v => {
+    const b = document.createElement('button');
+    b.className = 'chip' + (cur === v ? ' on' : '');
+    b.textContent = v;
+    b.onclick = () => onPick(v);
+    box.appendChild(b);
+  });
+}
+
+document.querySelectorAll('.opt[data-mode]').forEach(b => b.onclick = () => {
+  S.mode = b.dataset.mode; S.stop = null; S.time = null;
+  document.querySelectorAll('.opt[data-mode]').forEach(x => x.classList.toggle('on', x === b));
+  $('stopBox').classList.toggle('hidden', S.mode !== '차량');
+  if (S.mode === '차량') { renderStops(); $('times').classList.add('hidden'); }
+  else renderTimes();
+  update();
+});
+function renderStops(){
+  chips('stops', DATA.stops, S.stop, v => { S.stop = v; S.time = null; renderStops(); renderTimes(); update(); });
+}
+// 마감 확인
+const CLOSED = DATA.closed || { weekly: [], days: {} };
+function dayClosed(k){
+  const [y,m,d] = k.split('-').map(Number);
+  return CLOSED.weekly.includes(new Date(y,m-1,d).getDay()) || (CLOSED.days[k] || []).includes('전체');
+}
+document.querySelectorAll('.opt[data-len]').forEach(b => b.onclick = () => {
+  S.len = b.dataset.len;
+  document.querySelectorAll('.opt[data-len]').forEach(x => x.classList.toggle('on', x === b));
+  update();
+});
+function classOfOpt(v){ if (S.mode !== '차량') return v; const o = (DATA.map[S.stop] || []).find(x => x.t === v); return o ? o.arr : v; }
+function slotClosed(v){ const c = classOfOpt(v); return selDates().some(k => (CLOSED.days[k] || []).includes(c)); }
+
+function renderTimes(){
+  const box = $('times'); box.innerHTML = '';
+  const list = S.mode === '차량'
+    ? DATA.map[S.stop].map(o => ({ v:o.t, cls:o.arr, main:`${o.t} 탑승`, sub:`${o.car} 차량 · 수업 ${o.arr}` }))
+    : DATA.starts.map(t => ({ v:t, cls:t, main:`${t} 수업`, sub:'' }));
+  const closedList = [].concat(...selDates().map(k => CLOSED.days[k] || []));
+  list.forEach(o => {
+    const b = document.createElement('button');
+    const shut = closedList.includes(o.cls);
+    b.className = 'time' + (S.time === o.v ? ' on' : '');
+    b.disabled = shut;
+    b.innerHTML = '<strong></strong><span></span>';
+    b.querySelector('strong').textContent = o.main;
+    b.querySelector('span').textContent = shut ? '마감' : o.sub;
+    b.onclick = () => { S.time = o.v; renderTimes(); update(); };
+    box.appendChild(b);
+  });
+  box.classList.remove('hidden');
+}
+
+$('dropChk').onchange = e => {
+  $('dropBox').classList.toggle('hidden', !e.target.checked);
+  if (!e.target.checked) S.drop = null; else renderDrops();
+  update();
+};
+function renderDrops(){ chips('drops', DATA.drops, S.drop, v => { S.drop = v; renderDrops(); update(); }); }
+function renderReasons(){ chips('reasons', DATA.reasons, S.reason, v => { S.reason = S.reason === v ? null : v; renderReasons(); }); }
+renderReasons();
+document.querySelectorAll('.opt[data-dir]').forEach(b => b.onclick = () => { S.dir = b.dataset.dir; document.querySelectorAll('.opt[data-dir]').forEach(x => x.classList.toggle('on', x === b)); update(); });
+document.querySelectorAll('.opt[data-car]').forEach(b => b.onclick = () => { S.car = b.dataset.car; document.querySelectorAll('.opt[data-car]').forEach(x => x.classList.toggle('on', x === b)); update(); });
+// 다음 차 찾기 (2026-11-17 원장 요청: 차 놓쳤을 때 다음 차를 학부모가 바로 확인)
+const HELPER_TEL = {'블랙':'010-2267-8645','퍼플':'010-5299-2348','그린':'010-2512-3482'};
+let CSTOP = null;
+function pm_(t){ const p = t.split(':').map(Number); return (p[0] < 12 ? p[0] + 12 : p[0]) * 60 + p[1]; }
+function renderNext(){
+  const box = $('nextCars'); if (!box) return;
+  if (!CSTOP) { box.innerHTML = '<span style="color:#777">타는 곳을 누르면 오늘 남은 등원 차량이 시간순으로 보입니다.</span>'; return; }
+  const d = new Date(), now = d.getHours() * 60 + d.getMinutes();
+  const list = (DATA.map[CSTOP] || []).slice().sort((a, b) => pm_(a.t) - pm_(b.t));
+  const left = list.filter(o => pm_(o.t) >= now);
+  if (!list.length) { box.innerHTML = '이 정류장은 등원 차량이 없습니다.'; return; }
+  if (!left.length) { box.innerHTML = '<b>오늘 ' + CSTOP + '에 남은 등원 차량이 없습니다.</b><br>학원으로 전화해 주세요.'; return; }
+  box.innerHTML = '<b>' + CSTOP + ' 오늘 남은 등원 차량</b>' + left.map((o, i) =>
+    '<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 12px;margin-top:8px;border-radius:10px;border:1px solid ' + (i === 0 ? 'var(--green);background:#EEF5F0' : '#e3e3dc;background:#fff') + '">' +
+    '<span><b style="font-size:18px">' + o.t + '</b> ' + o.car + ' 차량' + (i === 0 ? ' <b style="color:var(--green)">· 다음 차</b>' : '') + '<br><small style="color:#777">수업 ' + o.arr + ' 시작</small></span>' +
+    '<a href="tel:' + HELPER_TEL[o.car].replace(/-/g, '') + '" style="white-space:nowrap;color:var(--green);font-weight:700;text-decoration:none">도우미 전화</a></div>').join('') +
+    '<p style="margin:10px 0 0;color:#777;font-size:14px">하원 차량은 도우미 선생님께 전화로 확인해 주세요.</p>';
+}
+function renderCarStops(){ chips('carStops', DATA.stops, CSTOP, v => { CSTOP = v; renderCarStops(); renderNext(); }); }
+renderCarStops(); renderNext();
+document.querySelectorAll('.opt[data-ck]').forEach(b => b.onclick = () => {
+  S.ck = b.dataset.ck; document.querySelectorAll('.opt[data-ck]').forEach(x => x.classList.toggle('on', x === b));
+  $('urgentNote').classList.toggle('hidden', S.ck !== '차를 놓쳤어요');
+  if (S.ck === '차를 놓쳤어요' && S.date !== key(today)) { S.date = key(today); view = new Date(minView); renderCal(); }
+  update();
+});
+
+$('name').oninput = e => { S.name = e.target.value.trim(); update(); };
+$('from').oninput = () => update();
+function fmtPhone(v){ const d = v.replace(/\D/g,'').slice(0,11); return d.length < 4 ? d : d.length < 8 ? d.slice(0,3)+'-'+d.slice(3) : d.slice(0,3)+'-'+d.slice(3,d.length-4)+'-'+d.slice(-4); }
+function phoneOk(){ return /^01\d{8,9}$/.test(S.phone.replace(/\D/g,'')); }
+$('phone').oninput = e => { e.target.value = fmtPhone(e.target.value); S.phone = e.target.value; update(); };
+try { const saved = localStorage.getItem('bt_phone'); if (saved) { $('phone').value = fmtPhone(saved); S.phone = $('phone').value; } } catch(e) {}
+function lab(k){ const [y,m,d] = k.split('-').map(Number); return `${m}월 ${d}일 (${DOW[new Date(y,m-1,d).getDay()]})`; }
+function dateLabel(){
+  if (multi()) return S.dates.map(lab).join(', ');
+  if (!S.date) return '';
+  return lab(S.date) + (S.type === '시간변경' && S.kind === '계속' ? '부터' : '');
+}
+function rideText(){
+  if (S.mode === '차량' && S.time) return `${S.stop} ${S.time} 탑승`;
+  if (S.mode === '직접' && S.time) return `${S.time} 직접 등원`;
+  return '';
+}
+function ready(){
+  if (S.type === '상담') return !!(S.name && phoneOk() && (S.topics.length || $('memo').value.trim()));
+  const base = S.name && phoneOk() && S.date;
+  if (S.type === '결석') return base;
+  if (S.type === '차량') return base && S.dir && S.car && S.ck;
+  const dropOk = !$('dropChk').checked || S.drop;
+  const tcOk = S.type !== '시간변경' || (S.kind && $('from').value.trim() && (S.kind === '이번만' || S.days.length));
+  return base && tcOk && S.mode && S.time && (S.mode === '직접' || S.stop) && dropOk;
+}
+function update(){
+  { const lc = $('lenCard'); if (lc) lc.classList.toggle('hidden', S.type !== '보강'); }
+  if (S.type === '상담') { $('summary').textContent = (S.topics.length || $('memo').value.trim()) ? '확인 후 원장이 전화드립니다' : '궁금한 점을 골라 주시거나 기타에 적어 주세요'; $('submit').disabled = !ready(); $('err').textContent = ''; return; }
+  if (S.type === '차량') {
+    $('summary').textContent = [dateLabel(), S.dir, S.car ? S.car + ' 차량' : '', S.ck].filter(Boolean).join(' · ') || '날짜, 등원·하원, 차량을 선택해 주세요';
+    $('submit').disabled = !ready(); $('err').textContent = ''; return;
+  }
+  const parts = [dateLabel()];
+  if (S.type === '시간변경' && S.kind === '계속' && S.days.length) parts.push('매주 ' + S.days.join('·'));
+  if (S.type !== '결석') { parts.push(rideText()); if (S.type === '보강' && S.len === '연강') parts.push('연강 90분'); if (S.drop) parts.push(`하원 ${S.drop}`); }
+  else if (S.date) parts.push('결석');
+  $('summary').textContent = parts.filter(Boolean).join(' · ') || (S.type === '보강' ? '보강 날짜와 시간을 선택해 주세요' : S.type === '결석' ? '결석 날짜를 선택해 주세요' : '변경 방식, 날짜, 바뀐 시간을 선택해 주세요');
+  $('submit').disabled = !ready();
+  $('err').textContent = '';
+}
+
+$('submit').onclick = () => {
+  const btn = $('submit'); btn.disabled = true; btn.textContent = '보내는 중...';
+  const payload = { type:S.type, name:S.name, phone:S.phone, date:S.date, mode:S.mode, stop:S.stop, time:S.time,
+    drop: $('dropChk').checked ? S.drop : null, reason:S.reason, memo:$('memo').value, len:S.len,
+    kind:S.kind, dates:S.dates.slice(), days:S.days.slice(), from:$('from').value.trim(), dir:S.dir, car:S.car, ck:S.ck, topics:(S.topics||[]).slice(), askWhen:$('askWhen').value.trim() };
+  const fn = S.type === '차량' ? 'submitCar' : S.type === '상담' ? 'submitAsk' : 'submitRequest';
+  const fail = e => { btn.disabled = false; btn.textContent = '보내기'; $('err').textContent = (e && e.message) || '전송 중 문제가 생겼습니다. 다시 시도해 주세요.'; };
+  fetch(API, { method: 'POST', body: JSON.stringify({ fn, p: payload }) })
+    .then(r => r.json())
+    .then(j => { if (!j || !j.ok) throw new Error((j && j.error) || ''); try { localStorage.setItem('bt_phone', S.phone); } catch(e) {} showDone(payload, j.res); })
+    .catch(e => fail(e && e.message ? e : null));
+};
+
+function showDone(p, res){
+  if (p.type === '상담') { $('form').classList.add('hidden'); $('bar').classList.add('hidden'); const dn = $('done'); dn.innerHTML = '<div class="mark">✓</div><h2>학습 상담 신청이 접수되었습니다</h2><p>남겨 주신 내용을 확인한 뒤 연락드리겠습니다.</p><div class="box" id="box"></div><button class="ghost" id="goBack">처음 화면으로</button>'; dn.classList.remove('hidden'); [['학생', p.name], ['궁금한 점', (p.topics || []).join(', ') || '-'], ['기타', (p.memo || '').trim() || '-'], ['통화 편한 시간', p.askWhen || '-']].forEach(([k,v]) => { const l = document.createElement('div'); const b = document.createElement('b'); b.textContent = k + ' '; l.appendChild(b); l.appendChild(document.createTextNode(v)); $('box').appendChild(l); }); const gb = $('goBack'); if (gb) gb.onclick = () => location.reload(); window.scrollTo(0,0); return; }
+  if (p.type === '차량') return showCarDone(p, res);
+  const isMk = p.type === '보강', isTc = p.type === '시간변경';
+  $('form').classList.add('hidden'); $('bar').classList.add('hidden');
+  const done = $('done');
+  done.innerHTML = `<div class="mark">✓</div>
+    <h2>${isTc ? '시간 변경 신청이 접수되었습니다' : isMk ? '보강 신청이 접수되었습니다' : '결석 알림이 접수되었습니다'}</h2>
+    <p>${isMk || isTc ? '일정 확인 후 확정되면 카카오톡 알림톡으로 안내드립니다.' : '알려주셔서 감사합니다.'}</p>
+    <div class="box" id="box"></div>
+    ${isMk || isTc ? '' : '<button class="ghost" id="goMk">보강도 바로 신청하기</button>'}`;
+  done.classList.remove('hidden');
+  const rows = [['학생', p.name]];
+  if (isTc) {
+    rows.push(['변경', p.kind === '계속' ? '정규 시간 변경' : '이번만 변경'], [p.kind === '계속' ? '시작일' : '변경일', dateLabel()]);
+    if (p.kind === '계속') rows.push(['요일', '매주 ' + p.days.join('·')]);
+    rows.push(['지금 수업', p.from], ['바뀐 등원', rideText()]);
+    if (p.drop) rows.push(['하원', `${p.drop} 하차`]);
+  } else rows.push([isMk ? '보강일' : '결석일', dateLabel()]);
+  if (isMk) { rows.push(['등원', rideText()]); if (p.len === '연강') rows.push(['수업', '연강 90분']); if (p.drop) rows.push(['하원', `${p.drop} 하차`]); }
+  else if (p.reason) rows.push(['사유', p.reason]);
+  const box = $('box');
+  rows.forEach(([k,v]) => { const l = document.createElement('div'); const b = document.createElement('b'); b.textContent = k + ' '; l.appendChild(b); l.appendChild(document.createTextNode(v)); box.appendChild(l); });
+  if (!isMk && !isTc) $('goMk').onclick = () => {
+    S.date = null; S.reason = null; renderReasons(); $('memo').value = '';
+    const btn = $('submit'); btn.textContent = '보내기';
+    done.classList.add('hidden'); $('form').classList.remove('hidden'); $('bar').classList.remove('hidden');
+    setTab('보강'); window.scrollTo(0,0);
+  };
+  window.scrollTo(0,0);
+}
+
+function showCarDone(p, res){
+  const sent = res && res.sent;
+  const urgent = p.ck === '차를 놓쳤어요';
+  $('form').classList.add('hidden'); $('bar').classList.add('hidden');
+  const done = $('done');
+  done.innerHTML = '<div class="mark">✓</div><h2>차량 변경이 접수되었습니다</h2><p id="carMsg"></p><div class="box" id="box"></div><button class="ghost" id="goBack">처음 화면으로</button>';
+  $('carMsg').textContent = urgent
+    ? '도우미 선생님께 바로 전화해 주세요. 직접 연락하시면 더 빠르게 도와드릴 수 있습니다.'
+    : '학원에서도 함께 확인하겠습니다. 급한 변경은 도우미 선생님께 직접 연락하시면 더 빠르게 도와드릴 수 있습니다.';
+  done.classList.remove('hidden');
+  const rows = [['학생', p.name], ['날짜', dateLabel()], ['차량', p.dir + ' · ' + p.car], ['내용', p.ck]];
+  if (p.memo && p.memo.trim()) rows.push(['남길 말', p.memo.trim()]);
+  const box = $('box');
+  rows.forEach(([k,v]) => { const l = document.createElement('div'); const b = document.createElement('b'); b.textContent = k + ' '; l.appendChild(b); l.appendChild(document.createTextNode(v)); box.appendChild(l); });
+  const HN = {'블랙':'010-2267-8645','퍼플':'010-5299-2348','그린':'010-2512-3482'}; if (HN[p.car]) { const a = document.createElement('a'); a.href = 'tel:' + HN[p.car].replace(/-/g,''); a.textContent = p.car + ' 도우미 선생님 ' + HN[p.car] + ' 전화하기'; a.className = 'ghost'; a.style.cssText = 'display:block;margin:14px 0 0;text-align:center;text-decoration:none'; box.after(a); }
+  $('goBack').onclick = () => {
+    S.ck = null; document.querySelectorAll('.opt[data-ck]').forEach(x => x.classList.remove('on'));
+    $('urgentNote').classList.add('hidden'); $('memo').value = ''; $('submit').textContent = '보내기';
+    done.classList.add('hidden'); $('form').classList.remove('hidden'); $('bar').classList.remove('hidden');
+    update(); window.scrollTo(0,0);
+  };
+  window.scrollTo(0,0);
+}
+
+renderCal(); update();
+
+// 최신 자료 받아 오기 (화면은 이미 떠 있음)
+(function(){
+  const q = new URLSearchParams(location.search);
+  window.__btData = function(d){
+    if (!d || !d.stops) return;
+    const pf = d.prefill; delete d.prefill;
+    try { localStorage.setItem('bt_data', JSON.stringify(d)); } catch (e) {}
+    ['map','stops','drops','starts','reasons','arrivals','execUrl'].forEach(k => { if (d[k]) DATA[k] = d[k]; });
+    if (d.closed) { CLOSED.weekly = d.closed.weekly || []; CLOSED.days = d.closed.days || {}; }
+    DATA.askOpen = !!d.askOpen; if ($('askTab')) $('askTab').classList.toggle('hidden', !d.askOpen);
+    if (pf) { try { $('name').value = pf.name; $('phone').value = pf.phone; ['name','phone'].forEach(i => { $(i).dispatchEvent(new Event('input',{bubbles:true})); $(i).dispatchEvent(new Event('change',{bubbles:true})); }); if (pf.tab) setTab(pf.tab); } catch (e) {} }
+    try { if (S.date && !noClose() && dayClosed(S.date)) { S.date = null; S.dates = []; } renderCal(); if (S.mode === '차량') renderStops(); else if (S.mode) renderTimes(); renderDrops(); renderReasons(); update(); } catch (e) {}
+  };
+  let src = API + '?api=data&callback=__btData';
+  ['pk','pp','tab','nm'].forEach(k => { if (q.get(k)) src += '&' + k + '=' + encodeURIComponent(q.get(k)); });
+  const s = document.createElement('script'); s.src = src; document.body.appendChild(s);
+})();
+</script>
+</body>
+</html>
