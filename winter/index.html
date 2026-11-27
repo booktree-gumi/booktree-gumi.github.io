@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<link rel="icon" href="../img/logo.png">
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2027 책나무 산동독서논술 겨울방학 특강 신청</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1c3354;--coral:#e2553b;--ice:#e9f1f7;--line:#c9d6e3;--muted:#5a6b80}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--ice) url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240' fill='none' stroke='%23ffffff' stroke-linecap='round'><g stroke-width='2.2' opacity='.9'><g transform='translate(40 46)'><path d='M0-16v32M-14-8l28 16M-14 8l28-16M-4-12l4 4 4-4M-4 12l4-4 4 4'/></g><g transform='translate(178 92) scale(.7)'><path d='M0-16v32M-14-8l28 16M-14 8l28-16'/></g><g transform='translate(112 178) scale(1.1)'><path d='M0-16v32M-14-8l28 16M-14 8l28-16M-4-12l4 4 4-4M-4 12l4-4 4 4'/></g><g transform='translate(214 214) scale(.5)'><path d='M0-16v32M-14-8l28 16M-14 8l28-16'/></g></g><g fill='%23ffffff' stroke='none'><circle cx='150' cy='30' r='3'/><circle cx='86' cy='110' r='2.5'/><circle cx='22' cy='150' r='3.5'/><circle cx='200' cy='160' r='2'/><circle cx='60' cy='220' r='2.5'/></g></svg>") repeat;background-size:240px;font-family:'Noto Sans KR',sans-serif;color:var(--navy);word-break:keep-all;-webkit-text-size-adjust:100%;font-weight:500}
+@media (min-width:700px){body{zoom:1.25}}
+.wrap{max-width:520px;margin:0 auto;padding:0 14px 110px}
+header{padding:16px 14px 12px;margin:0 -14px 12px;background:var(--ice);box-shadow:0 1px 0 var(--line)}
+.brand{font-size:15px;font-weight:900;color:#2f6b4e}
+h1{font-size:27px;font-weight:900;letter-spacing:-1px;margin-top:2px}
+h1 em{font-style:normal;color:var(--coral)}
+.meta{font-size:15px;color:var(--muted);margin-top:4px;line-height:1.55}
+.meta b{color:var(--coral)}
+form{background:#fff;border-radius:18px;padding:18px 16px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.field{margin-bottom:18px}
+label.q,.q{display:block;font-weight:900;font-size:16.5px;margin-bottom:7px}
+.q .req{color:var(--coral)}
+.q small{font-weight:500;color:var(--muted);font-size:13.5px;margin-left:4px}
+input[type=text],input[type=tel]{width:100%;font:inherit;font-size:17px;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;color:var(--navy);outline:none}
+input:focus{border-color:var(--navy)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips input,.box input{position:absolute;opacity:0;pointer-events:none}
+.chips label{border:1.5px solid #b3c3d4;border-radius:18px;padding:7px 12px;font-size:16px;font-weight:700;cursor:pointer;user-select:none}
+.chips input:checked+label{background:var(--navy);border-color:var(--navy);color:#fff;font-weight:700}
+/* 시간·횟수 상자 */
+.box{display:grid;gap:8px}
+.box.c2{grid-template-columns:1fr 1fr}.box.c3{grid-template-columns:repeat(3,1fr)}
+.box label{display:block;border:1.5px solid #b3c3d4;border-radius:14px;padding:11px 4px 10px;text-align:center;cursor:pointer;user-select:none;line-height:1.3}
+.box label b{display:block;font-size:20px;font-weight:900}
+.box label span{font-size:14.5px;font-weight:700;color:var(--muted)}
+.box input:checked+label{background:var(--navy);border-color:var(--navy);color:#fff}
+.box input:checked+label span{color:#fff}
+/* 달력 */
+.cnt{display:flex;justify-content:space-between;align-items:center;gap:8px;background:var(--ice);border-radius:12px;padding:10px 12px;margin-bottom:10px;font-size:15px;font-weight:700}
+.cnt b{color:var(--coral);font-size:19px}
+.cnt .rest{font-size:14px;color:var(--muted);font-weight:500}
+.cnt .rest.ok{color:#2f7a52;font-weight:700}
+.dow{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:10px;font-size:14.5px;color:var(--muted)}
+.dow button{font:inherit;font-weight:700;font-size:15px;border:1.5px solid var(--line);background:#fff;color:var(--navy);border-radius:16px;padding:4px 10px;cursor:pointer}
+.dow button.clr{border:0;color:var(--muted);text-decoration:underline;background:none;padding:4px 2px}
+.hint{color:var(--coral);font-size:14px;font-weight:700;min-height:0;margin:-4px 0 8px;display:none}
+.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;text-align:center}
+.grid .h{font-size:13px;font-weight:700;color:var(--muted);padding-bottom:2px}
+.d{height:44px;border-radius:9px;font-size:16.5px;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.05;user-select:none}
+.d.on{border:1.5px solid var(--line);cursor:pointer;font-weight:700;background:#fff}
+.d.on.sel{background:var(--coral);border-color:var(--coral);color:#fff}
+.d.on.lock{opacity:.35;cursor:default}
+#cal.wait .d.on{opacity:.45}
+.d.off{color:#c3ccd6}
+.d.hol{color:#c3ccd6;text-decoration:line-through}
+.d.full{background:#eef1f5;color:#9aa5b3;border-radius:9px}
+.d.full small{color:var(--coral);font-weight:700}
+.d small{font-size:9.5px;font-weight:400;text-decoration:none}
+.pnote{font-size:14px;color:var(--muted);margin-top:6px;line-height:1.5}.pnote b{color:var(--navy)}
+.agree{display:flex;gap:8px;align-items:center;font-size:14.5px;color:var(--muted);margin:2px 0 4px}
+.agree input{width:18px;height:18px;accent-color:var(--navy);flex:none}
+.err{color:var(--coral);font-weight:700;font-size:15px;margin-top:6px;text-align:center;min-height:18px}
+/* 아래 고정 합계 */
+.bar{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);padding:10px 14px calc(10px + env(safe-area-inset-bottom));z-index:9}
+.bar .in{max-width:520px;margin:0 auto;display:flex;align-items:center;gap:12px}
+.tot{flex:1;line-height:1.3}
+.tot .n{font-size:14.5px;color:var(--muted)}
+.tot .w{font-size:21px;font-weight:900}
+.tot .w em{font-style:normal;color:var(--coral)}
+button.submit{border:0;border-radius:14px;background:var(--coral);color:#fff;font:inherit;font-size:17px;font-weight:900;padding:13px 22px;cursor:pointer}
+button.submit:disabled{opacity:.6}
+button.submit.dim{background:#b9c4d0}
+.done{display:none;background:#fff;border-radius:18px;text-align:center;padding:34px 18px}
+.done .big{font-size:22px;font-weight:900;margin:12px 0 8px}
+.rc{text-align:left;border:1.5px solid var(--line);border-radius:14px;padding:14px;margin-top:6px}
+.rn{font-size:18px;font-weight:900;margin-bottom:8px}.rn small{font-size:13.5px;color:var(--muted);font-weight:700}
+.dr{display:flex;gap:10px;font-size:14.5px;line-height:1.6;padding:3px 0}.dr b{flex:none;width:36px;color:var(--coral)}
+.sum{display:flex;justify-content:space-between;border-top:1px dashed var(--line);margin-top:8px;padding-top:9px;font-weight:700}.sum em{font-style:normal;color:var(--coral);font-size:18px}
+.warn{background:#fff4e8;border-radius:12px;padding:12px 14px;margin-top:14px;text-align:left;font-size:14.5px;line-height:1.7;color:var(--navy)}
+.warn b{color:var(--coral)}
+.contact{text-align:center;font-size:14.5px;color:var(--muted);margin-top:14px}
+.contact a{color:var(--navy);font-weight:700;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand">2027 책나무 산동독서논술</div>
+    <h1>겨울방학 <em>특강 신청</em></h1>
+    <div class="meta">1. 11.(월) ~ 2. 26.(금) 평일 · <b>선착순 마감</b><br>1부 10:30 · 2부 11:30 시작 · A반 60분 · B반 80분</div>
+  </header>
+
+  <form id="f" autocomplete="on" novalidate>
+    <div class="two field">
+      <div><label class="q" for="name">학생 이름<span class="req">*</span></label><input type="text" id="name" maxlength="30"></div>
+      <div><label class="q" for="school">학교<span class="req">*</span></label><input type="text" id="school" maxlength="40" placeholder="예) 산동초"></div>
+    </div>
+    <div class="field">
+      <span class="q">학년<span class="req">*</span></span>
+      <div class="chips">
+        <input type="radio" name="grade" id="g1" value="초1"><label for="g1">초1</label>
+        <input type="radio" name="grade" id="g2" value="초2"><label for="g2">초2</label>
+        <input type="radio" name="grade" id="g3" value="초3"><label for="g3">초3</label>
+        <input type="radio" name="grade" id="g4" value="초4"><label for="g4">초4</label>
+        <input type="radio" name="grade" id="g5" value="초5"><label for="g5">초5</label>
+        <input type="radio" name="grade" id="g6" value="초6"><label for="g6">초6</label>
+        <input type="radio" name="grade" id="m1" value="중1"><label for="m1">중1</label>
+        <input type="radio" name="grade" id="m2" value="중2"><label for="m2">중2</label>
+        <input type="radio" name="grade" id="m3" value="중3"><label for="m3">중3</label>
+      </div>
+    </div>
+    <div class="two field">
+      <div><span class="q">재원 여부<span class="req">*</span></span>
+        <div class="chips">
+          <input type="radio" name="member" id="mem1" value="재원생"><label for="mem1">재원생</label>
+          <input type="radio" name="member" id="mem2" value="신규"><label for="mem2">신규</label>
+        </div></div>
+      <div><label class="q" for="phone">학부모 연락처<span class="req">*</span></label>
+        <input type="tel" id="phone" inputmode="numeric" maxlength="13" placeholder="010-0000-0000"></div>
+    </div>
+
+    <div class="field">
+      <span class="q">반<span class="req">*</span></span>
+      <div class="box c2">
+        <input type="radio" name="cls" id="ca" value="A반"><label for="ca"><b>A반</b><span>60분 · 모든 학년</span></label>
+        <input type="radio" name="cls" id="cb" value="B반"><label for="cb"><b>B반</b><span>80분 · 초5~중등</span></label>
+      </div>
+    </div>
+
+    <div class="field">
+      <span class="q">수업 시간<span class="req">*</span></span>
+      <div class="box c2">
+        <input type="radio" name="part" id="pt1" value="1부"><label for="pt1"><b>1부</b><span id="pt1t">10:30 시작</span></label>
+        <input type="radio" name="part" id="pt2" value="2부"><label for="pt2"><b>2부</b><span id="pt2t">11:30 시작</span></label>
+      </div>
+    </div>
+
+    <div class="field">
+      <span class="q">수강 횟수<span class="req">*</span></span>
+      <div class="box c3">
+        <input type="radio" name="pkg" id="k8" value="8"><label for="k8"><b>8회</b><span id="k8w">120,000원</span></label>
+        <input type="radio" name="pkg" id="k12" value="12"><label for="k12"><b>12회</b><span id="k12w">180,000원</span></label>
+        <input type="radio" name="pkg" id="k15" value="15"><label for="k15"><b>15회</b><span id="k15w">220,000원</span></label>
+      </div>
+    </div>
+
+    <div class="field">
+      <span class="q">수업 날짜<span class="req">*</span><small>수강 횟수만큼 날짜를 눌러 주세요</small></span>
+      <div class="cnt"><span id="cntL">수강 횟수를 먼저 선택해 주세요</span><span class="rest" id="cntR"></span></div>
+      <div class="hint" id="hint"></div>
+      <div class="dow" id="dow">요일로 한 번에
+        <button type="button" data-w="1">월</button><button type="button" data-w="2">화</button><button type="button" data-w="3">수</button><button type="button" data-w="4">목</button><button type="button" data-w="5">금</button>
+        <button type="button" class="clr" data-w="0">모두 지우기</button>
+      </div>
+      <div id="cal" class="wait"></div>
+    </div>
+
+    <div class="field">
+      <span class="q">결제 방법<span class="req">*</span></span>
+      <div class="chips">
+        <input type="radio" name="pay" id="p1" value="계좌 이체"><label for="p1">계좌 이체</label>
+        <input type="radio" name="pay" id="p2" value="비대면 카드"><label for="p2">비대면 카드 결제</label>
+      </div>
+      <div class="pnote">수강이 확정되면 <b>계좌번호</b> 또는 <b>비대면 카드 결제 링크</b>를 문자로 보내 드립니다.</div>
+    </div>
+    <div class="field">
+      <label class="q" for="question">남기실 말<small>선택 · 형제 함께 신청, 문의 사항</small></label>
+      <input type="text" id="question" maxlength="300">
+    </div>
+    <div class="pnote" style="margin:4px 0 12px;line-height:1.6">· 신청 인원이 최소 인원에 미치지 못하면 반이 열리지 않을 수 있습니다. 인원이 모이는 대로 바로 연락드리겠습니다.<br>· <b>특강 수업은 차량을 운행하지 않습니다.</b> (차량은 정규 수업만 운행)</div>
+    <label class="agree"><input type="checkbox" id="agree">특강 안내·연락을 위한 개인정보 수집에 동의합니다</label>
+    <div class="err" id="err"></div>
+  </form>
+
+  <div class="done" id="done">
+    <svg width="54" height="54" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="#e2553b"/><path d="M19 33l9 9 17-19" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div class="big">신청이 접수되었습니다</div>
+    <div id="doneTxt"></div>
+  </div>
+
+  <div class="contact">문의 <a href="tel:01020690885">010-2069-0885</a></div>
+</div>
+
+<div class="bar" id="bar"><div class="in">
+  <div class="tot"><div class="n" id="tn">수업 시간과 횟수를 선택해 주세요</div><div class="w">총 교육비 <em id="tw">0원</em></div></div>
+  <button type="button" class="submit dim" id="btn">신청하기</button>
+</div></div>
+
+<script>
+// ===== 특강 설정 (Code.gs와 같게) =====
+var START = '2027-01-11', END = '2027-02-26';
+var HOLIDAYS = {'2027-02-08':'설','2027-02-09':'설'};   // 휴강일
+var PKGS = {'A반':{8:120000, 12:180000, 15:220000}, 'B반':{8:150000, 12:220000, 15:270000}}; // 반·횟수별 교육비
+var CLS_MIN = {'A반':60, 'B반':80};
+var PARTS = {'1부':'10:30', '2부':'11:30'};
+var B_OK = {'초5':1,'초6':1,'중1':1,'중2':1,'중3':1};
+function partTime(part, cls){ var p=PARTS[part].split(':'), m=+p[0]*60 + +p[1] + (CLS_MIN[cls]||60); return PARTS[part]+' ~ '+Math.floor(m/60)+':'+('0'+m%60).slice(-2); }
+// =====================================
+(function(){
+  var sel = {}, days = [];
+  function ymd(d){ return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2); }
+  function parse(s){ var p=s.split('-'); return new Date(+p[0], p[1]-1, +p[2]); }
+  var s = parse(START), e = parse(END), CLOSED = {};
+  var cal = document.getElementById('cal'), f = document.getElementById('f');
+  function val(n){var el=f.querySelector('[name="'+n+'"]:checked');return el?el.value:'';}
+  function N(){ return +val('pkg') || 0; }
+  function C(){ return val('cls'); }
+  function fee(n){ return n ? (PKGS[C() || 'A반'][n] || 0) : 0; }
+  // 반·학년이 바뀌면: 시간 끝나는 때, 횟수별 가격, B반 가능 여부
+  function syncCls(){
+    var cls = C(), g = val('grade'), cb = document.getElementById('cb');
+    var bOk = !g || !!B_OK[g];
+    cb.disabled = !bOk; cb.nextElementSibling.style.opacity = bOk ? '' : '.4';
+    if (!bOk && cb.checked) { cb.checked = false; cls = ''; say('B반(80분)은 초5~중등만 신청할 수 있습니다.'); }
+    document.getElementById('pt1t').textContent = cls ? partTime('1부', cls) : '10:30 시작';
+    document.getElementById('pt2t').textContent = cls ? partTime('2부', cls) : '11:30 시작';
+    [8,12,15].forEach(function(n){ document.getElementById('k'+n+'w').textContent = won(PKGS[cls || 'A반'][n]); });
+  }
+  function won(x){ return x.toLocaleString('ko-KR') + '원'; }
+  var hint = document.getElementById('hint'), hintT;
+  function say(t){ hint.textContent = t; hint.style.display = 'block'; clearTimeout(hintT); hintT = setTimeout(function(){ hint.style.display='none'; }, 3500); }
+
+  function build(closedList){
+    CLOSED = {}; (closedList||[]).forEach(function(k){ CLOSED[k]=1; delete sel[k]; });
+    days = [];
+    for (var d = new Date(s); d <= e; d.setDate(d.getDate()+1)) {
+      var w = d.getDay(), k = ymd(d);
+      if (w > 0 && w < 6 && !HOLIDAYS[k] && !CLOSED[k]) days.push(k);
+    }
+    var html = '<div class="grid">';
+    ['월','화','수','목','금'].forEach(function(x){ html += '<div class="h">'+x+'</div>'; });
+    var mon = parse(START); mon.setDate(mon.getDate() - ((mon.getDay()+6)%7));
+    var lastMonth = -1;
+    for (var wk = new Date(mon); wk <= e; wk.setDate(wk.getDate()+7)) {
+      for (var i=0;i<5;i++) {
+        var dt = new Date(wk); dt.setDate(wk.getDate()+i);
+        var k = ymd(dt), lab = dt.getDate();
+        if (dt.getMonth() !== lastMonth && dt >= s) { lab = (dt.getMonth()+1)+'/'+dt.getDate(); lastMonth = dt.getMonth(); }
+        if (days.indexOf(k) >= 0) html += '<div class="d on" data-k="'+k+'">'+lab+'</div>';
+        else if (HOLIDAYS[k]) html += '<div class="d hol">'+lab+'<small>'+HOLIDAYS[k]+' 휴강</small></div>';
+        else if (CLOSED[k]) html += '<div class="d full">'+lab+'<small>마감</small></div>';
+        else html += '<div class="d off"></div>';
+      }
+    }
+    html += '</div>';
+    cal.innerHTML = html;
+    refresh();
+  }
+
+  function refresh(){
+    var n = Object.keys(sel).length, max = N(), part = val('part');
+    var full = max && n >= max;
+    cal.classList.toggle('wait', !max);
+    [].forEach.call(cal.querySelectorAll('.d.on'), function(c){
+      var on = !!sel[c.getAttribute('data-k')];
+      c.classList.toggle('sel', on); c.classList.toggle('lock', full && !on);
+    });
+    var L = document.getElementById('cntL'), R = document.getElementById('cntR');
+    if (!max) { L.textContent = '수강 횟수를 먼저 선택해 주세요'; R.textContent = ''; R.className = 'rest'; }
+    else {
+      L.innerHTML = '선택 <b>' + n + '</b> / ' + max + '회';
+      R.textContent = n < max ? (max - n) + '회 더 선택해 주세요' : '선택 완료';
+      R.className = 'rest' + (n === max ? ' ok' : '');
+    }
+    var cls = C();
+    document.getElementById('tn').textContent =
+      (cls ? cls + ' · ' : '') + (part ? part + ' · ' : '') + (max ? max + '회 중 ' + n + '회 선택' : [!cls && '반', !part && '시간', '횟수'].filter(Boolean).join('·') + '를 선택해 주세요');
+    document.getElementById('tw').textContent = won(fee(max));
+    document.getElementById('btn').classList.toggle('dim', !(cls && part && max && n === max));
+  }
+
+  cal.addEventListener('click', function(ev){
+    var c = ev.target.closest('.d.on'); if (!c) return;
+    var k = c.getAttribute('data-k'), max = N();
+    if (!max) { say('수강 횟수를 먼저 선택해 주세요.'); return; }
+    if (sel[k]) { delete sel[k]; refresh(); return; }
+    if (Object.keys(sel).length >= max) { say(max + '회를 모두 선택하셨습니다. 날짜를 바꾸시려면 선택한 날짜를 한 번 더 눌러 빼 주세요.'); return; }
+    sel[k] = 1; refresh();
+  });
+  document.getElementById('dow').addEventListener('click', function(ev){
+    var b = ev.target.closest('button'); if (!b) return;
+    var w = +b.getAttribute('data-w'), max = N();
+    if (!w) { sel = {}; refresh(); return; }
+    if (!max) { say('수강 횟수를 먼저 선택해 주세요.'); return; }
+    var mine = days.filter(function(k){ return parse(k).getDay() === w; });
+    if (mine.every(function(k){ return sel[k]; })) { mine.forEach(function(k){ delete sel[k]; }); refresh(); return; }
+    var n = Object.keys(sel).length;
+    if (n >= max) { say(max + '회를 모두 선택하셨습니다. 다른 요일로 바꾸시려면 먼저 \'모두 지우기\'를 눌러 주세요.'); return; }
+    mine.forEach(function(k){ if (!sel[k] && n < max) { sel[k] = 1; n++; } });
+    refresh();
+  });
+  // 횟수를 줄이면 앞쪽 날짜부터 남김
+  [].forEach.call(f.querySelectorAll('[name="pkg"],[name="part"],[name="cls"],[name="grade"]'), function(r){
+    r.addEventListener('change', function(){
+      syncCls();
+      var max = N(), keys = Object.keys(sel).sort();
+      if (max && keys.length > max) { keys.slice(max).forEach(function(k){ delete sel[k]; }); say(max + '회에 맞춰 뒤쪽 날짜를 뺐습니다. 확인해 주세요.'); }
+      refresh();
+    });
+  });
+  var CL0 = []; try { CL0 = JSON.parse(localStorage.getItem('wk_closed') || '[]'); } catch (e) {}
+  build(CL0);
+  window.__wkClosed = function (list) { try { localStorage.setItem('wk_closed', JSON.stringify(list || [])); } catch (e) {} build(list || []); };
+  (function () { var s = document.createElement('script'); s.src = 'https://script.google.com/macros/s/AKfycbw2iNA1Z6_OfDxYXG7HiHh-6LzG1ppRbr3ZwEthpvVjw5Y8rYPVAOR2B8dFhTe_D7-wBw/exec?api=closed&callback=__wkClosed'; document.body.appendChild(s); })();
+
+  var btn=document.getElementById('btn'),err=document.getElementById('err'),phone=document.getElementById('phone');
+  phone.addEventListener('input',function(){var d=phone.value.replace(/\D/g,'').slice(0,11);
+    phone.value=d.length<4?d:d.length<8?d.slice(0,3)+'-'+d.slice(3):d.slice(0,3)+'-'+d.slice(3,d.length-4)+'-'+d.slice(-4);});
+  function g(id){return document.getElementById(id).value.trim();}
+  function esc(x){return String(x).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+  function stop(t){err.textContent=t;err.scrollIntoView({block:'center'});}
+  btn.addEventListener('click',function(){
+    err.textContent='';
+    var dates = Object.keys(sel).sort(), max = N();
+    var data={name:g('name'),school:g('school'),grade:val('grade'),member:val('member'),phone:phone.value.trim(),
+      cls:C(),part:val('part'),pkg:max,dates:dates,pay:val('pay'),question:g('question'),agree:document.getElementById('agree').checked};
+    var miss=!data.name?'학생 이름':!data.school?'학교':!data.grade?'학년':!data.member?'재원 여부':phone.value.replace(/\D/g,'').length<10?'학부모 연락처':'';
+    if(miss) return stop(miss+'을(를) 확인해 주세요.');
+    if(!data.cls) return stop('반(A반·B반)을 선택해 주세요.');
+    if(data.cls==='B반'&&!B_OK[data.grade]) return stop('B반(80분)은 초5~중등만 신청할 수 있습니다.');
+    if(!data.part) return stop('수업 시간(1부·2부)을 선택해 주세요.');
+    if(!max) return stop('수강 횟수를 선택해 주세요.');
+    if(dates.length!==max) return stop('수업 날짜를 '+max+'회 선택해 주세요. (지금 '+dates.length+'회)');
+    if(!data.pay) return stop('결제 방법을 선택해 주세요.');
+    if(!data.agree) return stop('개인정보 수집에 동의해 주세요.');
+    btn.disabled=true;btn.textContent='보내는 중…';
+    var ok=function(){f.style.display='none';document.getElementById('bar').style.display='none';
+      var by={};dates.forEach(function(k){var p=k.split('-'),m=+p[1];(by[m]=by[m]||[]).push(+p[2]);});
+      var rows=Object.keys(by).map(function(m){return '<div class="dr"><b>'+m+'월</b><span>'+by[m].join(', ')+'</span></div>';}).join('');
+      document.getElementById('doneTxt').innerHTML=
+        '<div class="rc"><div class="rn">'+esc(data.name)+' <small>'+esc(data.school)+' '+esc(data.grade)+'</small></div>'+
+        '<div class="dr"><b>시간</b><span>'+esc(data.cls)+' '+esc(data.part)+' '+partTime(data.part,data.cls)+'</span></div>'+rows+
+        '<div class="dr"><b>결제</b><span>'+esc(data.pay)+'</span></div>'+
+        '<div class="sum"><span>'+max+'회</span><span>총 교육비 <em>'+won(fee(max))+'</em></span></div></div>'+
+        '<div class="warn"><b>정상적으로 신청되었습니다. 아직 수강 확정은 아닙니다.</b><br>신청 인원이 최소 인원에 미치지 못하면 반이 열리지 않을 수 있습니다. 인원이 모이는 대로 바로 연락드리며, 확정 안내와 함께 '+
+        (data.pay==='비대면 카드'?'<b>비대면 카드 결제 링크</b>':'<b>계좌번호</b>')+'를 보내 드립니다.<br><b>특강 수업은 차량을 운행하지 않습니다.</b> (차량은 정규 수업만 운행)<br>이 화면을 캡처해 두시면 편리합니다.</div>';
+      document.getElementById('done').style.display='block';window.scrollTo(0,0);};
+    var fail=function(e2){btn.disabled=false;btn.textContent='신청하기';err.textContent=(e2&&e2.message)||'잠시 후 다시 시도해 주세요.';};
+    fetch('https://script.google.com/macros/s/AKfycbw2iNA1Z6_OfDxYXG7HiHh-6LzG1ppRbr3ZwEthpvVjw5Y8rYPVAOR2B8dFhTe_D7-wBw/exec',{method:'POST',body:JSON.stringify({fn:'submitApplication',p:data})})
+      .then(function(r){return r.json();})
+      .then(function(j){ if(!j||!j.ok) throw new Error((j&&j.error)||''); ok(j.res); })
+      .catch(function(e2){ fail(e2&&e2.message?e2:null); });
+  });
+})();
+</script>
+</body>
+</html>
