@@ -1,0 +1,2001 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>책나무 산동독서논술학원 보강·결석·시간·차량 변경 관리</title>
+<link rel="icon" href="../../img/logo.png">
+<script>
+(function(){
+  var API = 'https://script.google.com/macros/s/AKfycbyHF7n45c1megX__O8njci1_iwdSp65hH0Q23R0VwfR_oBo5C1ZOeNhqhpjyyjwI_Zh/exec';
+  function mk(ok, no){
+    return new Proxy({}, { get: function(_, k){
+      if (k === 'withSuccessHandler') return function(f){ return mk(f, no); };
+      if (k === 'withFailureHandler') return function(f){ return mk(ok, f); };
+      if (k === 'withUserObject') return function(){ return mk(ok, no); };
+      return function(){
+        var args = Array.prototype.slice.call(arguments);
+        fetch(API, { method: 'POST', body: JSON.stringify({ fn: k, args: args }) })
+          .then(function(r){ return r.json(); })
+          .then(function(j){ if (!j || !j.ok) throw new Error((j && j.error) || '잠시 후 다시 해 주세요.'); ok && ok(j.res); })
+          .catch(function(e){ no && no(e); });
+      };
+    }});
+  }
+  window.google = { script: { run: mk(null, null) } };
+})();
+</script>
+
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#F7F5F0;--card:#FFFFFF;--ink:#262626;--sub:#7A7A72;--line:#E6E2D8;--green:#1F3D2B;--green-soft:#E8EFE9;--gold:#A8874E;--amber:#FFF6DA;--amber-ink:#8A6A1F;}
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:'Noto Sans KR',-apple-system,sans-serif;font-size:16px;line-height:1.5}
+  .wrap{max-width:560px;margin:0 auto;padding:18px 16px 60px}
+  header{display:flex;align-items:flex-end;justify-content:space-between;padding:4px 2px 14px}
+  header .brand{font-size:14px;color:var(--green);font-weight:700}
+  header h1{margin:2px 0 0;font-size:22px;color:var(--green)}
+  .refresh{border:1px solid var(--line);background:#fff;border-radius:10px;padding:8px 12px;font:inherit;font-size:14px;color:var(--ink)}
+  .tabs{display:grid;grid-template-columns:repeat(4,1fr);background:#ECE9E1;border-radius:12px;padding:4px;margin-bottom:14px}
+  .tab{border:none;background:none;border-radius:9px;padding:10px 2px;font:inherit;font-size:13px;letter-spacing:-.02em;font-weight:500;color:var(--sub)}
+  .tab.on{background:#fff;color:var(--green);font-weight:700;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+  .tab .n{display:inline-block;min-width:20px;margin-left:4px;padding:0 6px;border-radius:999px;background:var(--green);color:#fff;font-size:12px;line-height:20px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:12px}
+  .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+  .name{font-size:18px;font-weight:700}
+.name.tap{cursor:pointer;text-decoration:underline dotted;text-underline-offset:5px}
+.name .tapi{font-size:14px;margin-left:4px;opacity:.7;text-decoration:none}
+.ph{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:8px 0 4px;padding:10px 12px;border-radius:12px;background:#f3f6f2}
+.ph b{font-size:17px;margin-right:auto}
+.ph a.btn{text-decoration:none}
+  .badge{font-size:12px;font-weight:700;border-radius:999px;padding:3px 10px}
+  .b-wait{background:var(--amber);color:var(--amber-ink)}
+  .b-ok{background:var(--green-soft);color:var(--green)}
+  .b-chg{background:#F1ECE2;color:#6B5A3A}
+  .b-done{background:#EEEEEE;color:#888}
+  .rows{display:grid;grid-template-columns:56px 1fr;gap:4px 10px;font-size:15px}
+  .rows dt{color:var(--sub)}
+  .rows dd{margin:0}
+  .meta{font-size:12px;color:var(--sub);margin-top:8px}
+  .acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .btn{border:1px solid var(--line);background:#fff;border-radius:10px;padding:11px 14px;font:inherit;font-size:15px;font-weight:700;color:var(--ink)}
+  .btn.pri{background:var(--green);border-color:var(--green);color:#fff}
+  .btn.ghost{color:var(--green);border-color:var(--green)}
+  .btn:disabled{opacity:.5}
+  .panel{margin-top:12px;padding:12px;border-radius:10px;background:#FAF8F3;border:1px solid var(--line)}
+  .panel label{display:block;font-size:13px;color:var(--sub);margin:0 0 6px}
+  .panel input,.panel select{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px 12px;font:inherit;background:#fff;margin-bottom:10px}
+  .msg{white-space:pre-wrap;font-size:14px;line-height:1.7;background:#FAF8F3;border:1px solid var(--line);border-radius:10px;padding:12px;margin-top:12px}
+  .check{display:flex;align-items:center;gap:8px;margin-top:12px;font-weight:700;font-size:15px}
+  .check input{width:22px;height:22px;accent-color:var(--green)}
+  .empty{text-align:center;color:var(--sub);padding:50px 0}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 13px;font:inherit;font-size:15px;color:var(--ink)}
+  .chip.on{background:var(--green);border-color:var(--green);color:#fff}
+  .sec{font-size:15px;font-weight:700;margin-bottom:6px}
+  .help{font-size:13px;color:var(--sub);margin:0 0 12px}
+  .dinput{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px 12px;font:inherit;background:#fff;margin-bottom:12px}
+  .clist div{padding:8px 0;border-top:1px solid var(--line);font-size:15px}
+  .clist div:first-child{border-top:none}
+  .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 16px;border-radius:999px;font-size:14px;opacity:0;transition:opacity .2s;pointer-events:none}
+  .toast.on{opacity:.92}
+  /* ── 책나무 테마 ── */
+  :root{--bg:#F5F2EA;--line:#E4DED0;--green:#176943;--green-d:#0F4F31;--green-soft:#EAF2EC;--gold:#B08D57;--ink:#22261F;--sub:#7C7A70}
+  .hero{display:block;margin:-18px -16px 16px;background:var(--green-d);color:#fff;padding:20px 18px 18px;position:relative;border-bottom:3px solid var(--gold)}
+  .hero::after{content:"";position:absolute;left:18px;right:18px;bottom:8px;border-top:1px solid rgba(176,141,87,.55)}
+  .hero-in{display:flex;align-items:center;gap:14px;max-width:560px;margin:0 auto}
+  .hero .mark{width:38px;height:auto;flex:none}
+  .hero .bar-v{width:1px;align-self:stretch;background:rgba(176,141,87,.7)}
+  .hero .brand{font-size:12px;letter-spacing:.12em;color:#E9DCC3;font-weight:500}
+  .hero h1{margin:2px 0 0;font-family:'Noto Serif KR',serif;font-size:21px;font-weight:700;color:#fff}
+  .hero .refresh{margin-left:auto;background:transparent;border:1px solid rgba(233,220,195,.6);color:#F3EAD8}
+  .tabs{background:#fff;border:1px solid var(--line)}
+  .tab.on{background:var(--green);color:#fff;box-shadow:none}
+  .tab.on .n{background:#fff;color:var(--green)}
+  .card{border-color:var(--line);border-radius:12px;box-shadow:0 1px 2px rgba(34,38,31,.04)}
+  .sec{display:flex;align-items:center;gap:8px}
+  .sec::before{content:"";width:3px;height:14px;background:var(--gold);border-radius:2px}
+  .btn.pri,.chip.on{background:var(--green);border-color:var(--green)}
+  .btn.ghost{color:var(--green);border-color:var(--green)}
+  .b-ok{background:var(--green-soft);color:var(--green-d)}
+  .mhead{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+  .mhead b{font-size:17px}
+  .mnav{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:#fff;font-size:18px;color:var(--ink)}
+  .msum{font-size:13px;color:var(--sub);margin:0 0 12px;display:flex;align-items:center;gap:4px;flex-wrap:wrap}
+  .mcal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px}
+  .mdow{font-size:12px;color:var(--sub);text-align:center;padding:2px 0}
+  .mday{min-height:62px;border:1px solid var(--line);border-radius:8px;background:#fff;padding:4px 2px;font:inherit;display:flex;flex-direction:column;align-items:stretch;gap:2px;overflow:hidden;text-align:left}
+  .mday .dn{font-size:12px;color:var(--ink);padding-left:2px}
+  .mday.today{border-color:var(--gold)}
+  .mday.sel{border-color:var(--green);box-shadow:inset 0 0 0 1px var(--green)}
+  .tg{display:inline-block;font-size:11px;line-height:16px;border-radius:4px;padding:0 2px;letter-spacing:-.03em;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:500}
+  .tg.mk{background:#CFE0F5;color:#24466E;font-weight:700}
+  .tg.ab{background:#F1C3BC;color:#6B3A33;font-weight:700}
+  .mday .more{font-size:10px;color:var(--sub);padding-left:2px}
+  .mlist .mdate{font-size:13px;font-weight:700;color:var(--green-d);padding:12px 0 4px;border-top:1px solid var(--line)}
+  .mlist .mdate:first-child{border-top:none;padding-top:0}
+  .mnm{display:inline-flex;align-items:center;gap:4px}
+  .mfix{font:inherit;font-size:11.5px;font-weight:700;color:var(--green-d);background:#fff;border:1px solid #cfd8cc;border-radius:999px;padding:1px 8px;cursor:pointer;line-height:1.5}
+  .mfix:disabled{opacity:.5}
+  .mrow{display:flex;align-items:center;gap:6px;padding:5px 0;font-size:14px;flex-wrap:wrap}
+  .mrow .mtx{color:var(--sub);font-size:13px;flex:1;min-width:120px}
+  .mok{font-size:11px;color:#888;background:#EEE;border-radius:999px;padding:1px 7px}
+  .mno{font-size:11px;color:var(--amber-ink);background:var(--amber);border-radius:999px;padding:1px 7px}
+  .stbl{width:100%;border-collapse:collapse;font-size:14px}
+  .stbl th,.stbl td{padding:8px 4px;border-top:1px solid var(--line);text-align:center}
+  .stbl th{color:var(--sub);font-weight:500;border-top:none}
+  .stbl td:first-child,.stbl th:first-child{text-align:left}
+  .stbl td.left{color:#9A3B2E;font-weight:700}
+  .tabs{gap:2px}
+  .kd{font-size:12px;font-weight:700;border-radius:6px;padding:2px 7px;margin-left:8px;vertical-align:3px}
+  .kd.k1{background:var(--green-soft);color:var(--green-d)}
+  .kd.k2{background:#F3E6CC;color:#6E5226}
+  .tg.tc{background:#E9E8E3;color:#3A3A35}
+  .tabs{grid-template-columns:repeat(3,1fr)}
+  .hero h1{font-size:18px;white-space:nowrap;line-height:1.4}
+  .hero .refresh{white-space:nowrap}
+  .kd.k3{background:#F6DADA;color:#8A2B22}
+  .carnote{font-size:13px;margin:0 4px 12px;padding:10px 12px;border-radius:10px;background:#FFF6DA;color:#8A6A1F;line-height:1.6}
+
+  /* 2026-11-17 원장 요청: 관리 화면 보기 편하게(글씨 키움·탭 정리) */
+  body{font-size:17px}
+  .tabs{grid-template-columns:repeat(3,1fr)!important;gap:4px;padding:6px}
+  .tab{font-size:15.5px;padding:13px 2px;font-weight:600;color:var(--ink)}
+  .tab .n{font-size:12.5px}
+  .name{font-size:20px}
+  .rows{font-size:16.5px;grid-template-columns:66px 1fr;gap:6px 10px}
+  .meta{font-size:13.5px}
+  .help{font-size:14.5px;line-height:1.6}
+  .sec{font-size:16.5px}
+  .msg{font-size:15.5px}
+  .chip,.btn{font-size:16px}
+  .msum{font-size:14.5px}
+  .mdow{font-size:13px}
+  .mday .dn{font-size:13.5px}
+  .tg{font-size:12.5px;line-height:18px}
+  .mlist .mdate{font-size:14.5px}
+  .card{padding:18px}
+
+  /* 2026-11-17 원장: 머리 한 줄로 얇게 */
+  .hero{padding:10px 14px!important}
+  .hero-in{gap:10px!important;align-items:center!important}
+  .hero .mark{width:30px!important;height:auto!important}
+  .hero .brand{font-size:11px!important;letter-spacing:.06em!important}
+  .hero h1{font-size:15.5px!important;line-height:1.35!important;white-space:normal!important;margin:1px 0 0!important;letter-spacing:-.01em!important}
+  .bar-v{display:none!important}
+
+  /* 2026-11-17 원장: 로고 작게 학원 이름 앞, 제목 조금 크게 */
+  .hero{padding:14px 16px!important}
+  .hero .brand{display:flex!important;align-items:center;gap:6px;font-size:12.5px!important}
+  .hero .mark-s{width:18px;height:auto;display:inline-block}
+  .hero h1{font-size:19px!important;margin:6px 0 0!important;line-height:1.35!important}
+
+  /* ── 오늘 한마디 ── */
+  .tab[data-t="tn"]{grid-column:1/-1;font-weight:700;color:var(--green-d);background:#FBF7EF;border:1px solid #E8DCC4}
+  .tab[data-t="tn"].on{background:var(--green-d);color:#fff;border-color:var(--green-d)}
+  .tn-step{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 12px 12px;margin-bottom:10px;box-shadow:0 1px 2px rgba(34,38,31,.04)}
+  .tn-h{display:flex;align-items:center;gap:8px;font-weight:700;font-size:16px;margin-bottom:8px;color:var(--ink)}
+  .tn-no{width:22px;height:22px;border-radius:50%;background:var(--green-d);color:#fff;font-size:12.5px;display:inline-flex;align-items:center;justify-content:center;flex:none;font-weight:700}
+  .tn-opt{font-size:12.5px;color:var(--sub);font-weight:500}
+  .tn-cnt{margin-left:auto;font-size:13px;color:var(--green);font-weight:700}
+  .tn-mini{margin-left:auto;border:1px solid var(--line);background:#fff;border-radius:8px;padding:3px 9px;font:inherit;font-size:12.5px;color:var(--sub);font-weight:500}
+  .tn-mini.on{border-color:var(--gold);color:#6E5226;background:#FBF7EF}
+  .tn-sub{font-size:12.5px;color:var(--sub);margin:0 0 4px}
+  .tn-chips{display:flex;flex-wrap:wrap;gap:5px}
+  .tn-chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 10px;font:inherit;font-size:14px;line-height:1.35;color:var(--ink);text-align:left}
+  .tn-chip.on{background:var(--green);border-color:var(--green);color:#fff}
+  .tn-chip.on::before{content:"✓ ";font-weight:700}
+  .tn-chip.off{color:#A9A69C;border-style:dashed;background:#FAF9F5}
+  .tn-chip small{font-size:11.5px;opacity:.75;margin-left:3px}
+  .tn-chip.tp{border-radius:9px;font-size:13.5px;padding:4px 9px}
+  .tn-chip .x{display:inline-block;margin-left:6px;color:#9A3B2E;font-weight:700}
+  .tn-time{display:flex;gap:8px;align-items:flex-start;padding:6px 0;border-top:1px dashed var(--line)}
+  .tn-time.first{border-top:none}
+  .tn-tbtn{flex:none;min-width:50px;border:1px solid var(--gold);background:#FBF7EF;color:#6E5226;border-radius:8px;padding:4px 6px;font:inherit;font-size:13px;font-weight:700}
+  .tn-tbtn.on{background:var(--gold);color:#fff}
+  .tn-grp{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--sub);margin:9px 0 5px}
+  .tn-grp:first-of-type{margin-top:2px}
+  .tn-dot{width:7px;height:7px;border-radius:50%;flex:none}
+  .tn-in{width:100%;border:1px solid var(--line);border-radius:10px;padding:8px 10px;font:inherit;font-size:15px;background:#fff;color:var(--ink)}
+  .tn-in:focus{outline:none;border-color:var(--green)}
+  textarea.tn-in{resize:vertical;min-height:44px;line-height:1.5}
+  .tn-add{display:flex;gap:6px;margin-top:6px}
+  .tn-add .tn-in{padding:6px 9px;font-size:14px}
+  .tn-add button{flex:none;border:1px solid var(--green);background:#fff;color:var(--green);border-radius:9px;padding:0 12px;font:inherit;font-size:14px;font-weight:700}
+  .tn-photo{display:flex;align-items:center;justify-content:center;gap:8px;border:2px dashed #CFC6B2;border-radius:12px;background:#FBFAF6;min-height:74px;color:var(--sub);font-weight:700;font-size:15px;cursor:pointer;padding:8px}
+  .tn-photo .cam{width:26px;height:26px;border-radius:7px;border:2px solid #B9AE95;position:relative}
+  .tn-photo .cam::after{content:"";position:absolute;left:50%;top:50%;width:9px;height:9px;margin:-4.5px;border-radius:50%;border:2px solid #B9AE95}
+  .tn-photo.has{border-style:solid;border-color:var(--line);background:#fff;justify-content:flex-start;cursor:default}
+  .tn-photo img{width:84px;height:84px;object-fit:cover;border-radius:9px;display:block}
+  .tn-photo .pinfo{font-size:13px;font-weight:500;color:var(--sub);line-height:1.5;flex:1}
+  .tn-photo .pinfo b{display:block;color:var(--green-d);font-size:14px}
+  .tn-help{font-size:12.5px;color:var(--sub);margin:6px 0 0;line-height:1.5}
+  .tn-kakao{background:#B2C7D9;border-radius:12px;padding:10px 12px 12px}
+  .tn-from{font-size:12px;color:#3D4B58;margin:0 0 5px 2px}
+  .tn-bub{background:#fff;border-radius:4px 12px 12px 12px;overflow:hidden;max-width:310px;box-shadow:0 1px 1px rgba(0,0,0,.06)}
+  .tn-bub-h{background:#FEE500;color:#3A1D1D;font-size:13px;font-weight:700;padding:7px 12px}
+  .tn-bub-b{padding:10px 12px 8px;font-size:14px;line-height:1.6;white-space:pre-wrap;word-break:break-all;color:#222}
+  .tn-bub-b .lk{color:#2A6FB0;text-decoration:underline}
+  .tn-bub-b .ph0{color:#B0ADA5}
+  .tn-bub-f{font-size:11.5px;color:#8E8E8E;padding:0 12px 10px;line-height:1.5;white-space:pre-line}
+  .tn-bub-img{margin:10px 12px 0;background:#E8F2E2;border:1px solid #CFE3C6;border-radius:10px;padding:14px 12px;text-align:center}
+  .tn-bub-img small{display:block;font-size:11.5px;color:#5E7A5A}
+  .tn-bub-img b{display:block;font-size:18px;color:#1F5A36;letter-spacing:1px;margin-top:2px}
+  .tn-bub-btn{margin:0 12px 12px;border:1px solid #E2E2E2;border-radius:6px;background:#F7F7F7;text-align:center;padding:9px 0;font-size:14px;color:#333}
+  .tn-len{font-size:12px;color:var(--sub);text-align:right;margin-top:6px}
+  .tn-len.over{color:#9A3B2E;font-weight:700}
+  .tn-bar{position:sticky;bottom:0;z-index:5;margin:12px -16px 0;padding:10px 16px calc(12px + env(safe-area-inset-bottom));background:rgba(245,242,234,.97);border-top:1px solid var(--line);display:flex;align-items:center;gap:10px}
+  .tn-bar .info{font-size:13px;color:var(--sub);flex:1;line-height:1.4}
+  .tn-bar .info b{color:var(--green-d);font-size:16px}
+  .tn-send{background:var(--green-d);color:#fff;border:none;border-radius:12px;padding:12px 20px;font:inherit;font-weight:700;font-size:16px;white-space:nowrap}
+  .tn-send:disabled{background:#B9C3BC}
+  .tn-warn{background:var(--amber);color:var(--amber-ink);font-size:13.5px;border-radius:10px;padding:9px 12px;margin-bottom:10px;line-height:1.5}
+  .tn-res{border-left:3px solid var(--green)}
+  .tn-res .ok{color:var(--green-d);font-weight:700}
+  .tn-res .bad{color:#9A3B2E}
+  .tn-log{font-size:13.5px}
+  .tn-log .r{display:flex;gap:8px;align-items:baseline;padding:6px 0;border-top:1px solid var(--line)}
+  .tn-log .r:first-child{border-top:none}
+  .tn-log .t{color:var(--sub);font-size:12px;flex:none;width:38px}
+  .tn-log .n{font-weight:700;flex:none}
+  .tn-log .b{color:var(--sub);flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:12.5px}
+  .tn-log .s{flex:none;font-size:11.5px;border-radius:999px;padding:1px 7px;background:var(--green-soft);color:var(--green-d)}
+  .tn-log .s.no{background:#F6E3DF;color:#8A2B22}
+  .tn-log .s.te{background:#EEE;color:#777}
+  .tn-modal{position:fixed;inset:0;z-index:50;background:rgba(20,28,22,.45);display:flex;align-items:flex-end;justify-content:center}
+  .tn-sheet{background:#fff;width:100%;max-width:560px;border-radius:16px 16px 0 0;padding:18px 16px calc(16px + env(safe-area-inset-bottom));box-shadow:0 -4px 20px rgba(0,0,0,.12)}
+  .tn-sheet .q{font-size:17px;font-weight:700;color:var(--green-d);margin-bottom:6px}
+  .tn-sheet .d{font-size:14px;color:var(--sub);line-height:1.6;white-space:pre-wrap;max-height:40vh;overflow:auto}
+  .tn-sheet .bt{display:flex;gap:8px;margin-top:14px}
+  .tn-sheet .bt button{flex:1;border-radius:12px;padding:13px 0;font:inherit;font-size:16px;font-weight:700;border:1px solid var(--line);background:#fff;color:var(--ink)}
+  .tn-sheet .bt .go{background:var(--green-d);border-color:var(--green-d);color:#fff;flex:1.6}
+
+  .hero h1{font-size:17px!important;white-space:nowrap!important}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero"><div class="hero-in">
+    <span class="bar-v"></span>
+    <div><div class="brand"><img class="mark-s" alt="책나무" src="data:image/png;base64,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">책나무 산동독서논술학원</div><h1>보강·결석·시간·차량 변경 관리</h1></div>
+    <button class="refresh" id="refresh">새로고침</button>
+  </div></header>
+  <div class="tabs">
+    <button class="tab" data-t="tn">한 장면 보내기</button>
+    <button class="tab on" data-t="wait">보강 처리</button>
+    <button class="tab" data-t="ab">결석</button>
+    <button class="tab" data-t="tc">시간 변경</button>
+    <button class="tab" data-t="car">차량 변경</button>
+    <button class="tab" data-t="cs">상담 신청</button>
+    <button class="tab" data-t="wk">겨울 특강</button>
+    <button class="tab" data-t="done">안내 완료</button>
+    <button class="tab" data-t="mo">일정 달력</button>
+    <button class="tab" data-t="cl">시간 마감</button>
+    <button class="tab" data-t="ch">알림</button>
+    <button class="tab" data-t="fb">피드백</button>
+    <button class="tab" data-t="rm">아이 방</button>
+    <button class="tab" data-t="sp">칭찬 도장</button>
+  </div>
+  <div id="list"><div class="empty">불러오는 중...</div></div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+const TN_HEAD_IMG = 'data:image/jpeg;base64,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'; // 알림톡 머리 그림(책솔이) 미리보기용
+
+const KEY = (new URLSearchParams(location.search).get('k') || '').replace(/[^0-9a-f]/g, '');
+let DATA = (function(){ let c = null; try { c = JSON.parse(localStorage.getItem('bt_data') || 'null'); } catch (e) {} return (c && c.stops) ? c : {"map":{"해마루초":[{"t":"1:30","car":"퍼플","at":"1:43","arr":"2:00"},{"t":"1:45","car":"그린","at":"2:00","arr":"2:00"},{"t":"2:18","car":"그린","at":"2:32","arr":"2:30"},{"t":"2:41","car":"그린","at":"2:55","arr":"3:00"},{"t":"3:15","car":"퍼플","at":"3:25","arr":"3:30"},{"t":"3:40","car":"퍼플","at":"3:55","arr":"4:00"},{"t":"4:10","car":"퍼플","at":"4:25","arr":"4:30"},{"t":"4:40","car":"퍼플","at":"5:00","arr":"5:00"},{"t":"5:10","car":"그린","at":"5:25","arr":"5:30"},{"t":"5:47","car":"그린","at":"6:02","arr":"6:00"}],"중흥1차":[{"t":"1:33","car":"퍼플","at":"1:43","arr":"2:00"},{"t":"2:13","car":"그린","at":"2:32","arr":"2:30"},{"t":"2:45","car":"퍼플","at":"3:00","arr":"3:00"},{"t":"3:18","car":"퍼플","at":"3:25","arr":"3:30"},{"t":"3:44","car":"퍼플","at":"3:55","arr":"4:00"},{"t":"4:15","car":"퍼플","at":"4:25","arr":"4:30"},{"t":"4:45","car":"퍼플","at":"5:00","arr":"5:00"},{"t":"5:15","car":"그린","at":"5:25","arr":"5:30"},{"t":"5:53","car":"그린","at":"6:02","arr":"6:00"}],"현진 103동":[{"t":"1:36","car":"퍼플","at":"1:43","arr":"2:00"},{"t":"3:07","car":"그린","at":"3:20","arr":"3:30"},{"t":"4:50","car":"퍼플","at":"5:00","arr":"5:00"},{"t":"5:40","car":"그린","at":"6:02","arr":"6:00"}],"현진 108동":[{"t":"1:38","car":"퍼플","at":"1:43","arr":"2:00"}],"중흥3차":[{"t":"1:38","car":"블랙","at":"1:50","arr":"2:00"},{"t":"2:05","car":"블랙","at":"2:20","arr":"2:30"},{"t":"2:33","car":"블랙","at":"2:48","arr":"3:00"},{"t":"3:05","car":"블랙","at":"3:25","arr":"3:30"},{"t":"3:35","car":"블랙","at":"3:57","arr":"4:00"},{"t":"4:05","car":"블랙","at":"4:26","arr":"4:30"},{"t":"4:35","car":"블랙","at":"4:55","arr":"5:00"},{"t":"5:18","car":"블랙","at":"5:28","arr":"5:30"},{"t":"5:44","car":"블랙","at":"5:55","arr":"6:00"}],"중흥2차":[{"t":"1:40","car":"블랙","at":"1:50","arr":"2:00"},{"t":"2:07","car":"블랙","at":"2:20","arr":"2:30"},{"t":"2:35","car":"블랙","at":"2:48","arr":"3:00"},{"t":"3:07","car":"블랙","at":"3:25","arr":"3:30"},{"t":"3:38","car":"블랙","at":"3:57","arr":"4:00"},{"t":"4:07","car":"블랙","at":"4:26","arr":"4:30"},{"t":"4:37","car":"블랙","at":"4:55","arr":"5:00"},{"t":"5:20","car":"블랙","at":"5:28","arr":"5:30"},{"t":"5:46","car":"블랙","at":"5:55","arr":"6:00"}],"인덕초":[{"t":"1:42","car":"블랙","at":"1:50","arr":"2:00"},{"t":"2:09","car":"블랙","at":"2:20","arr":"2:30"},{"t":"2:37","car":"블랙","at":"2:48","arr":"3:00"},{"t":"3:09","car":"블랙","at":"3:25","arr":"3:30"},{"t":"3:40","car":"블랙","at":"3:57","arr":"4:00"},{"t":"4:39","car":"블랙","at":"4:55","arr":"5:00"}],"우미3차 103동":[{"t":"1:44","car":"블랙","at":"1:50","arr":"2:00"},{"t":"2:11","car":"블랙","at":"2:20","arr":"2:30"},{"t":"2:39","car":"블랙","at":"2:48","arr":"3:00"},{"t":"3:12","car":"블랙","at":"3:25","arr":"3:30"},{"t":"3:44","car":"블랙","at":"3:57","arr":"4:00"},{"t":"4:13","car":"블랙","at":"4:26","arr":"4:30"},{"t":"4:43","car":"블랙","at":"4:55","arr":"5:00"},{"t":"5:22","car":"블랙","at":"5:28","arr":"5:30"},{"t":"5:48","car":"블랙","at":"5:55","arr":"6:00"}],"우미3차 108동":[{"t":"1:44","car":"블랙","at":"1:50","arr":"2:00"},{"t":"2:11","car":"블랙","at":"2:20","arr":"2:30"},{"t":"2:39","car":"블랙","at":"2:48","arr":"3:00"},{"t":"3:12","car":"블랙","at":"3:25","arr":"3:30"},{"t":"3:44","car":"블랙","at":"3:57","arr":"4:00"},{"t":"4:13","car":"블랙","at":"4:26","arr":"4:30"},{"t":"4:43","car":"블랙","at":"4:55","arr":"5:00"},{"t":"5:22","car":"블랙","at":"5:28","arr":"5:30"},{"t":"5:48","car":"블랙","at":"5:55","arr":"6:00"}],"동부초":[{"t":"1:49","car":"그린","at":"2:00","arr":"2:00"},{"t":"2:22","car":"그린","at":"2:32","arr":"2:30"},{"t":"2:45","car":"그린","at":"2:55","arr":"3:00"},{"t":"3:10","car":"그린","at":"3:20","arr":"3:30"}],"우미1차":[{"t":"1:54","car":"그린","at":"2:00","arr":"2:00"},{"t":"2:10","car":"퍼플","at":"2:20","arr":"2:30"},{"t":"3:04","car":"그린","at":"3:20","arr":"3:30"},{"t":"3:47","car":"퍼플","at":"3:55","arr":"4:00"},{"t":"4:45","car":"그린","at":"4:52","arr":"5:00"},{"t":"5:18","car":"그린","at":"5:25","arr":"5:30"}],"원당초":[{"t":"1:58","car":"그린","at":"2:00","arr":"2:00"},{"t":"2:28","car":"그린","at":"2:32","arr":"2:30"},{"t":"2:50","car":"그린","at":"2:55","arr":"3:00"},{"t":"3:15","car":"그린","at":"3:20","arr":"3:30"},{"t":"3:50","car":"그린","at":"3:55","arr":"4:00"},{"t":"4:20","car":"퍼플","at":"4:25","arr":"4:30"}],"쌍용예가":[{"t":"1:55","car":"퍼플","at":"2:04","arr":"2:00"},{"t":"2:17","car":"퍼플","at":"2:20","arr":"2:30"},{"t":"2:53","car":"퍼플","at":"3:00","arr":"3:00"},{"t":"3:16","car":"블랙","at":"3:25","arr":"3:30"},{"t":"3:48","car":"블랙","at":"3:57","arr":"4:00"},{"t":"4:17","car":"블랙","at":"4:26","arr":"4:30"},{"t":"4:47","car":"블랙","at":"4:55","arr":"5:00"},{"t":"5:17","car":"퍼플","at":"5:20","arr":"5:30"}],"신당초":[{"t":"1:57","car":"퍼플","at":"2:04","arr":"2:00"},{"t":"2:18","car":"퍼플","at":"2:20","arr":"2:30"},{"t":"2:35","car":"퍼플","at":"2:38","arr":"2:30"},{"t":"2:58","car":"퍼플","at":"3:00","arr":"3:00"},{"t":"3:18","car":"블랙","at":"3:25","arr":"3:30"},{"t":"3:48","car":"블랙","at":"3:57","arr":"4:00"},{"t":"4:17","car":"블랙","at":"4:26","arr":"4:30"},{"t":"4:47","car":"블랙","at":"4:55","arr":"5:00"}],"우미5차":[{"t":"2:00","car":"퍼플","at":"2:04","arr":"2:00"},{"t":"2:17","car":"블랙","at":"2:20","arr":"2:30"},{"t":"2:29","car":"퍼플","at":"2:38","arr":"2:30"},{"t":"2:45","car":"블랙","at":"2:48","arr":"3:00"},{"t":"3:21","car":"블랙","at":"3:25","arr":"3:30"},{"t":"3:53","car":"블랙","at":"3:57","arr":"4:00"},{"t":"4:22","car":"블랙","at":"4:26","arr":"4:30"},{"t":"4:52","car":"블랙","at":"4:55","arr":"5:00"},{"t":"5:13","car":"블랙","at":"5:28","arr":"5:30"},{"t":"5:39","car":"블랙","at":"5:55","arr":"6:00"}],"호반 102동":[{"t":"2:13","car":"퍼플","at":"2:20","arr":"2:30"},{"t":"3:21","car":"퍼플","at":"3:25","arr":"3:30"},{"t":"3:50","car":"퍼플","at":"3:55","arr":"4:00"},{"t":"4:48","car":"그린","at":"4:52","arr":"5:00"},{"t":"5:21","car":"그린","at":"5:25","arr":"5:30"}],"호반 110동":[{"t":"2:13","car":"퍼플","at":"2:20","arr":"2:30"},{"t":"3:21","car":"퍼플","at":"3:25","arr":"3:30"},{"t":"3:50","car":"퍼플","at":"3:55","arr":"4:00"},{"t":"4:48","car":"그린","at":"4:52","arr":"5:00"},{"t":"5:21","car":"그린","at":"5:25","arr":"5:30"}],"더힐":[{"t":"2:25","car":"그린","at":"2:32","arr":"2:30"},{"t":"2:48","car":"그린","at":"2:55","arr":"3:00"},{"t":"3:12","car":"그린","at":"3:20","arr":"3:30"},{"t":"4:55","car":"퍼플","at":"5:00","arr":"5:00"}],"골클":[{"t":"2:29","car":"퍼플","at":"2:38","arr":"2:30"},{"t":"5:13","car":"퍼플","at":"5:20","arr":"5:30"}],"현진 정문":[{"t":"2:38","car":"그린","at":"2:55","arr":"3:00"},{"t":"3:35","car":"그린","at":"3:55","arr":"4:00"}],"다이소(편의점)":[{"t":"2:58","car":"그린","at":"3:20","arr":"3:30"}],"숲은성":[{"t":"3:40","car":"그린","at":"3:55","arr":"4:00"}],"보눔":[{"t":"4:15","car":"그린","at":"4:35","arr":"4:30"}],"옥계":[{"t":"4:20","car":"그린","at":"4:35","arr":"4:30"}],"늘푸른":[{"t":"4:25","car":"그린","at":"4:35","arr":"4:30"}],"양포도서관":[{"t":"4:18","car":"퍼플","at":"4:25","arr":"4:30"}]},"stops":["중흥3차","중흥2차","인덕초","우미3차 103동","우미3차 108동","우미5차","쌍용예가","신당초","골클","호반 102동","호반 110동","우미1차","중흥1차","해마루초","현진 103동","현진 108동","동부초","원당초","더힐","양포도서관","현진 정문","다이소(편의점)","숲은성","보눔","옥계","늘푸른"],"drops":["중흥3차","중흥2차","인덕초","우미3차 103동","우미3차 108동","우미5차","쌍용예가","신당초","골클","호반 102동","호반 110동","우미1차","중흥1차","해마루초","현진 103동","현진 108동","우미스카이","동부초","원당초","더힐","양포도서관","현진 정문","다이소(편의점)","숲은성","보눔","옥계","늘푸른","산동"],"starts":["1:30","2:00","2:30","3:00","3:30","4:00","4:30","5:00","5:30","6:00"],"reasons":["아파서","학교 행사","가족 일정","기타"],"closed":{"weekly":[],"weeklyT":{"1":["3:00","3:30","4:30"],"2":["4:00","4:30"],"3":["3:00","3:30"],"4":["2:00","3:00","3:30","4:30"],"5":["3:30","3:00","4:00","4:30"]},"own":{},"days":{"2026-11-30":["3:00","3:30","4:30"],"2026-12-01":["4:00","4:30"],"2026-12-02":["3:00","3:30"],"2026-12-03":["2:00","3:00","3:30","4:30"],"2026-12-04":["3:30","3:00","4:00","4:30"],"2026-12-07":["3:00","3:30","4:30"],"2026-12-08":["4:00","4:30"],"2026-12-09":["3:00","3:30"],"2026-12-10":["2:00","3:00","3:30","4:30"],"2026-12-11":["3:30","3:00","4:00","4:30"],"2026-12-14":["3:00","3:30","4:30"],"2026-12-15":["4:00","4:30"],"2026-12-16":["3:00","3:30"],"2026-12-17":["2:00","3:00","3:30","4:30"],"2026-12-18":["3:30","3:00","4:00","4:30"],"2026-12-21":["3:00","3:30","4:30"],"2026-12-22":["4:00","4:30"],"2026-12-23":["3:00","3:30"],"2026-12-24":["2:00","3:00","3:30","4:30"],"2026-12-25":["3:30","3:00","4:00","4:30"],"2026-12-28":["3:00","3:30","4:30"],"2026-12-29":["4:00","4:30"],"2026-12-30":["3:00","3:30"],"2026-12-31":["2:00","3:00","3:30","4:30"],"2027-01-01":["3:30","3:00","4:00","4:30"],"2027-01-04":["3:00","3:30","4:30"],"2027-01-05":["4:00","4:30"],"2027-01-06":["3:00","3:30"],"2027-01-07":["2:00","3:00","3:30","4:30"],"2027-01-08":["3:30","3:00","4:00","4:30"],"2027-01-11":["3:00","3:30","4:30"],"2027-01-12":["4:00","4:30"],"2027-01-13":["3:00","3:30"],"2027-01-14":["2:00","3:00","3:30","4:30"],"2027-01-15":["3:30","3:00","4:00","4:30"],"2027-01-18":["3:00","3:30","4:30"],"2027-01-19":["4:00","4:30"],"2027-01-20":["3:00","3:30"],"2027-01-21":["2:00","3:00","3:30","4:30"],"2027-01-22":["3:30","3:00","4:00","4:30"],"2027-01-25":["3:00","3:30","4:30"],"2027-01-26":["4:00","4:30"],"2027-01-27":["3:00","3:30"],"2027-01-28":["2:00","3:00","3:30","4:30"],"2027-01-29":["3:30","3:00","4:00","4:30"],"2027-02-01":["3:00","3:30","4:30"],"2027-02-02":["4:00","4:30"],"2027-02-03":["3:00","3:30"],"2027-02-04":["2:00","3:00","3:30","4:30"],"2027-02-05":["3:30","3:00","4:00","4:30"],"2027-02-08":["3:00","3:30","4:30"],"2027-02-09":["4:00","4:30"],"2027-02-10":["3:00","3:30"],"2027-02-11":["2:00","3:00","3:30","4:30"],"2027-02-12":["3:30","3:00","4:00","4:30"],"2027-02-15":["3:00","3:30","4:30"],"2027-02-16":["4:00","4:30"],"2027-02-17":["3:00","3:30"],"2027-02-18":["2:00","3:00","3:30","4:30"],"2027-02-19":["3:30","3:00","4:00","4:30"],"2027-02-22":["3:00","3:30","4:30"],"2027-02-23":["4:00","4:30"],"2027-02-24":["3:00","3:30"],"2027-02-25":["2:00","3:00","3:30","4:30"],"2027-02-26":["3:30","3:00","4:00","4:30"]}},"arrivals":[{"at":"1:43","cls":"2:00","cars":"퍼플"},{"at":"1:50","cls":"2:00","cars":"블랙"},{"at":"2:00","cls":"2:00","cars":"그린"},{"at":"2:04","cls":"2:00","cars":"퍼플"},{"at":"2:20","cls":"2:30","cars":"블랙·퍼플"},{"at":"2:32","cls":"2:30","cars":"그린"},{"at":"2:38","cls":"2:30","cars":"퍼플"},{"at":"2:48","cls":"3:00","cars":"블랙"},{"at":"2:55","cls":"3:00","cars":"그린"},{"at":"3:00","cls":"3:00","cars":"퍼플"},{"at":"3:20","cls":"3:30","cars":"그린"},{"at":"3:25","cls":"3:30","cars":"블랙·퍼플"},{"at":"3:55","cls":"4:00","cars":"퍼플·그린"},{"at":"3:57","cls":"4:00","cars":"블랙"},{"at":"4:25","cls":"4:30","cars":"퍼플"},{"at":"4:26","cls":"4:30","cars":"블랙"},{"at":"4:35","cls":"4:30","cars":"그린"},{"at":"4:52","cls":"5:00","cars":"그린"},{"at":"4:55","cls":"5:00","cars":"블랙"},{"at":"5:00","cls":"5:00","cars":"퍼플"},{"at":"5:20","cls":"5:30","cars":"퍼플"},{"at":"5:25","cls":"5:30","cars":"그린"},{"at":"5:28","cls":"5:30","cars":"블랙"},{"at":"5:55","cls":"6:00","cars":"블랙"},{"at":"6:02","cls":"6:00","cars":"그린"}],"askOpen":false,"execUrl":"https://script.google.com/macros/s/AKfycbyHF7n45c1megX__O8njci1_iwdSp65hH0Q23R0VwfR_oBo5C1ZOeNhqhpjyyjwI_Zh/exec"}; })();
+(function(){ window.__btAdminData = function(d){ if (d && d.stops) { try { localStorage.setItem('bt_data', JSON.stringify(d)); } catch (e) {} Object.keys(d).forEach(function(k){ DATA[k] = d[k]; }); } };
+  var s = document.createElement('script'); s.src = 'https://script.google.com/macros/s/AKfycbyHF7n45c1megX__O8njci1_iwdSp65hH0Q23R0VwfR_oBo5C1ZOeNhqhpjyyjwI_Zh/exec?api=data&callback=__btAdminData'; document.head.appendChild(s); })();
+let ROWS = [], CS = [], TAB = 'wait';
+let CAR = null;
+const $ = id => document.getElementById(id);
+const pad = n => String(n).padStart(2,'0');
+
+function el(tag, attrs, ...kids){
+  const e = document.createElement(tag);
+  Object.entries(attrs || {}).forEach(([k,v]) => { if (k === 'on') Object.entries(v).forEach(([ev,f]) => e.addEventListener(ev,f)); else if (k === 'cls') e.className = v; else e.setAttribute(k, v); });
+  kids.flat().forEach(k => { if (k == null || k === false) return; e.appendChild(typeof k === 'string' ? document.createTextNode(k) : k); });
+  return e;
+}
+function toast(t, ms){ const x = $('toast'); x.textContent = t; x.classList.add('on'); clearTimeout(toast._t); toast._t = setTimeout(() => x.classList.remove('on'), ms || 1600); }
+
+// 속도: 전에 본 목록을 바로 보여 주고, 뒤에서 새로 받아 바꿈
+const ADM_CK = 'adm_cache_' + String(KEY).slice(0, 6);
+function admSave(){ try { localStorage.setItem(ADM_CK, JSON.stringify({ rows: ROWS, cs: CS, car: CAR })); } catch (e) {} }
+function load(){
+  let c = null; try { c = JSON.parse(localStorage.getItem(ADM_CK) || 'null'); } catch (e) {}
+  if (c && c.rows) { ROWS = c.rows; if (c.cs) CS = c.cs; if (c.car) CAR = c.car; render(); }
+  else $('list').innerHTML = '<div class="empty">불러오는 중...</div>';
+  google.script.run.withSuccessHandler(r => { ROWS = r; render(); admSave(); })
+    .withFailureHandler(e => { if (ROWS) return; $('list').innerHTML = ''; $('list').appendChild(el('div',{cls:'empty'}, (e && e.message) || '불러오지 못했습니다.')); })
+    .adminData(KEY);
+  google.script.run.withSuccessHandler(r => { CS = r; render(); admSave(); }).adminConsult(KEY);
+  google.script.run.withSuccessHandler(r => { CAR = r; render(); admSave(); })
+    .withFailureHandler(e => { CAR = { rows: [], sms: true, err: (e && e.message) || '불러오지 못했습니다.' }; render(); })
+    .carAdminList(KEY);
+}
+function csCall(row, action, p, btn){
+  if (btn) btn.disabled = true;
+  google.script.run.withSuccessHandler(o => {
+      if (o.deleted) { toast('삭제했습니다'); return load(); }
+      CS = CS.map(r => r.row === o.row ? o : r); render();
+      if (o.sent === 'ok') toast('학부모님께 상담 확정 알림톡을 보냈습니다');
+      else if (o.sent && o.sent !== 'off') toast('알림톡 실패: ' + o.sent + ' · 직접 연락해 주세요', 3500);
+    })
+    .withFailureHandler(e => { if (btn) btn.disabled = false; toast((e && e.message) || '저장하지 못했습니다.'); })
+    .adminConsultUpdate(KEY, row, action, p || {});
+}
+function csCard(r){
+  const b = r.done ? el('span',{cls:'badge b-done'},'상담 완료') : r.status === '확정' ? el('span',{cls:'badge b-ok'},'확정') : el('span',{cls:'badge b-wait'}, r.mode === '방문' ? '방문 대기' : '전화 요청');
+  const card = el('div',{cls:'card'},
+    el('div',{cls:'top'}, el('span',{cls:'name'}, r.name + ' · ' + r.grade), b),
+    rows([['방식', r.mode + ' 상담'], ['일시', r.mode === '방문' ? r.when : r.avail], ['학교', r.school], ['연락처', r.phone], ['문의', r.memo]]),
+    el('div',{cls:'meta'}, '접수 ' + r.ts));
+  const acts = el('div',{cls:'acts'});
+  acts.appendChild(el('a',{cls:'btn', href:'tel:' + r.phone.replace(/\D/g,''), style:'text-decoration:none'}, '전화 걸기'));
+  if (r.mode === '방문' && r.status !== '확정' && !r.done) acts.appendChild(el('button',{cls:'btn pri', on:{click:e => csCall(r.row,'confirm',{},e.target)}}, '확정'));
+  card.appendChild(acts);
+  const chk = el('input',{type:'checkbox'}); chk.checked = r.done;
+  chk.addEventListener('change', () => csCall(r.row,'done',{value:chk.checked}, chk));
+  card.appendChild(el('label',{cls:'check'}, chk, '상담 완료'));
+  const cf = [['name','학생 이름',r.name],['grade','학년',r.grade],['school','학교',r.school],['phone','연락처',r.phone]];
+  if (String(r.mode).indexOf('전화') >= 0) cf.push(['avail','통화 가능 시간',r.avail]);
+  cf.push(['memo','문의',r.memo,1]);
+  card.appendChild(editRow(editBtn('cs', r, cf, o => { CS = CS.map(x => x.row === o.row ? o : x); render(); }), el('button',{cls:'btn ghost', style:'font-size:13px;padding:6px 12px', on:{click:e => {
+    if (!confirm(r.name + ' 학생 상담 신청을 삭제할까요?')) return;
+    csCall(r.row,'delete',{},e.target);
+  }}}, '삭제')));
+  return card;
+}
+const ST_TAB = 'sp';
+/* ===== 칭찬 도장 주기 (원장·선생님 화면 공통, 2026-11-22) =====
+ * 오늘 수업일지 명단 → 아이 옆 버튼 한 번(긴 글쓰기 +2 · 상장 인증 +3 · 포트폴리오 완성 +3). 다시 누르면 취소.
+ * 등원 +1은 매일 밤 9시에 저절로. 기록은 관리 시트 '칭찬도장' */
+let ST = null, ST_Q = '', ST_BUSY = {};
+function stLoad(){ google.script.run.withSuccessHandler(r => { ST = r; if (TAB === ST_TAB) render(); }).withFailureHandler(e => { ST = { err: (e && e.message) || '불러오지 못했습니다.' }; if (TAB === ST_TAB) render(); }).stampToday(KEY); }
+function stWho(){ try { return (typeof CH_ME !== 'undefined' && CH_ME) || ''; } catch (e) { return ''; } }
+function stGive(name, kind, btn){
+  const k = name + '|' + kind; if (ST_BUSY[k]) return; ST_BUSY[k] = 1;
+  btn.disabled = true; btn.style.opacity = '.5';
+  google.script.run.withSuccessHandler(r => { ST_BUSY[k] = 0; const had = (ST.got[name] || []).includes(kind); ST = r; toast(name + ' ' + kind + (had ? ' 취소했습니다' : ' 도장을 줬습니다')); render(); })
+    .withFailureHandler(e => { ST_BUSY[k] = 0; btn.disabled = false; btn.style.opacity = ''; toast((e && e.message) || '하지 못했습니다'); })
+    .stampToggle(KEY, name, kind, stWho());
+}
+// 아이마다 「도장 주기」 버튼 하나 → 누르면 묶음별(독서·글쓰기·학습·태도·성장·특별) 고르기가 열림
+const ST_OPEN = {};
+function stRow(name, time){
+  const got = ST.got[name] || [], tot = ST.tot[name] || 0;
+  const given = got.filter(x => x !== '등원');
+  const panel = el('div',{style:'margin-top:8px;display:' + (ST_OPEN[name] ? 'block' : 'none')});
+  const chip = k => { const on = got.includes(k.n); return el('button',{style:'font:inherit;font-size:13.5px;font-weight:700;border-radius:16px;padding:6px 10px;cursor:pointer;' + (on ? 'background:#c8922a;color:#fff;border:1px solid #c8922a' : 'background:#fbf1dc;color:#8a6318;border:1px solid #e3cf9f'),
+    on:{click:e => stGive(name, k.n, e.currentTarget)}}, k.n + ' +' + k.p + (on ? ' ✓' : '')); };
+  // 기본 버튼(자주 쓰는 것)은 늘 보이고, 나머지는 「더 보기」
+  const quick = el('div',{style:'display:flex;flex-wrap:wrap;gap:6px;margin-top:8px'});
+  ST.kinds.filter(k => k.q).forEach(k => quick.appendChild(chip(k)));
+  const groups = [];
+  ST.kinds.filter(k => !k.q).forEach(k => { const g = k.g || '칭찬'; let G = groups.find(x => x.g === g); if (!G) { G = { g, list: [] }; groups.push(G); } G.list.push(k); });
+  groups.forEach(G => {
+    const line = el('div',{style:'display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:6px'},
+      el('span',{style:'font-size:12px;font-weight:700;color:var(--sub);min-width:58px'}, G.g));
+    G.list.forEach(k => line.appendChild(chip(k)));
+    panel.appendChild(line);
+  });
+  const btn = el('button',{style:'font:inherit;font-size:13.5px;font-weight:700;border-radius:16px;padding:6px 10px;cursor:pointer;background:#fff;color:#8a6318;border:1.5px dashed #c8922a', on:{click:() => { ST_OPEN[name] = !ST_OPEN[name]; panel.style.display = ST_OPEN[name] ? 'block' : 'none'; btn.textContent = ST_OPEN[name] ? '접기 ▲' : '더 보기 ▾'; }}}, ST_OPEN[name] ? '접기 ▲' : '더 보기 ▾');
+  quick.appendChild(btn);
+  return el('div',{style:'border-top:1px solid var(--line);padding:10px 2px'},
+    el('div',{style:'display:flex;align-items:center;gap:8px;flex-wrap:wrap'},
+      el('b',{style:'font-size:16px'}, name),
+      got.includes('등원') ? el('span',{style:'font-size:12px;font-weight:700;color:#2f7a52;background:#e8f1ea;border-radius:12px;padding:2px 8px'}, '등원 +' + ST.attend) : null,
+      ...given.map(g => el('span',{style:'font-size:12px;font-weight:700;color:#fff;background:#c8922a;border-radius:12px;padding:2px 8px'}, g)),
+      el('span',{style:'margin-left:auto;font-size:13px;color:var(--sub);font-weight:700'}, '도장 ' + tot + (ST.board ? ' / ' + ST.board : ''))),
+    quick, panel);
+}
+function stView(){
+  const box = $('list'); box.innerHTML = '';
+  if (!ST) { box.appendChild(el('div',{cls:'empty'}, '불러오는 중...')); return stLoad(); }
+  if (ST.err) { box.appendChild(el('div',{cls:'empty'}, ST.err)); return; }
+  // 찾기 (오늘 명단에 없는 학생: 상장 인증 등)
+  const q = el('input',{type:'text', id:'stQ', placeholder: ST.l4 ? '학생 이름 또는 학부모 뒷번호 4자리' : '다른 학생 이름으로 찾기', style:'width:100%;box-sizing:border-box;font:inherit;font-size:16px;padding:10px 12px;border:1px solid #cfd8cc;border-radius:10px'});
+  q.value = ST_Q;
+  const found = el('div',{id:'stFound'});
+  // 한글 입력이 끊기지 않게: 화면 전체를 다시 그리지 않고 결과 칸만 바꿈
+  const showHits = () => {
+    found.innerHTML = '';
+    if (!ST_Q) return;
+    const digits = /^\d+$/.test(ST_Q);
+    const hits = (digits ? (ST.l4 && ST_Q.length === 4 ? (ST.l4[ST_Q] || []) : []) : ST.names.filter(n => n.indexOf(ST_Q) >= 0))
+      .filter((n, i, a) => a.indexOf(n) === i).slice(0, 8);
+    if (!hits.length) found.appendChild(el('p',{cls:'help', style:'margin:8px 0 0'},
+      digits ? (ST.l4 ? (ST_Q.length < 4 ? '뒷번호 4자리를 모두 넣어 주세요.' : '그 번호의 학생이 없습니다.') : '이 화면에서는 학생 이름으로 찾아 주세요.') : '찾는 학생이 없습니다.'));
+    hits.forEach(n => found.appendChild(stRow(n, '')));
+  };
+  q.addEventListener('input', () => { ST_Q = q.value.trim(); showHits(); });
+  q.addEventListener('compositionend', () => { ST_Q = q.value.trim(); showHits(); });
+  showHits();
+  box.appendChild(el('div',{cls:'card'}, el('div',{cls:'sec'}, '칭찬 도장'),
+    el('p',{cls:'help', style:'margin:0 0 8px'}, '자주 쓰는 도장은 바로 누르고, 나머지는 「더 보기」에서 고르면 도장이 쌓이고 학부모님 「우리 아이 방」에 바로 보여요. 잘못 눌렀으면 같은 것을 한 번 더 누르면 취소돼요. 등원 도장은 밤 9시에 저절로 찍혀요.'),
+    q, found));
+  if (!ST.groups.length) { box.appendChild(el('div',{cls:'empty'}, (ST.label || '오늘') + ' 수업일지 탭이 아직 없어요. 위에서 이름으로 찾아 주세요.')); return; }
+  ST.groups.forEach(g => {
+    const c = el('div',{cls:'card'}, el('div',{cls:'sec'}, ST.label + ' ' + g.time + ' 수업'));
+    g.names.forEach(n => c.appendChild(stRow(n, g.time)));
+    box.appendChild(c);
+  });
+}
+
+/* ===== 우리 아이 방 (2026-11-22): 방 목록 · 비번 · 주소 · 요청 답장 ===== */
+let RM = null, RM_Q = '';
+function rmLoad(){ google.script.run.withSuccessHandler(r => { RM = r; if (TAB === 'rm') render(); }).withFailureHandler(e => { RM = { err: (e && e.message) || '불러오지 못했습니다.' }; if (TAB === 'rm') render(); }).adminRoomList(KEY); }
+function rmCall(fn, args, btn, ok){
+  if (btn) btn.disabled = true;
+  google.script.run.withSuccessHandler(r => { RM = r; if (ok || r.sent) toast([ok, r.sent].filter(Boolean).join(' · '), 2600); render(); })
+    .withFailureHandler(e => { if (btn) btn.disabled = false; toast((e && e.message) || '하지 못했습니다'); })[fn].apply(null, [KEY].concat(args));
+}
+let RM_FB = null, RM_NT = null, RM_NT_SEL = [], RM_NT_TX = '', RM_NT_F = {}, RM_NT_IMG = '', RM_NT_PV = '', RM_NT_UP = false;
+function rmGradeKey(g){ const o = /^유/.test(g) ? 0 : /^초/.test(g) ? 1 : /^중/.test(g) ? 2 : /^고/.test(g) ? 3 : 4; return o + String((g.match(/\d+/) || ['0'])[0]).padStart(2, '0'); }
+function rmNtLoad(){ RM_NT = { loading: 1 }; google.script.run.withSuccessHandler(r => { RM_NT = r; if (TAB === 'rm') render(); }).withFailureHandler(() => { RM_NT = { tpl: false, recent: [] }; }).adminNoticeInfo(KEY); }
+function rmFbLoad(){ RM_FB = { loading: 1 }; google.script.run.withSuccessHandler(r => { RM_FB = r; if (TAB === 'rm') render(); }).withFailureHandler(e => { RM_FB = { err: (e && e.message) || '피드백 목록을 불러오지 못했습니다.' }; if (TAB === 'rm') render(); }).adminFbQueue(KEY); }
+function rmFbCall(fn, args, btn, ok){
+  if (btn) btn.disabled = true;
+  google.script.run.withSuccessHandler(r => { RM_FB = r; toast(ok); render(); })
+    .withFailureHandler(e => { if (btn) btn.disabled = false; toast((e && e.message) || '하지 못했습니다'); })[fn].apply(null, [KEY].concat(args));
+}
+function rmCopy(t){ try { navigator.clipboard.writeText(t).then(() => toast('주소를 복사했습니다')); } catch (e) { prompt('주소를 복사해 주세요', t); } }
+function rmView(){
+  const box = $('list'); box.innerHTML = '';
+  if (!RM) { box.appendChild(el('div',{cls:'empty'}, '불러오는 중...')); return rmLoad(); }
+  if (RM.err) { box.appendChild(el('div',{cls:'empty'}, RM.err)); return; }
+  // 공지 보내기 (붙여 넣고 → 받는 사람 고르고 → 한꺼번에 알림톡)
+  if (!RM_NT) rmNtLoad();
+  {
+    const gradesAll = [...new Set(RM.rooms.map(r => r.grade).filter(Boolean))].sort((a, b) => rmGradeKey(a).localeCompare(rmGradeKey(b)));
+    const lv = g => /^초/.test(g) ? '초등' : /^중/.test(g) ? '중등' : /^고/.test(g) ? '고등' : '기타';
+    const groups = ['초등', '중등', '고등', '기타'].filter(x => gradesAll.some(g => lv(g) === x));
+    // 2026-11-27: 카카오가 '학원 공지'처럼 넓은 말머리를 반려 → 「월간 수업 일정 안내」 틀(칸별로 넣음) + 공지 사진은 아이 방에
+    const F = RM_NT_F;
+    if (!F.월) { const d = new Date(); F.월 = String(d.getDate() >= 20 ? (d.getMonth() + 1) % 12 + 1 : d.getMonth() + 1); }
+    const fst = 'width:100%;box-sizing:border-box;font:inherit;font-size:15px;padding:9px 10px;border:1.5px solid #cfd8cc;border-radius:10px';
+    const pv = el('pre',{style:'white-space:pre-wrap;font:inherit;font-size:13.5px;line-height:1.6;background:#f6f8f5;border:1px solid var(--line);border-radius:10px;padding:10px;margin:6px 0 0'});
+    const one = (x, d) => String(x || '').replace(/\s+/g, ' ').trim() || d;
+    const isMonth = !RM_NT || RM_NT.kind !== 'notice';
+    const drawPv = () => { pv.textContent = '[책나무 산동독서논술학원]\n(학생 이름) 학생의 ' + one(F.월, '○') + '월 수업 일정을 안내드립니다.\n\n■ 수업 기간: ' + one(F.수업기간, '-') + '\n■ 휴원일: ' + one(F.휴원일, '없음') + (RM_NT && RM_NT.vi === 1 ? '' : '\n■ 보강·일정 변경: ' + one(F.일정변경, '없음')) + '\n\n자세한 수업 일정은 아래 버튼에서 확인하실 수 있습니다.\n[이번 달 수업 일정 보기]'; };
+    const inp = (k, ph) => { const i = el('input',{placeholder:ph, style:fst}); i.value = F[k] || ''; i.addEventListener('input', () => { F[k] = i.value; drawPv(); }); return i; };
+    const lab = (t, i) => el('label',{style:'display:block;margin:7px 0'}, el('div',{style:'font-size:13px;color:var(--sub);margin-bottom:3px'}, t), i);
+    const mIn = inp('월', '12'); mIn.setAttribute('inputmode', 'numeric'); mIn.style.width = '90px';
+    const ta = el('textarea',{rows:'5', id:'ntTx', maxlength:'700', placeholder:'예) 겨울방학 몰입독서 특강 안내, 프로그램비 안내 등 (알림톡에는 안 들어가고 아이 방에만 보여요)', style:fst + ';line-height:1.6'});
+    ta.value = RM_NT_TX;
+    ta.addEventListener('input', () => { RM_NT_TX = ta.value; });
+    drawPv();
+    const cnt = el('p',{cls:'help', style:'margin:6px 0'});
+    const chipBox = el('div',{cls:'chips', style:'margin:6px 0'});
+    const famsOf = sel => { const s = {}; RM.rooms.forEach(r => { if (!sel.length || sel.includes(r.grade)) s[r.fam] = 1; }); return Object.keys(s).length; };
+    const draw = () => {
+      chipBox.innerHTML = '';
+      const all = !RM_NT_SEL.length;
+      const chip = (label, on, fn) => chipBox.appendChild(el('button',{cls:'chip', style: on ? 'border:2px solid var(--green);font-weight:700;background:#eef5ef' : '', on:{click:fn}}, label));
+      chip('전체', all, () => { RM_NT_SEL = []; draw(); });
+      groups.forEach(gp => { const gs = gradesAll.filter(g => lv(g) === gp); const on = !all && gs.every(g => RM_NT_SEL.includes(g)) && RM_NT_SEL.length === gs.length; chip(gp + ' 전체', on, () => { RM_NT_SEL = gs.slice(); draw(); }); });
+      gradesAll.forEach(g => chip(g, RM_NT_SEL.includes(g), () => { RM_NT_SEL = RM_NT_SEL.includes(g) ? RM_NT_SEL.filter(x => x !== g) : RM_NT_SEL.concat(g); draw(); }));
+      cnt.textContent = '받는 사람: ' + (all ? '전체' : RM_NT_SEL.join(', ')) + ' · ' + famsOf(RM_NT_SEL) + '집 (형제는 한 통)';
+    };
+    draw();
+    // 공지 사진 (선택): 올리면 아이 방 공지 아래에 크게 보임
+    const fi = el('input',{type:'file', accept:'image/*', style:'display:none'});
+    fi.addEventListener('change', () => {
+      const file = fi.files && fi.files[0]; if (!file) return;
+      RM_NT_UP = true; render();
+      ntResize(file).then(d => {
+        RM_NT_PV = d;
+        google.script.run.withSuccessHandler(r => { RM_NT_IMG = r.id; RM_NT_UP = false; render(); toast('공지 사진을 올렸어요', 2000); })
+          .withFailureHandler(x => { RM_NT_UP = false; RM_NT_PV = ''; render(); toast((x && x.message) || '사진을 올리지 못했습니다', 3000); })
+          .adminTnUploadPhoto(KEY, d, 'image/jpeg');
+      }).catch(x => { RM_NT_UP = false; render(); toast((x && x.message) || '사진을 읽지 못했습니다', 2500); });
+    });
+    const photoBox = el('div',{style:'margin:8px 0'},
+      RM_NT_UP ? el('p',{cls:'help'}, '사진 올리는 중…') :
+      RM_NT_IMG ? el('div',{}, el('img',{src:RM_NT_PV, alt:'', style:'display:block;max-width:180px;border-radius:8px;border:1px solid var(--line)'}),
+        el('button',{cls:'btn', style:'margin-top:6px', on:{click:() => { RM_NT_IMG = ''; RM_NT_PV = ''; render(); }}}, '사진 빼기')) :
+      el('button',{cls:'btn', on:{click:() => fi.click()}}, '공지 사진 붙이기 (선택)'), fi);
+    const fval = () => Object.assign({}, F, { img: RM_NT_IMG });
+    const nc = el('div',{cls:'card'}, el('div',{cls:'sec'}, '공지 보내기 · 월간 수업 일정 안내'),
+      el('p',{cls:'help', style:'margin:0 0 6px'}, '칸을 채우고 받는 사람을 고른 뒤 「보내기」를 누르면 알림톡이 한꺼번에 갑니다. 알림톡 버튼을 누르면 우리 아이 방에서 아래 글과 공지 사진을 볼 수 있어요. 특강 모집 같은 홍보 문구는 알림톡 칸에 넣지 마세요(카카오 정책).' + (RM_NT && RM_NT.tpl === false ? ' (알림톡 카카오 검수가 끝나야 보낼 수 있어요. 통과되면 원장님 카톡으로 알려 드려요)' : '')),
+      lab('몇 월', mIn), lab('수업 기간 (꼭)', inp('수업기간', '예) 11월 30일(월) ~ 12월 28일(월)')), lab('휴원일', inp('휴원일', '예) 12월 25일(금) 성탄절 / 12월 29일(화)~31일(목) 학원 방학')),
+      isMonth && !(RM_NT && RM_NT.vi === 1) ? lab('보강·일정 변경', inp('일정변경', '예) 12월 6일(일) 중등 기말고사 내신 보강')) : null,
+      el('div',{style:'font-size:13px;color:var(--sub);margin-top:8px'}, '학부모님께 가는 알림톡 모양'), pv,
+      lab('아이 방에 함께 남길 글 (선택)', ta), photoBox, chipBox, cnt,
+      el('div',{cls:'acts'}, el('button',{cls:'btn pri', on:{click:e => {
+        const tx = ta.value.trim();
+        if (!one(F.수업기간, '')) return toast('수업 기간을 넣어 주세요', 2200);
+        if (RM_NT_UP) return toast('사진을 올리는 중이에요', 2000);
+        if (RM_NT && RM_NT.tpl === false) return toast('공지 알림톡이 아직 카카오 검수 중이에요', 2400);
+        if (!confirm((RM_NT_SEL.length ? RM_NT_SEL.join(', ') : '전체') + ' 학부모님 ' + famsOf(RM_NT_SEL) + '집에 ' + one(F.월, '') + '월 수업 일정 안내를 보낼까요?' + (RM_NT_IMG ? '\n(공지 사진 포함)' : ''))) return;
+        const b = e.target; b.disabled = true; b.textContent = '보내는 중…';
+        google.script.run.withSuccessHandler(r => { RM_NT = Object.assign(RM_NT || {}, { recent: r.recent }); RM_NT_TX = ''; RM_NT_F = {}; RM_NT_IMG = ''; RM_NT_PV = ''; toast('공지 보냄 ' + r.sent + '집' + (r.fail.length ? ' · 못 보냄 ' + r.fail.join(', ') : ''), 5000); render(); })
+          .withFailureHandler(x => { b.disabled = false; b.textContent = '보내기'; toast((x && x.message) || '보내지 못했습니다', 3500); })
+          .adminNoticeSend(KEY, tx, RM_NT_SEL, fval());
+      }}}, '보내기'),
+      el('button',{cls:'btn', on:{click:e => rmTestMe('notice', ta.value, e.target, fval())}}, '내 폰으로 미리 받기')));
+    if (RM_NT && RM_NT.recent && RM_NT.recent.length) nc.appendChild(el('div',{style:'border-top:1px dashed var(--line);margin-top:10px;padding-top:8px'},
+      el('div',{style:'font-size:13px;color:var(--sub);margin-bottom:4px'}, '최근 보낸 공지'),
+      ...RM_NT.recent.map(n => el('div',{style:'font-size:13.5px;padding:4px 0;border-bottom:1px solid var(--line)'}, el('b',{}, n.t.slice(5, 16) + ' · ' + n.to + ' · ' + n.sent + '집 '), n.text.slice(0, 60) + (n.text.length > 60 ? '…' : '')))));
+    box.appendChild(nc);
+  }
+  // 이달 피드백 보내기 (원장님이 확인 후 한꺼번에)
+  if (!RM_FB) { rmFbLoad(); }
+  const fc = el('div',{cls:'card'}, el('div',{cls:'sec'}, '피드백 보내기' + (RM_FB && RM_FB.rows ? ' · ' + RM_FB.rows.length + '명' : '')));
+  if (RM_FB.loading) fc.appendChild(el('p',{cls:'help'}, '불러오는 중...'));
+  else if (RM_FB.err) fc.appendChild(el('p',{cls:'help'}, RM_FB.err));
+  else if (!RM_FB.rows.length) fc.appendChild(el('p',{cls:'help'}, '보낼 피드백이 없습니다. 피드백 이미지를 만들면 글이 여기에 함께 들어옵니다.'));
+  else {
+    fc.appendChild(el('p',{cls:'help', style:'margin:0 0 8px'}, '글을 확인하고 고칠 곳은 고친 뒤 「모두 보내기」를 누르세요. 학부모님께 「피드백 도착」 알림톡이 가고, 글은 우리 아이 방에 쌓입니다. 아직 방이 없는 학생은 방이 함께 만들어집니다.' + (RM_FB.tpl ? '' : ' (알림톡 카카오 검수가 끝나야 보낼 수 있어요)')));
+    RM_FB.rows.forEach(r => {
+      const ta = el('textarea',{rows:'5', style:'width:100%;box-sizing:border-box;font:inherit;font-size:14.5px;line-height:1.6;padding:9px 10px;border:1px solid #cfd8cc;border-radius:10px'});
+      ta.value = r.body;
+      fc.appendChild(el('div',{style:'border-top:1px solid var(--line);padding:10px 0'},
+        el('div',{cls:'top'}, el('span',{cls:'name'}, r.name + ' · ' + r.m), r.room ? el('span',{cls:'badge b-ok'}, '방 있음') : el('span',{cls:'badge b-wait'}, '방 새로 만듦')),
+        ta,
+        el('div',{cls:'acts', style:'margin-top:6px'},
+          el('button',{cls:'btn', on:{click:e => rmFbCall('adminFbEdit', [r.row, ta.value], e.target, '고쳤습니다')}}, '고친 글 저장'),
+          el('button',{cls:'btn', on:{click:e => { if (confirm(r.name + ' 피드백을 이번에 보내지 않을까요?')) rmFbCall('adminFbSkip', [r.row], e.target, '빼 두었습니다'); }}}, '이번엔 빼기'))));
+    });
+    fc.appendChild(el('div',{cls:'acts', style:'margin-top:10px'},
+      el('button',{cls:'btn pri', on:{click:e => {
+        if (!RM_FB.tpl) return toast('알림톡이 아직 카카오 검수 중이에요', 2400);
+        if (!confirm(RM_FB.rows.length + '명 학부모님께 피드백 알림톡을 보낼까요?')) return;
+        const b = e.target; b.disabled = true; b.textContent = '보내는 중…';
+        google.script.run.withSuccessHandler(r => { RM_FB = r.q; toast('보냄 ' + r.done.length + '명' + (r.fail.length ? ' · 못 보냄 ' + r.fail.join(', ') : ''), 4000); RM = null; render(); })
+          .withFailureHandler(x => { b.disabled = false; b.textContent = '모두 보내기'; toast((x && x.message) || '보내지 못했습니다', 3000); })
+          .adminFbSend(KEY, RM_FB.rows.map(x => x.row));
+      }}}, '모두 보내기 (' + RM_FB.rows.length + '명)')));
+  }
+  box.appendChild(fc);
+  // 칭찬 도장 선물: 학원에서 바로 바꿔 줌 → 학생 옆 단계 버튼 → 「줬어요」(도장 차감). 선물 이름은 이 화면에만, 학부모님께는 받은 기록만
+  if (RM.gift) {
+    const G = RM.gift, mby = Object.keys(G.month.by).map(k => k + ' ' + G.month.by[k]).join(' · ');
+    const gc = el('div',{cls:'card'}, el('div',{cls:'sec'}, '도장 선물' + (G.ready.length ? ' · 받을 수 있는 학생 ' + G.ready.length : '')),
+      el('p',{cls:'help', style:'margin:0 0 6px'}, '이번 달 준 선물 ' + G.month.count + '개' + (mby ? ' (' + mby + ')' : '') + ' · 기준: ' + G.rewards.map(r => r.n + '개 ' + r.item).join(' / ')));
+    const gv = Object.keys(G.givers || {}).sort((a, b) => G.givers[b] - G.givers[a]);
+    gc.appendChild(el('p',{cls:'help', style:'margin:0 0 6px'}, '이번 달 준 칭찬 도장(등원 빼고): ' + (gv.length ? gv.map(w => w + ' ' + G.givers[w] + '개').join(' · ') : '아직 없음')));
+    if (!G.ready.length) gc.appendChild(el('p',{cls:'help'}, '아직 선물 받을 만큼 모은 학생이 없습니다.'));
+    G.ready.slice(0, 40).forEach(g => {
+      gc.appendChild(el('div',{style:'border-top:1px solid var(--line);padding:9px 0;display:flex;align-items:center;gap:6px;flex-wrap:wrap'},
+        el('b',{style:'font-size:15.5px;min-width:64px'}, g.name), el('span',{style:'font-size:13px;color:var(--sub);margin-right:auto'}, '도장 ' + g.have + '개'),
+        ...G.rewards.filter(r => g.have >= r.n).map(r => el('button',{cls:'btn', on:{click:e => {
+          const item = prompt(g.name + '에게 줄 선물 (고쳐도 돼요)\n도장 ' + r.n + '개가 빠집니다.', r.item);
+          if (item === null) return;
+          rmCall('adminGiftGive', [g.name, r.n, item], e.target, g.name + ' 선물 줬어요 (도장 -' + r.n + ')');
+        }}}, r.n + '개 ' + r.item))));
+    });
+    if (G.recent.length) gc.appendChild(el('div',{style:'border-top:1px dashed var(--line);margin-top:6px;padding-top:6px'},
+      ...G.recent.map(g => el('div',{style:'font-size:13px;color:var(--sub);padding:2px 0'}, g.done.slice(5, 10) + ' ' + g.name + ' · ' + g.n + '개 → ' + (g.item || '선물')))));
+    box.appendChild(gc);
+  }
+  // 학부모 요청 (새 요청 먼저)
+  const nw = RM.asks.filter(a => a.state === '새 요청');
+  const ac = el('div',{cls:'card'}, el('div',{cls:'sec'}, '학부모 요청' + (nw.length ? ' · 새 요청 ' + nw.length : '')));
+  if (!RM.asks.length) ac.appendChild(el('p',{cls:'help'}, '아직 들어온 요청이 없습니다. 들어오면 원장님 폰으로 알림톡이 갑니다.'));
+  RM.asks.slice(0, 15).forEach(a => {
+    const inp = el('input',{type:'text', placeholder:'답장 (학부모님 아이 방에 보여요)', maxlength:'300', style:'flex:1;min-width:0;font:inherit;font-size:15px;padding:8px 10px;border:1px solid #cfd8cc;border-radius:10px'});
+    inp.value = a.reply || '';
+    ac.appendChild(el('div',{style:'border-top:1px solid var(--line);padding:10px 0'},
+      el('div',{cls:'top'}, el('span',{cls:'name'}, a.name), el('span',{cls:'badge ' + (a.state === '새 요청' ? 'b-wait' : 'b-ok')}, a.state)),
+      el('div',{style:'font-size:13px;color:var(--sub);margin:2px 0 4px'}, a.t),
+      el('div',{style:'font-size:15px;margin-bottom:8px;white-space:pre-wrap'}, a.text),
+      el('div',{style:'display:flex;gap:6px'}, inp, el('button',{cls:'btn pri', on:{click:e => rmCall('adminRoomReply', [a.row, inp.value], e.target, inp.value.trim() ? '답장했습니다' : '확인함으로 표시했습니다')}}, inp.value ? '고치기' : '답장'))));
+  });
+  box.appendChild(ac);
+  // 학생 찾기 (처음엔 목록 없음 — 찾을 때만 그 학생 카드가 나옴)
+  const q = el('input',{type:'text', placeholder:'학생 이름 또는 학부모 뒷번호 4자리', style:'width:100%;box-sizing:border-box;font:inherit;font-size:16px;padding:10px 12px;border:1.5px solid var(--green);border-radius:10px'});
+  q.value = RM_Q;
+  q.id = 'rmQ';
+  const hint = el('p',{cls:'help', style:'margin:8px 0 0'});
+  const rmMatch = k => !!RM_Q && (/^\d+$/.test(RM_Q) ? (RM_Q.length === 4 && k.split(' ').pop() === RM_Q) : k.indexOf(RM_Q) >= 0);
+  // 한글 입력이 끊기지 않게: 다시 그리지 않고 카드만 보이기/숨기기
+  const rmFilter = () => {
+    RM_Q = q.value.trim(); let n = 0;
+    document.querySelectorAll('[data-rmk]').forEach(c => { const on = rmMatch(c.getAttribute('data-rmk')); c.style.display = on ? '' : 'none'; if (on) n++; });
+    hint.textContent = !RM_Q ? '찾는 학생의 이름이나 학부모 뒷번호 4자리를 넣으면 그 학생 카드가 나옵니다. (주소 복사 · 학부모 화면 보기 · 비번 바꾸기)'
+      : /^\d+$/.test(RM_Q) && RM_Q.length < 4 ? '뒷번호 4자리를 모두 넣어 주세요.' : n ? '' : '찾는 학생이 없습니다.';
+  };
+  q.addEventListener('input', rmFilter);
+  q.addEventListener('compositionend', rmFilter);
+  box.appendChild(el('div',{cls:'card'}, el('div',{cls:'sec'}, '학생 찾기'), q, hint));
+  // 방 목록 (형제 묶음)
+  const fams = {};
+  RM.rooms.forEach(r => { (fams[r.fam] = fams[r.fam] || []).push(r); });
+  Object.keys(fams).forEach(f => {
+    const kids = fams[f], r0 = kids[0];
+    const rmk = kids.map(k => k.name).join(' ') + ' ' + r0.last4;
+    const pin = el('input',{type:'text', inputmode:'numeric', maxlength:'4', placeholder:'새 비번 4자리', style:'width:120px;font:inherit;font-size:15px;padding:8px 10px;border:1px solid #cfd8cc;border-radius:10px'});
+    const c = el('div',{cls:'card', 'data-rmk': rmk, style: rmMatch(rmk) ? '' : 'display:none'},
+      el('div',{cls:'top'}, el('span',{cls:'name'}, kids.map(k => k.name + ' ' + k.grade).join(' · ')), kids.length > 1 ? el('span',{cls:'badge b-ok'}, '형제 한 화면') : null),
+      el('div',{style:'font-size:13.5px;color:var(--sub);margin:4px 0 8px'}, '들어가는 번호: ' + (r0.pin ? '바꾼 비번 사용 중' : '학부모 뒷번호 ' + r0.last4) + ' · 도장 ' + kids.map(k => k.stamps).join('·') + ' / ' + RM.board));
+    kids.forEach(k => c.appendChild(el('div',{cls:'acts', style:'margin-bottom:6px'},
+      el('span',{style:'font-weight:700;min-width:54px'}, k.name),
+      el('button',{cls:'btn', on:{click:() => rmCopy(k.url)}}, '주소 복사'),
+      el('a',{cls:'btn', href:k.url, target:'_blank', rel:'noopener'}, '학부모 화면 보기'),
+      el('button',{cls:'btn', on:{click:e => { if (confirm(k.name + ' 방 주소를 새로 만들까요? 예전 주소는 더 이상 열리지 않습니다.')) rmCall('adminRoomRenew', [k.token], e.target, '새 주소를 만들었습니다. 「주소 복사」로 다시 보내 주세요'); }}}, '주소 새로 만들기'),
+      el('button',{cls:'btn', style:'color:#b4432b;border-color:#e3b9b0', on:{click:e => { if (confirm(k.name + ' 학생이 퇴원했나요?\n방을 지우면 학부모님 주소가 더 이상 열리지 않습니다. (학부모 연락처 시트에서도 지워 주세요)')) rmCall('adminRoomDelete', [k.token], e.target, k.name + ' 방을 지웠습니다'); }}}, '퇴원 (방 지우기)'))));
+    c.appendChild(el('div',{cls:'acts', style:'margin-top:4px'}, pin,
+      el('button',{cls:'btn pri', on:{click:e => { const v = pin.value.replace(/\D/g, ''); if (v.length !== 4) return toast('숫자 4자리로 넣어 주세요'); rmCall('adminRoomPin', [r0.token, v], e.target, '비번을 ' + v + '(으)로 바꿨습니다'); }}}, '비번 바꾸기'),
+      r0.pin ? el('button',{cls:'btn', on:{click:e => rmCall('adminRoomPin', [r0.token, ''], e.target, '학부모 뒷번호로 되돌렸습니다')}}, '원래대로(뒷번호)') : null));
+    box.appendChild(c);
+  });
+  rmFilter();
+  // 가끔 쓰는 것: 새 학생 방 만들기 · 방 안내 보내기
+  const nm = el('input',{type:'text', placeholder:'새 학생 이름', style:'flex:1;min-width:0;font:inherit;font-size:15px;padding:8px 10px;border:1px solid #cfd8cc;border-radius:10px'});
+  box.appendChild(el('div',{cls:'card'}, el('div',{cls:'sec'}, '가끔 쓰는 것'),
+    el('p',{cls:'help', style:'margin:0 0 6px'}, '새 학생 방 만들기 — 새로 온 학생은 학부모 연락처 시트에 먼저 적은 뒤 이름을 넣고 누르세요. 만든 뒤 위에서 찾아 「주소 복사」로 보내 주시면 됩니다.'),
+    el('div',{style:'display:flex;gap:6px'}, nm,
+      el('button',{cls:'btn', on:{click:e => { if (!nm.value.trim()) return toast('학생 이름을 넣어 주세요'); RM_Q = nm.value.trim(); rmCall('adminRoomMake', [nm.value.trim()], e.target, '방을 만들었습니다'); }}}, '방 만들기')),
+    el('div',{style:'border-top:1px dashed var(--line);margin-top:12px;padding-top:10px'},
+      el('p',{cls:'help', style:'margin:0 0 8px'}, '방 안내 보내기 — 카카오 검수가 통과된 뒤 한 번만 누르세요. 아직 안내를 못 받은 모든 학부모님께 「우리 아이 방이 열렸습니다」 알림톡과 그 집 방 주소가 갑니다(형제는 한 통, 이미 받은 집은 다시 안 감).'),
+      el('button',{cls:'btn', on:{click:e => {
+        if (!confirm('아직 안내를 안 받은 모든 학부모님께 「우리 아이 방 안내」 알림톡을 보낼까요?')) return;
+        const b = e.target; b.disabled = true; b.textContent = '보내는 중…';
+        google.script.run.withSuccessHandler(r => { toast('방 ' + r.made + '개 새로 만듦 · 안내 ' + r.sent + '집 보냄' + (r.fail.length ? ' · 못 보냄 ' + r.fail.join(', ') : ''), 5000); RM = null; render(); })
+          .withFailureHandler(x => { b.disabled = false; b.textContent = '방 안내 보내기'; toast((x && x.message) || '보내지 못했습니다', 3500); })
+          .adminRoomInvite(KEY, false);
+      }}}, '방 안내 보내기'),
+      el('button',{cls:'btn', style:'margin-left:6px', on:{click:e => rmTestMe('invite', '', e.target)}}, '내 폰으로 미리 받기'))));
+}
+// 속도: 관리 화면이 뜨면 뒤에서 미리 불러 둠 → 탭을 누르면 바로 보임
+setTimeout(() => { try { if (!RM) rmLoad(); if (!RM_FB) rmFbLoad(); if (!RM_NT) rmNtLoad(); if (!ST) stLoad(); } catch (e) {} }, 1500);
+function rmTestMe(kind, text, btn, f){
+  btn.disabled = true;
+  google.script.run.withSuccessHandler(m => { btn.disabled = false; toast(m, 2600); })
+    .withFailureHandler(x => { btn.disabled = false; toast((x && x.message) || '보내지 못했습니다', 3500); })
+    .adminRoomTestMe(KEY, kind, text, f);
+}
+
+/* ===== 피드백: 그달 활동(긴글쓰기·골든벨 등) + 선생님께 미작성 명단 보이기 ===== */
+let AFB = null, AFB_LIST = null, AFB_BUSY = false;
+const AFB_PICK = ['긴글쓰기', '골든벨', '감상문', '논설문', '설명문'];
+function afbLoad(){ google.script.run.withSuccessHandler(r => { AFB = r; if (TAB === 'fb') render(); }).withFailureHandler(e => { AFB = { err: (e && e.message) || '불러오지 못했습니다.' }; if (TAB === 'fb') render(); }).adminFbGet(KEY); }
+function afbSave(act, open, btn){
+  if (btn) btn.disabled = true;
+  google.script.run.withSuccessHandler(r => { AFB = r; AFB_LIST = null; toast('저장했습니다'); render(); })
+    .withFailureHandler(e => { if (btn) btn.disabled = false; toast((e && e.message) || '저장하지 못했습니다'); })
+    .adminFbSet(KEY, act, open);
+}
+function afbList(){
+  if (AFB_BUSY) return; AFB_BUSY = true; render();
+  google.script.run.withSuccessHandler(r => { AFB_LIST = r; AFB_BUSY = false; if (TAB === 'fb') render(); })
+    .withFailureHandler(e => { AFB_LIST = { err: (e && e.message) || '명단을 불러오지 못했습니다.' }; AFB_BUSY = false; if (TAB === 'fb') render(); })
+    .adminFbList(KEY);
+}
+function afbView(){
+  const box = $('list'); box.innerHTML = '';
+  if (!AFB) { box.appendChild(el('div',{cls:'empty'}, '불러오는 중...')); return afbLoad(); }
+  if (AFB.err) { box.appendChild(el('div',{cls:'empty'}, AFB.err)); return; }
+  const inp = el('input',{type:'text', placeholder:'예: 긴글쓰기 (설명문)', maxlength:'30', style:'width:100%;box-sizing:border-box;font:inherit;font-size:16px;padding:10px 12px;border:1px solid #cfd8cc;border-radius:10px'}); inp.value = AFB.act || '';
+  const chips = el('div',{cls:'chips', style:'margin:8px 0'});
+  AFB_PICK.forEach(t => chips.appendChild(el('button',{cls:'chip', style: inp.value === t ? 'border:2px solid var(--green);font-weight:700' : '', on:{click:() => { inp.value = t; chips.querySelectorAll('.chip').forEach(c => c.style.cssText = c.textContent === t ? 'border:2px solid var(--green);font-weight:700' : ''); }}}, t)));
+  const save = el('button',{cls:'btn pri', on:{click:e => afbSave(inp.value.trim(), AFB.open, e.target)}}, '활동 저장');
+  box.appendChild(el('div',{cls:'card'},
+    el('div',{cls:'sec'}, AFB.month + '월 활동'),
+    el('p',{cls:'help', style:'margin:0 0 8px'}, '이번 달 독후활동(행사)을 적어 두면, 그 수업을 한 선생님이 담당으로 잡히고 선생님 화면 피드백 탭 맨 위에 보입니다.'),
+    inp, chips, el('div',{cls:'acts'}, save)));
+  const on = !!AFB.open;
+  box.appendChild(el('div',{cls:'card'},
+    el('div',{cls:'top'}, el('span',{cls:'name'}, '선생님께 미작성 명단 보이기'), on ? el('span',{cls:'badge b-ok'}, '켜짐') : el('span',{cls:'badge b-wait'}, '꺼짐')),
+    el('p',{cls:'help', style:'margin:6px 0 8px'}, '켜면 선생님 화면 피드백 탭에 ' + AFB.month + '월 미작성 명단이 담당 선생님별로 보입니다. 달이 바뀌면 저절로 꺼집니다.'),
+    el('div',{cls:'acts'}, el('button',{cls:'btn' + (on ? '' : ' pri'), on:{click:e => afbSave(AFB.act || '', !on, e.target)}}, on ? '끄기' : '켜기'))));
+  const card = el('div',{cls:'card'});
+  card.appendChild(el('div',{style:'display:flex;align-items:center;gap:8px;margin-bottom:6px'}, el('div',{cls:'sec', style:'margin:0'}, AFB.month + '월 피드백 미작성 명단'),
+    el('button',{cls:'btn ghost', style:'margin-left:auto;font-size:13px;padding:5px 11px', on:{click:afbList}}, AFB_BUSY ? '확인 중...' : (AFB_LIST ? '새로 확인' : '명단 보기'))));
+  if (AFB_LIST && AFB_LIST.err) card.appendChild(el('p',{cls:'help'}, AFB_LIST.err));
+  else if (AFB_LIST && !AFB_LIST.miss.length) card.appendChild(el('div',{cls:'empty', style:'padding:14px 0'}, '이번 달 피드백을 모두 작성했습니다.'));
+  else if (AFB_LIST) {
+    const g = {}, PART = {}; AFB_LIST.miss.forEach(s => { if (s.part) PART[s.name] = 1; (g[s.t || '담당 없음'] = g[s.t || '담당 없음'] || []).push(s.name); });
+    Object.keys(g).sort((a, b) => (a === '담당 없음') - (b === '담당 없음') || a.localeCompare(b, 'ko')).forEach(t =>
+      card.appendChild(el('div',{style:'padding:10px 0;border-top:1px solid var(--line)'}, el('div',{style:'font-weight:700;margin-bottom:6px'}, t),
+        el('div',{style:'display:flex;flex-wrap:wrap;gap:6px'}, g[t].map(n => el('span',{style:'background:#F1EFE9;border-radius:8px;padding:4px 4px 4px 10px;font-size:15px;display:inline-flex;align-items:center;gap:4px'}, n, PART[n] ? el('small',{style:'color:#9a5b12;font-weight:700'}, '마무리 안 됨') : null,
+          el('button',{title:'피드백 안 씀', style:'font:inherit;font-size:13px;border:0;background:transparent;color:#a3372b;cursor:pointer;padding:0 6px', on:{click:e => { if (confirm(n + ' 학생은 피드백을 쓰지 않을까요?\n명단에서 빠지고, 선생님 화면 명단에서도 빠집니다. (아래에서 되돌릴 수 있어요)')) afbNoNeed(n, true, e.target); }}}, '✕')))))));
+  } else card.appendChild(el('p',{cls:'help', style:'margin:0'}, '「명단 보기」를 누르면 이번 달 수업일지와 피드백 기록 시트를 맞춰 봅니다. (몇 초 걸려요)'));
+  if (AFB_LIST && AFB_LIST.skip && AFB_LIST.skip.length) card.appendChild(el('div',{style:'padding:10px 0 0;border-top:1px dashed var(--line);margin-top:6px'},
+    el('div',{style:'font-size:13.5px;color:var(--sub);margin-bottom:6px'}, '피드백 안 쓰는 학생 (누르면 다시 명단에 넣어요)'),
+    el('div',{style:'display:flex;flex-wrap:wrap;gap:6px'}, AFB_LIST.skip.map(n => el('button',{cls:'chip', on:{click:e => { if (confirm(n + ' 학생을 다시 피드백 명단에 넣을까요?')) afbNoNeed(n, false, e.target); }}}, n + ' ↺')))));
+  box.appendChild(card);
+}
+function afbNoNeed(name, on, btn){
+  if (btn) btn.disabled = true;
+  google.script.run.withSuccessHandler(r => { AFB_LIST = r; toast(on ? name + ' 명단에서 뺐습니다' : name + ' 다시 넣었습니다'); render(); })
+    .withFailureHandler(e => { if (btn) btn.disabled = false; toast((e && e.message) || '하지 못했습니다'); })
+    .adminFbNoNeed(KEY, name, on);
+}
+
+/* ===== 알림 (원장님 ↔ 산동 선생님. 선생님 화면 「학원관리(산동점)」과 같은 판) ===== */
+const CH_PEOPLE = ['원장', '수빈T', '열매T', '바다T', '나무T', '새싹T'];
+const chGet = (k, d) => { try { return localStorage.getItem(k) || d; } catch (e) { return d; } };
+const chSet = (k, v) => { try { localStorage.setItem(k, v); } catch (e) {} };
+let CH = [], CH_VER = '', CH_ME = chGet('ch_me', ''), CH_SEEN = Number(chGet('ch_seen_ts', '0')) || 0;
+let CH_PHOTO = null, CH_BUSY = false, CH_UP = false, CH_DRAFT = '', CH_LOADED = false, CH_EDIT = 0, CH_DELASK = 0;
+function chPoll(){
+  google.script.run.withSuccessHandler(chMerge).withFailureHandler(() => {}).chatList(KEY, CH_VER);
+}
+function chMerge(r){
+  if (!r) return;
+  if (!r.same) { CH = r.items || []; CH_VER = r.ver || ''; CH_LOADED = true; if (TAB === 'ch' && !CH_EDIT) { chMarkSeen(); chDrawMsgs(); } }
+  chBadge(); chPop();
+}
+function chUnread(){ return CH.filter(o => o.ts > CH_SEEN && o.who !== CH_ME).length; }
+function chMarkSeen(){ CH_SEEN = Math.max(CH_SEEN, ...CH.map(o => o.ts || 0)); chSet('ch_seen_ts', String(CH_SEEN)); }
+function chBadge(){
+  const t = document.querySelector('.tab[data-t="ch"]'); if (!t) return;
+  t.textContent = '알림';
+  const n = TAB === 'ch' ? 0 : chUnread();
+  if (n) t.appendChild(el('span',{cls:'n'}, String(n)));
+}
+// 다른 탭을 보고 있을 때 새 알림이 오면 화면 위에 띄움 (누르면 알림 탭으로)
+function chPop(){
+  let b = $('chPop');
+  const news = TAB === 'ch' ? [] : CH.filter(o => o.ts > CH_SEEN && o.who !== CH_ME);
+  if (!news.length) { if (b) b.remove(); return; }
+  const o = news[news.length - 1];
+  const txt = (o.text || '사진을 보냈습니다').replace(/\s+/g, ' ');
+  if (!b) {
+    b = el('div',{id:'chPop', style:'position:fixed;left:50%;top:12px;transform:translateX(-50%);z-index:60;width:min(520px,calc(100% - 24px));background:#fff;border:2px solid var(--green-d);border-radius:14px;box-shadow:0 6px 24px rgba(0,0,0,.18);padding:12px 14px;display:flex;gap:10px;align-items:center;cursor:pointer'});
+    b.addEventListener('click', e => { if (e.target.dataset.x) { chMarkSeen(); b.remove(); chBadge(); return; } TAB = 'ch'; render(); window.scrollTo(0, 0); });
+    document.body.appendChild(b);
+  }
+  b.innerHTML = '';
+  b.append(
+    el('div',{style:'flex:1;min-width:0'},
+      el('div',{style:'font-size:12.5px;color:var(--green-d);font-weight:700'}, '새 알림' + (news.length > 1 ? ' ' + news.length + '개' : '') + ' · ' + o.who),
+      el('div',{style:'font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px'}, txt)),
+    el('span',{style:'background:var(--green-d);color:#fff;border-radius:9px;padding:7px 12px;font-size:14px;font-weight:700;white-space:nowrap'}, '보기'),
+    el('span',{'data-x':'1', style:'color:var(--sub);font-size:20px;line-height:1;padding:0 2px'}, '×'));
+}
+function chView(){
+  const box = $('list'); box.innerHTML = '';
+  const who = el('div',{style:'display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:10px'},
+    el('span',{style:'font-size:13.5px;color:var(--sub)'},'나는'),
+    ...CH_PEOPLE.map(p => el('button',{cls:'tn-chip tp' + (CH_ME === p ? ' on' : ''), on:{click:() => { CH_ME = p; chSet('ch_me', p); render(); }}}, p)));
+  const msgs = el('div',{id:'chMsgs', style:'height:52vh;min-height:280px;overflow-y:auto;background:#EEF1EA;border-radius:12px;padding:10px 10px 14px;display:flex;flex-direction:column;gap:8px'});
+  const ta = el('textarea',{cls:'tn-in', id:'chText', rows:'2', style:'min-height:48px', placeholder: CH_ME ? '전달할 사항을 적어 주세요' : '먼저 위에서 누구인지 골라 주세요'});
+  ta.value = CH_DRAFT;
+  ta.addEventListener('input', () => { CH_DRAFT = ta.value; });
+  ta.addEventListener('keydown', e => { if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) { e.preventDefault(); chSendNow(); } });
+  const file = el('input',{type:'file', accept:'image/*', style:'display:none'});
+  file.addEventListener('change', () => chPick(file.files[0]));
+  const pbtn = el('button',{cls:'tn-mini', style:'margin:0;padding:7px 10px', on:{click:() => { if (CH_PHOTO) { CH_PHOTO = null; render(); } else file.click(); }}}, CH_UP ? '올리는 중' : CH_PHOTO ? '사진 ✓ (빼기)' : '사진');
+  const send = el('button',{cls:'tn-send', id:'chSend', style:'padding:10px 16px', on:{click:chSendNow}}, '보내기');
+  box.appendChild(el('div',{cls:'card', style:'grid-column:1/-1;max-width:760px;width:100%;margin:0 auto;box-sizing:border-box'},
+    el('div',{cls:'sec'},'알림'),
+    el('p',{cls:'help'},'누구든 전달할 사항을 남기고, 다른 사람은 읽은 뒤 「확인」에 체크해 주세요. 화면을 열어 두면 새 글이 몇 초 안에 뜹니다. 사진은 30일 뒤 지워집니다.'),
+    who, el('div',{id:'chPins', style:'display:none;background:#FFF8E6;border:1px solid #EED9A4;border-radius:12px;padding:6px 12px;margin-bottom:8px'}), msgs,
+    el('div',{style:'display:flex;gap:8px;align-items:flex-end;margin-top:10px'}, el('div',{style:'flex:1;min-width:0'}, ta),
+      el('div',{style:'display:flex;flex-direction:column;gap:6px'}, pbtn, send)), file));
+  chDrawMsgs._done = false;
+  chDrawMsgs(); chMarkSeen();
+  if (!CH_LOADED) chPoll();
+}
+function chAck(o, on, box){
+  if (!CH_ME) { toast('먼저 위에서 누구인지 골라 주세요', 2200); box.checked = !on; return; }
+  box.disabled = true;
+  google.script.run.withSuccessHandler(r => { chMerge(r); })
+    .withFailureHandler(e => { box.disabled = false; box.checked = !on; toast((e && e.message) || '체크하지 못했습니다', 2400); })
+    .chatAck(KEY, o.row, CH_ME, on);
+}
+function chDrawMsgs(){
+  const m = $('chMsgs'); if (!m) return;
+  const atBottom = m.scrollHeight - m.scrollTop - m.clientHeight < 80;
+  m.innerHTML = '';
+  if (!CH_LOADED) { m.appendChild(el('div',{cls:'empty'},'불러오는 중...')); return; }
+  if (!CH.length) { m.appendChild(el('div',{cls:'empty'},'아직 전달 사항이 없습니다.')); return; }
+  const pins = CH.filter(o => o.pinned);
+  const pb = $('chPins');
+  if (pb) { pb.innerHTML = ''; pb.style.display = pins.length ? 'block' : 'none'; pins.slice(-5).reverse().forEach(o => pb.appendChild(el('div',{style:'padding:5px 0;border-top:1px dashed #E8D6A8;font-size:14px;line-height:1.5;white-space:pre-wrap;word-break:break-all'}, el('b',{style:'color:#8A5A12;margin-right:6px'}, '📌 ' + o.who), o.text || '사진'))); }
+  let lastDay = '';
+  CH.forEach(o => {
+    const d = new Date(o.ts);
+    const day = (d.getMonth() + 1) + '월 ' + d.getDate() + '일 ' + '일월화수목금토'[d.getDay()] + '요일';
+    if (day !== lastDay) { lastDay = day; m.appendChild(el('div',{style:'align-self:center;font-size:11.5px;color:var(--sub);background:#E1E6DC;border-radius:999px;padding:2px 10px;margin:6px 0 2px'}, day)); }
+    const mine = o.who === CH_ME;
+    const t = pad(d.getHours()) + ':' + pad(d.getMinutes());
+    const others = (o.acks || []).filter(n => n !== o.who);
+    const body = el('div',{style:'background:' + (mine ? '#DCEFD9' : '#fff') + ';border-radius:12px;padding:8px 11px;font-size:15px;line-height:1.5;white-space:pre-wrap;word-break:break-all;box-shadow:0 1px 1px rgba(0,0,0,.05)'});
+    if (o.text) body.appendChild(document.createTextNode(o.text));
+    if (o.photo && DATA.execUrl) body.appendChild(el('a',{href: DATA.execUrl + '?photo=' + o.photo, target:'_blank', rel:'noopener', style:'display:block;color:#2A6FB0;font-weight:700;' + (o.text ? 'margin-top:4px' : '')}, '사진 보기'));
+    let foot;
+    if (o.edited) body.appendChild(el('span',{style:'display:block;font-size:11px;color:var(--sub);margin-top:2px'}, '(수정됨)'));
+    if (mine) {
+      const lk = 'border:none;background:none;padding:0 0 0 8px;font:inherit;font-size:12px;color:var(--sub);text-decoration:underline;cursor:pointer';
+      foot = el('div',{style:'font-size:12px;color:' + (others.length ? 'var(--green-d)' : 'var(--sub)') + ';margin-top:3px;text-align:right'},
+        (() => { const wait = CH_PEOPLE.filter(p => p !== o.who && !others.includes(p)); return (others.length ? '✓ 확인: ' + others.join(', ') : '') + (others.length && wait.length ? ' · ' : '') + (wait.length ? '미확인: ' + wait.join(', ') : ''); })(),
+        o.text ? el('button',{style:lk, on:{click:() => { CH_EDIT = o.row; CH_DELASK = 0; chDrawMsgs(); }}}, '수정') : null,
+        CH_DELASK === o.row
+          ? el('button',{style:lk + ';color:#B5523F;font-weight:700', on:{click:() => chDel(o)}}, '정말 삭제')
+          : el('button',{style:lk, on:{click:() => { CH_DELASK = o.row; CH_EDIT = 0; chDrawMsgs(); setTimeout(() => { if (CH_DELASK === o.row) { CH_DELASK = 0; chDrawMsgs(); } }, 5000); }}}, '삭제'));
+      if (CH_EDIT === o.row) {
+        const ed = el('textarea',{cls:'tn-in', rows:'3', style:'min-width:240px'}); ed.value = o.text;
+        const bs = 'border-radius:9px;padding:6px 12px;font:inherit;font-size:13.5px;font-weight:700;cursor:pointer';
+        body.innerHTML = '';
+        body.append(ed, el('div',{style:'display:flex;gap:6px;justify-content:flex-end;margin-top:6px'},
+          el('button',{style:bs + ';border:1px solid var(--line);background:#fff;color:var(--ink)', on:{click:() => { CH_EDIT = 0; chDrawMsgs(); }}}, '취소'),
+          el('button',{style:bs + ';border:none;background:var(--green-d);color:#fff', on:{click:() => chEdit(o, ed.value)}}, '저장')));
+        setTimeout(() => ed.focus(), 0);
+      }
+    } else {
+      const box = el('input',{type:'checkbox', style:'width:18px;height:18px;margin:0'});
+      box.checked = others.includes(CH_ME);
+      box.addEventListener('change', () => chAck(o, box.checked, box));
+      const rest = others.filter(n => n !== CH_ME);
+      foot = el('div',{style:'display:flex;align-items:center;gap:8px;margin-top:4px;font-size:13px'},
+        el('label',{style:'display:flex;align-items:center;gap:5px;font-weight:700;color:' + (box.checked ? 'var(--green-d)' : 'var(--ink)') + ';cursor:pointer'}, box, '확인'),
+        rest.length ? el('span',{style:'font-size:12px;color:var(--sub)'}, rest.join(', ') + ' 확인함') : null);
+    }
+    const pin = el('button',{style:'border:none;background:none;padding:0;margin-left:8px;font:inherit;font-size:12px;color:' + (o.pinned ? '#B07A1E' : 'var(--sub)') + ';text-decoration:underline;cursor:pointer', on:{click:() => chPin(o, !o.pinned)}}, o.pinned ? '고정 해제' : '위에 고정');
+    foot.appendChild(pin);
+    if (o.pinned) body.style.boxShadow = 'inset 3px 0 0 #E0B04A, 0 1px 1px rgba(0,0,0,.05)';
+    m.appendChild(el('div',{style:'max-width:80%;align-self:' + (mine ? 'flex-end' : 'flex-start')},
+      mine ? null : el('div',{style:'font-size:12px;color:var(--sub);margin:0 0 2px 4px;font-weight:700'}, o.who),
+      el('div',{style:'display:flex;gap:5px;align-items:flex-end;flex-direction:' + (mine ? 'row-reverse' : 'row')}, body,
+        el('span',{style:'font-size:10.5px;color:var(--sub);white-space:nowrap'}, t)),
+      foot));
+  });
+  if (atBottom || !chDrawMsgs._done) { m.scrollTop = m.scrollHeight; chDrawMsgs._done = true; }
+}
+function chEdit(o, t){
+  if (!t || !t.trim()) { toast('내용이 비어 있습니다. 지우려면 삭제를 눌러 주세요', 2600); return; }
+  CH_EDIT = 0;
+  google.script.run.withSuccessHandler(r => { toast('고쳤습니다'); chMerge(r); chDrawMsgs(); })
+    .withFailureHandler(e => toast((e && e.message) || '고치지 못했습니다', 2500)).chatEdit(KEY, o.row, CH_ME, t);
+}
+function chPin(o, on){
+  google.script.run.withSuccessHandler(r => { toast(on ? '위에 고정했습니다' : '고정을 풀었습니다'); chMerge(r); chDrawMsgs(); })
+    .withFailureHandler(e => toast((e && e.message) || '바꾸지 못했습니다', 2500)).chatPin(KEY, o.row, on);
+}
+function chDel(o){
+  CH_DELASK = 0;
+  google.script.run.withSuccessHandler(r => { toast('지웠습니다'); chMerge(r); chDrawMsgs(); })
+    .withFailureHandler(e => toast((e && e.message) || '지우지 못했습니다', 2500)).chatDelete(KEY, o.row, CH_ME);
+}
+function chSendNow(){
+  if (CH_BUSY) return;
+  if (!CH_ME) { toast('먼저 위에서 누구인지 골라 주세요', 2200); return; }
+  const ta = $('chText'); const text = (ta ? ta.value : '').trim();
+  if (!text && !CH_PHOTO) return;
+  CH_BUSY = true; const btn = $('chSend'); if (btn) { btn.disabled = true; btn.textContent = '보내는 중'; }
+  google.script.run.withSuccessHandler(r => {
+    CH_BUSY = false; CH_DRAFT = ''; CH_PHOTO = null; render(); chMerge(r);
+  }).withFailureHandler(e => {
+    CH_BUSY = false; if (btn) { btn.disabled = false; btn.textContent = '보내기'; }
+    toast((e && e.message) || '보내지 못했습니다', 2500);
+  }).chatSend(KEY, { who: CH_ME, text, photo: CH_PHOTO ? CH_PHOTO.id : '' });
+}
+function chPick(f){
+  if (!f) return;
+  CH_UP = true; render();
+  tnResize(f).then(d => {
+    google.script.run.withSuccessHandler(r => { CH_UP = false; CH_PHOTO = { id: r.id }; render(); toast('사진을 붙였습니다. 보내기를 눌러 주세요', 2400); })
+      .withFailureHandler(e => { CH_UP = false; render(); toast((e && e.message) || '사진을 올리지 못했습니다', 2500); })
+      .adminTnUploadPhoto(KEY, d, 'image/jpeg');
+  }).catch(e => { CH_UP = false; render(); toast(e.message, 2500); });
+}
+(function chLoop(){ if (!document.hidden) chPoll(); setTimeout(chLoop, TAB === 'ch' ? 5000 : 10000); })();
+document.addEventListener('visibilitychange', () => { if (!document.hidden) chPoll(); });
+
+// ── 일정 달력 ──
+let MO = null, MO_DAY = null;
+function moKey(d){ return d.getFullYear() + '-' + pad(d.getMonth()+1); }
+function nmEl(r){
+  const b = el('button',{cls:'mfix', title:'학생 이름 고치기', on:{click:e => { e.stopPropagation();
+    const v = prompt('학생 이름을 바르게 고쳐 주세요.', r.name); if (v == null) return;
+    const nm = v.trim(); if (!nm || nm === r.name) return;
+    b.disabled = true; b.textContent = '저장 중';
+    google.script.run.withSuccessHandler(x => { r.name = x; render(); })
+      .withFailureHandler(er => { alert((er && er.message) || '고치지 못했습니다.'); b.disabled = false; b.textContent = '수정'; })
+      .renameRow(KEY, r.row, r.name, nm); }}}, '수정');
+  return el('span',{cls:'mnm'}, el('b',{}, r.name), b);
+}
+function moView(){
+  const box = $('list'); box.innerHTML = '';
+  const now = new Date();
+  const T = now.getFullYear() + '-' + pad(now.getMonth()+1) + '-' + pad(now.getDate());
+  if (!MO) MO = moKey(now);
+  const [y, m] = MO.split('-').map(Number);
+  const inMonth = r => r.date && r.date.slice(0,7) === MO;
+  const ab = ROWS.filter(r => r.type === '결석' && inMonth(r));
+  const mk = ROWS.filter(r => r.type === '보강' && r.status === '확정' && inMonth(r));
+  const byDay = {};
+  ab.forEach(r => (byDay[r.date] = byDay[r.date] || { mk:[], ab:[] }).ab.push(r));
+  mk.forEach(r => (byDay[r.date] = byDay[r.date] || { mk:[], ab:[] }).mk.push(r));
+  let tcN = 0;
+  ROWS.filter(r => r.type === '시간변경' && r.status === '확정').forEach(r => {
+    const ks = (r.kind === '계속' ? [r.date] : (r.dates || [r.date])).filter(k => k && k.slice(0,7) === MO);
+    if (ks.length) tcN++;
+    ks.forEach(k => { const d = (byDay[k] = byDay[k] || { mk:[], ab:[] }); (d.tc = d.tc || []).push(r); });
+  });
+  const go = n => { MO = moKey(new Date(y, m - 1 + n, 1)); MO_DAY = null; render(); };
+  const head = el('div',{cls:'mhead'},
+    el('button',{cls:'mnav', on:{click:() => go(-1)}}, '‹'),
+    el('b',{}, y + '년 ' + m + '월'),
+    el('button',{cls:'mnav', on:{click:() => go(1)}}, '›'));
+  const sum = el('p',{cls:'msum'},
+    el('span',{cls:'tg mk'}, '보강'), ' 확정 ' + mk.length + '건   ',
+    el('span',{cls:'tg ab'}, '결석'), ' ' + ab.length + '건   ',
+    el('span',{cls:'tg tc'}, '시간 변경'), ' ' + tcN + '건');
+  const cal = el('div',{cls:'mcal'});
+  ['일','월','화','수','목','금','토'].forEach(d => cal.appendChild(el('div',{cls:'mdow'}, d)));
+  const first = new Date(y, m - 1, 1).getDay();
+  for (let i = 0; i < first; i++) cal.appendChild(el('div',{}));
+  const last = new Date(y, m, 0).getDate();
+  for (let n = 1; n <= last; n++){
+    const key = MO + '-' + pad(n);
+    const d = byDay[key] || { mk:[], ab:[] };
+    const cell = el('button',{cls:'mday' + (key === T ? ' today' : '') + (key === MO_DAY ? ' sel' : ''), on:{click:() => { MO_DAY = MO_DAY === key ? null : key; render(); }}},
+      el('span',{cls:'dn'}, String(n)));
+    const tags = d.mk.map(r => ['mk', r.name]).concat(d.ab.map(r => ['ab', r.name])).concat((d.tc || []).map(r => ['tc', r.name]));
+    const short = nm => { nm = String(nm || '').trim(); return nm.length === 3 ? nm.slice(1) : nm; };
+    tags.slice(0, 3).forEach(([c, nm]) => cell.appendChild(el('span',{cls:'tg ' + c, title: nm}, short(nm))));
+    if (tags.length > 3) cell.appendChild(el('span',{cls:'more'}, '+' + (tags.length - 3)));
+    cal.appendChild(cell);
+  }
+  box.appendChild(el('div',{cls:'card'}, head, sum, cal));
+  const days = (MO_DAY ? [MO_DAY] : Object.keys(byDay).sort()).filter(k => byDay[k]);
+  const list = el('div',{cls:'mlist'});
+  if (!days.length) list.appendChild(el('div',{cls:'help', style:'border:none'}, MO_DAY ? '이 날은 보강·결석이 없습니다.' : '이번 달 보강·결석 내역이 없습니다.'));
+  days.forEach(k => {
+    if (!MO_DAY) list.appendChild(el('div',{cls:'mdate'}, dl(k)));
+    byDay[k].mk.slice().sort((a,b) => String(a.start).localeCompare(String(b.start), undefined, {numeric:true})).forEach(r =>
+      list.appendChild(el('div',{cls:'mrow'}, el('span',{cls:'tg mk'}, '보강'), nmEl(r), el('span',{cls:'mtx'}, r.ride + (r.drop ? ' · 하원 ' + r.drop : '')), r.done ? el('span',{cls:'mok'}, '안내완료') : el('span',{cls:'mno'}, '미안내'))));
+    byDay[k].ab.forEach(r =>
+      list.appendChild(el('div',{cls:'mrow'}, el('span',{cls:'tg ab'}, '결석'), nmEl(r), el('span',{cls:'mtx'}, (r.reason || '사유 없음') + (r.memo ? ' · ' + r.memo : '')))));
+    (byDay[k].tc || []).forEach(r =>
+      list.appendChild(el('div',{cls:'mrow'}, el('span',{cls:'tg tc'}, r.kind === '계속' ? '변경 시작' : '시간 변경'), nmEl(r), el('span',{cls:'mtx'}, (r.from ? r.from + ' → ' : '') + r.ride + (r.kind === '계속' ? ' · 매주 ' + (r.days || []).join('·') : '')))));
+  });
+  box.appendChild(el('div',{cls:'card'}, el('div',{cls:'sec'}, MO_DAY ? dl(MO_DAY) + ' 내역' : m + '월 날짜별 내역'), list));
+  const st = {};
+  ab.forEach(r => (st[r.name] = st[r.name] || { a:0, k:0 }).a++);
+  mk.forEach(r => (st[r.name] = st[r.name] || { a:0, k:0 }).k++);
+  const names = Object.keys(st).sort((a,b) => (st[b].a - st[b].k) - (st[a].a - st[a].k) || a.localeCompare(b, 'ko'));
+  if (names.length) {
+    const tb = el('table',{cls:'stbl'}, el('tr',{}, el('th',{},'학생'), el('th',{},'결석'), el('th',{},'보강'), el('th',{},'남은 보강')));
+    names.forEach(nm => { const s = st[nm], left = s.a - s.k;
+      tb.appendChild(el('tr',{}, el('td',{}, nm), el('td',{}, String(s.a)), el('td',{}, String(s.k)), el('td',{cls: left > 0 ? 'left' : ''}, left > 0 ? left + '회' : '-'))); });
+    box.appendChild(el('div',{cls:'card'}, el('div',{cls:'sec'}, m + '월 학생별 정리'), el('p',{cls:'help'}, '이번 달 결석 횟수와 확정된 보강 횟수입니다. 지난달 결석을 이번 달에 보강한 경우는 따로 맞춰 보셔야 합니다.'), tb));
+  }
+}
+function csView(){
+  const td = new Date(); const T = td.getFullYear() + '-' + pad(td.getMonth()+1) + '-' + pad(td.getDate());
+  const isPast = r => r.done && (r.mode === '전화' || r.date < T);
+  const past = CS.filter(isPast).length;
+  const key = r => r.mode === '방문' ? r.date + ' ' + r.time.padStart(5,'0') : '0';
+  const list = (PAST ? CS : CS.filter(r => !isPast(r))).slice().sort((a,b) => recentFirst(a, b, key));
+  const box = $('list'); box.innerHTML = '';
+  box.appendChild(el('div',{cls:'card'}, el('div',{cls:'sec'},'입학 상담 신청 페이지'), el('p',{cls:'help'},'처음 문의하는 학부모님이 방문·전화 상담을 신청하는 페이지입니다. 블로그·인스타·문의 답장에 붙여넣을 링크를 복사할 수 있고, 들어온 신청은 아래에 쌓입니다.'),
+    el('div',{cls:'acts'}, el('button',{cls:'btn pri', on:{click:() => copy('https://script.google.com/macros/s/AKfycbyHF7n45c1megX__O8njci1_iwdSp65hH0Q23R0VwfR_oBo5C1ZOeNhqhpjyyjwI_Zh/exec?p=consult')}}, '링크 복사'))));
+  { const on = !!DATA.askOpen; const sw = el('button',{cls:'btn' + (on ? '' : ' pri'), on:{click:() => { sw.disabled = true; google.script.run.withSuccessHandler(v => { DATA.askOpen = v; toast(v ? '학습 상담 신청을 열었습니다' : '학습 상담 신청을 닫았습니다'); render(); }).withFailureHandler(e => { sw.disabled = false; toast((e && e.message) || '바꾸지 못했습니다'); }).adminSetAskOpen(KEY, !on); }}}, on ? '상담 주간 끝내기 (닫기)' : '상담 주간 시작 (열기)');
+    box.appendChild(el('div',{cls:'card', style: on ? 'border:2px solid var(--green)' : ''}, el('div',{cls:'sec'}, '재원생 학습 상담 주간 · ' + (on ? '열림' : '닫힘')), el('p',{cls:'help'}, on ? '지금 학부모님 화면에 「학습 상담」 탭이 보입니다. 신청은 아래에 "재원 전화"로 쌓입니다. 상담 주간이 끝나면 닫아 주세요.' : '열면 학부모님 화면에 「학습 상담」 탭이 생겨 재원생 학부모님이 궁금한 점을 남길 수 있습니다. 닫으면 탭이 사라집니다.'), el('div',{cls:'acts'}, sw))); }
+  if (!list.length) box.appendChild(el('div',{cls:'empty'}, '아직 들어온 상담 신청이 없습니다.'));
+  list.forEach(r => box.appendChild(csCard(r)));
+  if (past) box.appendChild(el('div',{cls:'acts', style:'justify-content:center;margin:8px 0 24px'},
+    el('button',{cls:'btn ghost', on:{click:() => { PAST = !PAST; render(); }}}, PAST ? '지난 내역 숨기기' : '지난 내역 보기 (' + past + '건)')));
+}
+function call(row, action, p, btn){
+  if (btn) btn.disabled = true;
+  google.script.run.withSuccessHandler(o => {
+      if (o.deleted) { toast('삭제했습니다'); return load(); }
+      ROWS = ROWS.map(r => r.row === o.row ? o : r); render();
+      if (o.sent === 'ok') toast('학부모님께 알림톡을 보냈습니다');
+      else if (o.sent && o.sent !== 'off') toast('알림톡 실패: ' + o.sent + ' · 안내문을 복사해 보내 주세요', 3500);
+    })
+    .withFailureHandler(e => { if (btn) btn.disabled = false; toast((e && e.message) || '저장하지 못했습니다.'); })
+    .adminUpdate(KEY, row, action, p || {});
+}
+
+function copy(text){
+  const ta = document.createElement('textarea'); ta.value = text; ta.setAttribute('readonly',''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+  document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0, text.length);
+  let ok = false; try { ok = document.execCommand('copy'); } catch(e) {}
+  ta.remove();
+  if (ok) return toast('복사되었습니다. 카톡에 붙여넣어 주세요');
+  if (navigator.clipboard) navigator.clipboard.writeText(text).then(() => toast('복사되었습니다. 카톡에 붙여넣어 주세요')).catch(() => toast('문구를 길게 눌러 복사해 주세요'));
+  else toast('문구를 길게 눌러 복사해 주세요');
+}
+
+function counts(){
+  return {
+    wait: ROWS.filter(r => r.type === '보강' && !r.done).length,
+    ab: ROWS.filter(r => r.type === '결석' && !r.done).length,
+    tc: ROWS.filter(r => r.type === '시간변경' && !r.done).length,
+    cs: CS.filter(r => !r.done).length,
+    car: CAR ? CAR.rows.filter(r => !r.done).length : 0,
+  };
+}
+function render(){
+  const c = counts();
+  document.querySelectorAll('.tab').forEach(t => {
+    t.classList.toggle('on', t.dataset.t === TAB);
+    const label = { tn:'한 장면 보내기', wait:'보강 처리', done:'안내 완료', ab:'결석', tc:'시간 변경', car:'차량 변경', cs:'상담 신청', mo:'일정 달력', cl:'시간 마감', wk:'겨울 특강', ch:'알림', fb:'피드백', rm:'아이 방', sp:'칭찬 도장' }[t.dataset.t];
+    t.textContent = label;
+    const n = t.dataset.t === 'wait' ? c.wait : t.dataset.t === 'ab' ? c.ab : t.dataset.t === 'cs' ? c.cs : t.dataset.t === 'tc' ? c.tc : t.dataset.t === 'car' ? c.car : 0;
+    if (n) t.appendChild(el('span',{cls:'n'}, String(n)));
+  });
+  if (TAB === 'tn') return tnView();
+  chBadge();
+  if (TAB === 'ch') { const p = $('chPop'); if (p) p.remove(); return chView(); }
+  if (TAB === 'fb') return afbView();
+  if (TAB === 'rm') return rmView();
+  if (TAB === 'sp') return stView();
+  if (TAB === 'cl') return closeView();
+  if (TAB === 'wk') return wkView();
+  if (TAB === 'cs') return csView();
+  if (TAB === 'mo') return moView();
+  if (TAB === 'tc') return tcView();
+  if (TAB === 'car') return carView();
+  let list, past = 0;
+  const td = new Date(); const TODAY = td.getFullYear() + '-' + pad(td.getMonth()+1) + '-' + pad(td.getDate());
+  const cut = arr => { past = arr.filter(r => r.date < TODAY).length; return PAST ? arr : arr.filter(r => r.date >= TODAY); };
+  if (TAB === 'wait') list = ROWS.filter(r => r.type === '보강' && !r.done).sort((a,b) => a.date.localeCompare(b.date));
+  else if (TAB === 'done') list = cut(ROWS.filter(r => r.type === '보강' && r.done)).sort((a,b) => b.date.localeCompare(a.date) || b.row - a.row);
+  else list = cut(ROWS.filter(r => r.type === '결석')).sort((a,b) => recentFirst(a, b, r => r.date));
+  const box = $('list'); box.innerHTML = '';
+  if (!list.length) box.appendChild(el('div',{cls:'empty'}, TAB === 'wait' ? '처리할 보강 신청이 없습니다.' : '예정된 내역이 없습니다.'));
+  list.forEach(r => box.appendChild(r.type === '보강' ? mkCard(r) : abCard(r)));
+  if (TAB !== 'wait' && past) box.appendChild(el('div',{cls:'acts', style:'justify-content:center;margin:8px 0 24px'},
+    el('button',{cls:'btn ghost', on:{click:() => { PAST = !PAST; render(); }}}, PAST ? '지난 내역 숨기기' : `지난 내역 보기 (${past}건)`)));
+}
+
+// ── 「수정」 칸: 카드 안에 고칠 칸을 펼침 (fields: [키, 이름표, 값, 여러 줄?]) ──
+function editBtn(kind, r, fields, after){
+  return el('button',{cls:'btn ghost', style:'font-size:13px;padding:6px 12px', on:{click:e => {
+    const card = e.target.closest('.card'); const old = card.querySelector('.epanel'); if (old) { old.remove(); return; }
+    const ins = {};
+    const p = el('div',{cls:'panel epanel'});
+    fields.forEach(([k, lab, v, big]) => { const i = el(big ? 'textarea' : 'input', big ? {rows:'2'} : {type:'text'}); i.value = v || ''; ins[k] = i; p.append(el('label',{}, lab), i); });
+    const sv = el('button',{cls:'btn pri', on:{click:() => {
+      const f = {}; Object.keys(ins).forEach(k => f[k] = ins[k].value.trim());
+      if (!f.name) return toast('학생 이름을 적어 주세요');
+      sv.disabled = true; sv.textContent = '저장 중...';
+      google.script.run.withSuccessHandler(o => { toast('고쳤습니다'); after(o); })
+        .withFailureHandler(er => { sv.disabled = false; sv.textContent = '저장'; toast((er && er.message) || '고치지 못했습니다', 3000); })
+        .adminEditRec(KEY, kind, r.row, r.name, f);
+    }}}, '저장');
+    p.append(el('div',{cls:'acts'}, sv, el('button',{cls:'btn', on:{click:() => p.remove()}}, '닫기')));
+    const at = e.target.closest('.acts'); card.insertBefore(p, at); ins.name.focus();
+  }}}, '수정');
+}
+const editRow = (...b) => el('div',{cls:'acts', style:'justify-content:flex-end;gap:6px'}, ...b);
+let PAST = false;
+function delBtn(r){
+  const f = [['name','학생 이름',r.name],['phone','학부모 연락처',r.phone]];
+  if (r.type === '결석') f.push(['reason','사유',r.reason]);
+  f.push(['memo','전달 사항',r.memo,1]);
+  return el('span',{style:'margin-left:auto;display:inline-flex;gap:6px'},
+    editBtn('req', r, f, o => { ROWS = ROWS.map(x => x.row === o.row ? o : x); render(); }),
+    el('button',{cls:'btn ghost', style:'font-size:13px;padding:6px 12px', on:{click:e => {
+    if (!confirm(`${r.name} 학생 ${r.dateLabel} ${r.type} 내역을 삭제할까요?`)) return;
+    call(r.row, 'delete', {}, e.target);
+  }}}, '삭제'));
+}
+// ── 수업 시간 변경 ──
+function tcCard(r){
+  const kd = el('span',{cls:'kd ' + (r.kind === '계속' ? 'k2' : 'k1')}, r.kind === '계속' ? '정규 시간 변경' : '이번만 변경');
+  const card = el('div',{cls:'card'},
+    el('div',{cls:'top'}, el('span',{cls:'name'}, r.name, kd), badge(r)),
+    rows([[r.kind === '계속' ? '적용' : '변경일', r.when], ['기존', r.from], ['변경', r.ride], ['하원', r.drop ? r.drop + ' 하차 (차량)' : '직접'], ['연락처', r.phone], ['전달', r.memo]]),
+    el('div',{cls:'meta'}, '접수 ' + r.ts));
+  const acts = el('div',{cls:'acts'});
+  if (!r.status) {
+    acts.append(
+      el('button',{cls:'btn pri', on:{click:e => call(r.row,'confirm',{},e.target)}},'확정'),
+      el('button',{cls:'btn', on:{click:() => {
+        const old = card.querySelector('.panel'); if (old) { old.remove(); return; }
+        const t = el('input',{type:'text', placeholder:'예: 화·목 4:00'});
+        const panel = el('div',{cls:'panel'}, el('label',{},'가능한 요일·시간'), t,
+          el('button',{cls:'btn pri', on:{click:e => { if (!t.value.trim()) return toast('가능한 요일·시간을 적어 주세요'); call(r.row,'propose',{text:t.value.trim()}, e.target); }}},'제안 저장'));
+        card.insertBefore(panel, acts.nextSibling); t.focus();
+      }}},'다른 시간 제안'));
+  } else {
+    acts.appendChild(el('button',{cls:'btn', on:{click:e => call(r.row,'reset',{},e.target)}},'처음으로'));
+  }
+  card.appendChild(acts);
+  if (r.msg) {
+    card.appendChild(el('div',{cls:'msg'}, r.msg));
+    card.appendChild(el('div',{cls:'acts'}, el('button',{cls:'btn pri', on:{click:() => copy(r.msg)}},'안내문 복사')));
+    const chk = el('input',{type:'checkbox'}); chk.checked = r.done;
+    chk.addEventListener('change', () => call(r.row,'done',{value:chk.checked}, chk));
+    card.appendChild(el('label',{cls:'check'}, chk, '카톡 안내 완료'));
+  }
+  card.appendChild(el('div',{cls:'acts'}, delBtn(r)));
+  return card;
+}
+const recentFirst = (a,b,k) => (a.done - b.done) || (a.done ? k(b).localeCompare(k(a)) || (b.row - a.row) : k(a).localeCompare(k(b)));
+function tcView(){
+  const td = new Date(); const T = td.getFullYear() + '-' + pad(td.getMonth()+1) + '-' + pad(td.getDate());
+  const last = r => r.kind === '계속' ? r.date : ((r.dates || []).slice(-1)[0] || r.date);
+  const all = ROWS.filter(r => r.type === '시간변경');
+  const isPast = r => r.done && last(r) < T;
+  const past = all.filter(isPast).length;
+  const list = all.filter(r => PAST || !isPast(r)).sort((a,b) => recentFirst(a, b, r => r.date));
+  const box = $('list'); box.innerHTML = '';
+  box.appendChild(el('p',{cls:'help', style:'margin:0 4px 12px'}, '학부모님이 신청한 수업 시간 변경입니다. 이번만 변경은 고른 날짜만, 정규 시간 변경은 시작일부터 매주 바뀝니다. 확정하면 월별 달력에도 표시됩니다.'));
+  if (!list.length) box.appendChild(el('div',{cls:'empty'}, '들어온 시간 변경 신청이 없습니다.'));
+  list.forEach(r => box.appendChild(tcCard(r)));
+  if (past) box.appendChild(el('div',{cls:'acts', style:'justify-content:center;margin:8px 0 24px'},
+    el('button',{cls:'btn ghost', on:{click:() => { PAST = !PAST; render(); }}}, PAST ? '지난 내역 숨기기' : '지난 내역 보기 (' + past + '건)')));
+}
+function badge(r){
+  if (r.done) return el('span',{cls:'badge b-done'},'안내 완료');
+  if (r.status === '확정') return el('span',{cls:'badge b-ok'},'확정');
+  if (r.status === '변경 필요') return el('span',{cls:'badge b-chg'}, r.prop && r.prop.reapply ? '다시 신청 요청' : '다른 시간 제안');
+  return el('span',{cls:'badge b-wait'},'대기');
+}
+function rows(pairs){
+  const dl = el('dl',{cls:'rows'});
+  pairs.filter(p => p[1]).forEach(([k,v]) => { dl.appendChild(el('dt',{},k)); dl.appendChild(el('dd',{},v)); });
+  return dl;
+}
+
+// 이름을 누르면 학부모 연락처 + 전화·문자
+function nm(r){
+  return el('span',{cls:'name tap', on:{click:e => {
+    const card = e.target.closest('.card'); const old = card.querySelector('.ph'); if (old) { old.remove(); return; }
+    const tel = String(r.phone || '').replace(/\D/g, '');
+    const box = el('div',{cls:'ph'}, el('b',{}, r.phone || '연락처 없음'),
+      tel ? el('a',{cls:'btn', href:'tel:' + tel}, '전화') : null,
+      tel ? el('a',{cls:'btn pri', href:'sms:' + tel}, '문자') : null);
+    card.querySelector('.top').after(box);
+  }}}, r.name, el('span',{cls:'tapi'}, '☎'));
+}
+function mkCard(r){
+  const card = el('div',{cls:'card'},
+    el('div',{cls:'top'}, nm(r), badge(r)),
+    rows([['보강일', r.dateLabel], ['등원', r.ride], ['하원', r.drop ? `${r.drop} 하차 (차량)` : '직접'], ['전달', r.memo]]),
+    el('div',{cls:'meta'}, `접수 ${r.ts}`)
+  );
+  const acts = el('div',{cls:'acts'});
+  if (!r.status) {
+    const ok = el('button',{cls:'btn pri', on:{click:e => call(r.row,'confirm',{},e.target)}},'확정');
+    const pr = el('button',{cls:'btn', on:{click:e => { if (confirm(`${r.name} 학생 보강을 '다른 날짜로 다시 신청' 요청으로 처리할까요?`)) call(r.row,'reapply',{},e.target); }}},'다시 신청 요청');
+    acts.append(ok, pr);
+  } else {
+    if (r.status === '변경 필요' && !(r.prop && r.prop.reapply)) acts.appendChild(el('button',{cls:'btn ghost', on:{click:e => call(r.row,'accept',{},e.target)}},'제안 일정으로 확정'));
+    acts.appendChild(el('button',{cls:'btn', on:{click:e => call(r.row,'reset',{},e.target)}},'처음으로'));
+  }
+  card.appendChild(acts);
+
+  if (r.msg) {
+    card.appendChild(el('div',{cls:'msg'}, r.msg));
+    const a2 = el('div',{cls:'acts'}, el('button',{cls:'btn pri', on:{click:() => copy(r.msg)}},'안내문 복사'));
+    card.appendChild(a2);
+    const chk = el('input',{type:'checkbox'}); chk.checked = r.done;
+    chk.addEventListener('change', () => call(r.row,'done',{value:chk.checked}, chk));
+    card.appendChild(el('label',{cls:'check'}, chk, '카톡 안내 완료'));
+  }
+  card.appendChild(el('div',{cls:'acts'}, delBtn(r)));
+  return card;
+}
+
+function togglePanel(card, r){
+  const old = card.querySelector('.panel'); if (old) { old.remove(); return; }
+  const now = new Date(); const t = new Date(now.getFullYear(), now.getMonth(), now.getDate()+1);
+  const min = `${t.getFullYear()}-${pad(t.getMonth()+1)}-${pad(t.getDate())}`;
+  const date = el('input',{type:'date', min}); date.value = r.date >= min ? r.date : min;
+  const sel = el('select',{});
+  const opts = r.mode === '차량'
+    ? (DATA.map[r.stop] || []).map(o => [o.t, `${o.t} 탑승 · ${o.car} 차량 · 수업 ${o.arr}`, o.arr])
+    : DATA.starts.map(s => [s, `${s} 수업`, s]);
+  const C = (typeof CL !== 'undefined' && CL) || DATA.closed || { weekly: [], days: {} };
+  const dayShut = k => { const [y,m,d] = k.split('-').map(Number); const dw = new Date(y,m-1,d).getDay(); return C.weekly.includes(dw) || (C.days[k] || []).includes('전체'); };
+  const info = el('div',{cls:'help', style:'margin:4px 0 0;color:#a04a2a'});
+  function fillTimes(){
+    const prev = sel.value; sel.innerHTML = ''; info.textContent = '';
+    if (!date.value) return;
+    if (dayShut(date.value)) { info.textContent = '마감된 날짜입니다. 다른 날짜를 골라 주세요.'; sel.appendChild(el('option',{value:''},'선택할 수 없는 날짜')); return; }
+    const shut = C.days[date.value] || [];
+    let n = 0;
+    opts.forEach(([v,l,cls]) => { if (shut.includes(cls)) return; n++; const o = el('option',{value:v}, l); if (v === prev) o.selected = true; sel.appendChild(o); });
+    if (!n) { info.textContent = '이 날짜는 모든 시간이 마감입니다.'; sel.appendChild(el('option',{value:''},'가능한 시간 없음')); }
+  }
+  // 그날 마감이면 다음 가능한 날로 시작
+  for (let i = 0; i < 60 && date.value && dayShut(date.value); i++) { const [y,m,d] = date.value.split('-').map(Number); const nx = new Date(y,m-1,d+1); date.value = `${nx.getFullYear()}-${pad(nx.getMonth()+1)}-${pad(nx.getDate())}`; }
+  date.addEventListener('change', fillTimes);
+  fillTimes();
+  const NOTES = [
+    '해당 시간은 보강 인원이 모두 찼습니다.',
+    '그날은 학원 일정으로 보강을 받지 않습니다.',
+    '해당 시간은 차량 좌석이 부족합니다.',
+    '담당 선생님 일정으로 해당 시간 수업이 어렵습니다.',
+  ];
+  const nsel = el('select',{});
+  nsel.appendChild(el('option',{value:''},'문구 없음 (기본: 수업 사정상 어렵습니다)'));
+  NOTES.forEach(t => nsel.appendChild(el('option',{value:t}, t)));
+  nsel.appendChild(el('option',{value:'__own'},'직접 입력'));
+  const own = el('textarea',{rows:'2', maxlength:'150', placeholder:'학부모님께 전할 문구를 적어 주세요', style:'width:100%;box-sizing:border-box;margin-top:6px;display:none'});
+  nsel.addEventListener('change', () => { own.style.display = nsel.value === '__own' ? '' : 'none'; if (nsel.value === '__own') own.focus(); });
+  const save = el('button',{cls:'btn pri', on:{click:e => {
+    if (!sel.value) return toast('제안할 날짜와 시간을 다시 골라 주세요');
+    const note = nsel.value === '__own' ? own.value.trim() : nsel.value;
+    if (nsel.value === '__own' && !note) return toast('직접 입력할 문구를 적어 주세요');
+    call(r.row,'propose',{date:date.value, time:sel.value, note}, e.target);
+  }}},'제안 저장');
+  const panel = el('div',{cls:'panel'},
+    el('label',{},'제안 날짜'), date, info,
+    el('label',{}, r.mode === '차량' ? `${r.stop} 탑승 시간` : '수업 시간'), sel,
+    el('label',{},'안내 문구'), nsel, own,
+    save);
+  card.insertBefore(panel, card.querySelector('.acts').nextSibling);
+}
+
+function abCard(r){
+  const card = el('div',{cls:'card'},
+    el('div',{cls:'top'}, nm(r), r.done ? el('span',{cls:'badge b-done'},'확인') : el('span',{cls:'badge b-wait'}, r.sameDay ? '당일 통보' : '사전 통보')),
+    rows([['결석일', r.dateLabel], ['사유', r.reason], ['전달', r.memo]]),
+    el('div',{cls:'meta'}, `접수 ${r.ts}`)
+  );
+  const chk = el('input',{type:'checkbox'}); chk.checked = r.done;
+  chk.addEventListener('change', () => call(r.row,'done',{value:chk.checked}, chk));
+  card.appendChild(el('label',{cls:'check'}, chk, '확인'));
+  card.appendChild(el('div',{cls:'acts'}, delBtn(r)));
+  return card;
+}
+
+// ── 시간 마감 ──
+let CL = DATA.closed || { weekly: [], days: {} };
+let ARR = DATA.arrivals || [];
+const _t = new Date(); _t.setDate(_t.getDate() + 1);
+let CL_DATE = `${_t.getFullYear()}-${pad(_t.getMonth()+1)}-${pad(_t.getDate())}`;
+let CL_DOW = 1;
+const DOWS = ['일','월','화','수','목','금','토'];
+function dl(s){ const [y,m,d] = s.split('-').map(Number); return `${m}월 ${d}일 (${DOWS[new Date(y,m-1,d).getDay()]})`; }
+function setClosed(date, time, on, btn){
+  if (btn) btn.disabled = true;
+  google.script.run.withSuccessHandler(c => { CL = c; render(); toast(on ? '마감했습니다' : '마감을 풀었습니다'); })
+    .withFailureHandler(e => { if (btn) btn.disabled = false; toast((e && e.message) || '저장하지 못했습니다.'); })
+    .adminSetClosed(KEY, date, String(time), on);
+}
+let SOL = null;
+function solapiCard(){
+  const card = el('div',{cls:'card'}, el('div',{cls:'sec'},'알림톡 설정'));
+  if (!SOL) {
+    card.appendChild(el('p',{cls:'help'},'불러오는 중...'));
+    google.script.run.withSuccessHandler(s => { SOL = s; if (TAB === 'cl') render(); }).adminSolapi(KEY);
+    return card;
+  }
+  if (SOL.on && !SOL.edit) {
+    const test = el('button',{cls:'btn', on:{click:e => {
+      e.target.disabled = true;
+      google.script.run.withSuccessHandler(() => { e.target.disabled = false; toast('원장님 휴대폰으로 테스트 알림톡을 보냈습니다', 3000); })
+        .withFailureHandler(er => { e.target.disabled = false; toast((er && er.message) || '보내지 못했습니다.', 4000); })
+        .adminTestSolapi(KEY);
+    }}},'테스트 발송');
+    const chg = el('button',{cls:'btn ghost', on:{click:() => { SOL.edit = true; render(); }}},'키 변경');
+    card.appendChild(el('p',{cls:'help'},'연결됨 · 알림톡이 자동으로 갑니다.'));
+    card.appendChild(el('div',{cls:'acts'}, test, chg));
+    return card;
+  }
+  card.appendChild(el('p',{cls:'help'}, SOL.on
+    ? '새 API Key와 API Secret을 넣고 저장해 주세요.'
+    : '아직 연결 전입니다. 솔라피에서 발급받은 API Key와 API Secret을 넣고 저장해 주세요.'));
+  const k = el('input',{type:'text', cls:'dinput', placeholder: SOL.on ? 'API Key (바꿀 때만 입력)' : 'API Key', autocomplete:'off'});
+  const s = el('input',{type:'password', cls:'dinput', placeholder: SOL.on ? 'API Secret (바꿀 때만 입력)' : 'API Secret', autocomplete:'new-password'});
+  const f = el('input',{type:'tel', cls:'dinput', placeholder:'발신번호 (솔라피에 등록한 번호, 선택)'}); f.value = SOL.from || '';
+  const save = el('button',{cls:'btn pri', on:{click:e => {
+    if (!SOL.on && (!k.value.trim() || !s.value.trim())) return toast('API Key와 Secret을 모두 넣어 주세요');
+    e.target.disabled = true;
+    google.script.run.withSuccessHandler(x => { SOL = x; render(); toast('저장했습니다'); })
+      .withFailureHandler(er => { e.target.disabled = false; toast((er && er.message) || '저장하지 못했습니다.'); })
+      .adminSetSolapi(KEY, k.value.trim(), s.value.trim(), f.value.trim());
+  }}},'저장');
+  const acts = el('div',{cls:'acts'}, save);
+  if (SOL.on) acts.appendChild(el('button',{cls:'btn', on:{click:e => {
+    e.target.disabled = true;
+    google.script.run.withSuccessHandler(() => { e.target.disabled = false; toast('원장님 휴대폰으로 테스트 알림톡을 보냈습니다', 3000); })
+      .withFailureHandler(er => { e.target.disabled = false; toast((er && er.message) || '보내지 못했습니다.', 4000); })
+      .adminTestSolapi(KEY);
+  }}},'테스트 발송'));
+  card.append(k, s, f, acts);
+  return card;
+}
+function closeView(){
+  const box = $('list'); box.innerHTML = '';
+  box.appendChild(solapiCard());
+  const WT = CL.weeklyT || {};
+  const OWN = CL.own || CL.days;
+  const tsort = a => a.slice().sort((x,y)=>x.localeCompare(y,undefined,{numeric:true}));
+  // 요일별 시간 마감 (매주 반복)
+  const dw = el('div',{cls:'chips'});
+  [1,2,3,4,5,6,0].forEach(i => {
+    const n = (WT[i] || []).length, full = CL.weekly.includes(i);
+    const mark = full ? ' ·휴무' : n ? ` ·${n}` : '';
+    dw.appendChild(el('button',{cls:'chip', style: CL_DOW === i ? 'border:2px solid var(--green);color:var(--green);font-weight:700;background:#fff' : '', on:{click:() => { CL_DOW = i; render(); }}}, DOWS[i] + mark));
+  });
+  const wT = WT[CL_DOW] || [];
+  const wAll = CL.weekly.includes(CL_DOW);
+  const wc = el('div',{cls:'chips', style:'margin-top:10px'});
+  wc.appendChild(el('button',{cls:'chip'+(wAll?' on':''), on:{click:e => setClosed('매주', CL_DOW, !wAll, e.target)}},'하루 전체'));
+  DATA.starts.forEach(t => { const on = wAll || wT.includes(t); wc.appendChild(el('button',{cls:'chip'+(on?' on':''), ...(wAll ? {disabled:''} : {}), on:{click:e => setClosed('매주', CL_DOW + '|' + t, !wT.includes(t), e.target)}}, t)); });
+  const ws = el('div',{cls:'clist'});
+  const wdays = [1,2,3,4,5,6,0].filter(i => CL.weekly.includes(i) || (WT[i] || []).length);
+  if (!wdays.length) ws.appendChild(el('div',{}, '요일별 마감이 없습니다.'));
+  wdays.forEach(i => ws.appendChild(el('div',{}, `매주 ${DOWS[i]}요일 · ${CL.weekly.includes(i) ? '하루 전체' : tsort(WT[i]).join(', ')}`)));
+  box.appendChild(el('div',{cls:'card'}, el('div',{cls:'sec'},'요일별 시간 마감'),
+    el('p',{cls:'help'},'요일을 고른 뒤 막을 수업 시간을 누르세요. 초록이 마감이며 매주 반복됩니다. 다시 누르면 풀립니다. 차량 탑승 시간도 수업 시간 기준으로 함께 막힙니다.'),
+    dw, wc, el('div',{style:'margin-top:12px'}, ws)));
+  // 특정 날짜 마감 (공휴일·행사 등)
+  const date = el('input',{type:'date', cls:'dinput'}); date.value = CL_DATE;
+  date.addEventListener('change', () => { if (date.value) { CL_DATE = date.value; render(); } });
+  const [cy,cm,cd] = CL_DATE.split('-').map(Number);
+  const cdow = new Date(cy,cm-1,cd).getDay();
+  const fromWeek = WT[cdow] || [];
+  const list = OWN[CL_DATE] || [];
+  const allOn = list.includes('전체');
+  const chips = el('div',{cls:'chips'});
+  chips.appendChild(el('button',{cls:'chip'+(allOn?' on':''), on:{click:e => setClosed(CL_DATE,'전체',!allOn,e.target)}},'하루 전체'));
+  DATA.starts.forEach(t => {
+    const wkOn = fromWeek.includes(t) || CL.weekly.includes(cdow);
+    const on = list.includes(t);
+    chips.appendChild(el('button',{cls:'chip'+(on||wkOn?' on':''), ...(wkOn && !on ? {disabled:'', title:'요일별 마감'} : {}), on:{click:e => setClosed(CL_DATE,t,!on,e.target)}}, t));
+  });
+  box.appendChild(el('div',{cls:'card'}, el('div',{cls:'sec'},'특정 날짜 마감'), el('p',{cls:'help'},'공휴일·행사처럼 그날만 막을 때 씁니다. 요일별로 막힌 시간은 이미 초록으로 표시되며 여기서는 풀 수 없습니다.'), date, chips));
+  // 예정된 날짜 마감
+  const keys = Object.keys(OWN).sort();
+  const cl = el('div',{cls:'clist'});
+  if (!keys.length) cl.appendChild(el('div',{}, '예정된 날짜 마감이 없습니다.'));
+  keys.forEach(k => { const v = OWN[k]; cl.appendChild(el('div',{}, `${dl(k)} · ${v.includes('전체') ? '하루 전체' : tsort(v).join(', ')}`)); });
+  box.appendChild(el('div',{cls:'card'}, el('div',{cls:'sec'},'예정된 날짜 마감'), cl));
+  // 차량 도착 → 수업 시간
+  const tbl = el('div',{cls:'clist'});
+  ARR.forEach(a => {
+    const sel = el('select',{cls:'dinput', style:'width:auto;margin:0 0 0 8px;padding:6px 10px'});
+    DATA.starts.forEach(s => { const o = el('option',{value:s}, `${s} 수업`); if (s === a.cls) o.selected = true; sel.appendChild(o); });
+    sel.addEventListener('change', () => {
+      sel.disabled = true;
+      google.script.run.withSuccessHandler(d => { DATA = d; ARR = d.arrivals; CL = d.closed; render(); toast('수업 시간을 바꿨습니다'); })
+        .withFailureHandler(e => { sel.disabled = false; toast((e && e.message) || '저장하지 못했습니다.'); })
+        .adminSetClassFix(KEY, a.at, sel.value);
+    });
+    tbl.appendChild(el('div',{style:'display:flex;align-items:center;justify-content:space-between'}, el('span',{}, `${a.at} 도착 (${a.cars})`), sel));
+  });
+  box.appendChild(el('div',{cls:'card'}, el('div',{cls:'sec'},'차량 도착 → 수업 시간'), el('p',{cls:'help'},'차량이 학원에 도착하는 시간별로 수업 시작 시간을 정합니다. 바꾸면 신청 화면과 안내 문구에 바로 반영됩니다.'), tbl));
+}
+
+// ── 차량 변경 ──
+function carCall(row, action, p, btn){
+  if (btn) btn.disabled = true;
+  google.script.run.withSuccessHandler(o => {
+      if (o && o.deleted) { toast('삭제했습니다'); return load(); }
+      if (o) CAR.rows = CAR.rows.map(r => r.row === o.row ? o : r);
+      render();
+    })
+    .withFailureHandler(e => { if (btn) btn.disabled = false; toast((e && e.message) || '저장하지 못했습니다.'); })
+    .carAdminUpdate(KEY, row, action, p || {});
+}
+function carCard(r){
+  const urgent = r.kind === '차를 놓쳤어요';
+  const ride = r.kind.indexOf('탈게요') >= 0;
+  const kd = el('span',{cls:'kd ' + (urgent ? 'k3' : ride ? 'k1' : 'k2')}, urgent ? '놓침 · 급함' : ride ? '탑승 추가' : '안 타요');
+  const card = el('div',{cls:'card'},
+    el('div',{cls:'top'}, el('div',{}, nm(r), kd), r.done ? el('span',{cls:'badge b-done'},'확인') : el('span',{cls:'badge b-wait'},'대기')),
+    rows([['날짜', r.dateLabel], ['차량', r.dir + ' · ' + r.car], ['내용', r.kind], ['메모', r.memo], ['알림', r.log]]),
+    el('div',{cls:'meta'}, '접수 ' + r.ts));
+  if (urgent && !r.done) card.style.borderColor = '#D9A39B';
+  const chk = el('input',{type:'checkbox'}); chk.checked = r.done;
+  chk.addEventListener('change', () => carCall(r.row,'done',{value:chk.checked}, chk));
+  card.appendChild(el('label',{cls:'check'}, chk, '확인'));
+  card.appendChild(editRow(editBtn('car', r, [['name','학생 이름',r.name],['phone','연락처',r.phone],['memo','메모',r.memo,1]], o => { CAR.rows = CAR.rows.map(x => x.row === o.row ? o : x); render(); }), el('button',{cls:'btn ghost', style:'font-size:13px;padding:6px 12px', on:{click:e => {
+    if (!confirm(r.name + ' 학생 ' + r.dateLabel + ' 차량 변경 내역을 삭제할까요?')) return;
+    carCall(r.row,'delete',{},e.target);
+  }}}, '삭제')));
+  return card;
+}
+function carView(){
+  const box = $('list'); box.innerHTML = '';
+  if (!CAR) { box.appendChild(el('div',{cls:'empty'}, '불러오는 중...')); return; }
+  if (CAR.err) { box.appendChild(el('div',{cls:'empty'}, CAR.err)); return; }
+  const td = new Date(); const T = td.getFullYear() + '-' + pad(td.getMonth()+1) + '-' + pad(td.getDate());
+  const isPast = r => r.done && r.date < T;
+  const past = CAR.rows.filter(isPast).length;
+  const U = r => r.kind === '차를 놓쳤어요' ? 1 : 0;
+  const list = CAR.rows.filter(r => PAST || !isPast(r)).sort((a,b) => (a.done - b.done) || (U(b) - U(a)) || recentFirst(a, b, r => r.date));
+  box.appendChild(el('p',{cls:'help', style:'margin:0 4px 12px'}, '학부모님이 보낸 차량 변경입니다. 학부모님께는 도우미 선생님 번호로 직접 연락하시라고 안내하고, 원장님께는 알림톡이 갑니다. 확인하셨으면 확인에 체크해 주세요.'));
+
+  if (!list.length) box.appendChild(el('div',{cls:'empty'}, '들어온 차량 변경이 없습니다.'));
+  list.forEach(r => box.appendChild(carCard(r)));
+  if (past) box.appendChild(el('div',{cls:'acts', style:'justify-content:center;margin:8px 0 24px'},
+    el('button',{cls:'btn ghost', on:{click:() => { PAST = !PAST; render(); }}}, PAST ? '지난 내역 숨기기' : '지난 내역 보기 (' + past + '건)')));
+}
+
+// ── 겨울방학 특강 ──
+let WK = null, WK_SUB = 'sum', WK_CL = {};
+const WK_ST = ['새 신청','연락함','등록 확정','취소'];
+const WK_HOL = {'2027-02-08':1,'2027-02-09':1};
+// 속도(2026-11-25 원장 "등록 확정 너무 느리게"): 전에 본 명단을 바로 보여 주고 뒤에서 새로 받음, 누르면 화면부터 바뀜
+const WK_CK = 'wk_cache_' + String(KEY).slice(0, 6);
+function wkKeep(){ try { localStorage.setItem(WK_CK, JSON.stringify(WK)); } catch (e) {} }
+function wkLoad(){
+  let shown = false;
+  try { const c = JSON.parse(localStorage.getItem(WK_CK) || 'null'); if (c && c.rows) { WK = c; WK_CL = {}; (c.closed||[]).forEach(function(k){ WK_CL[k] = 1; }); shown = true; if (TAB === 'wk') wkView(); } } catch (e) {}
+  if (!shown) $('list').innerHTML = '<div class="empty">불러오는 중...</div>';
+  google.script.run.withSuccessHandler(function(d){ WK = d; WK_CL = {}; (d.closed||[]).forEach(function(k){ WK_CL[k] = 1; }); wkKeep(); if (TAB === 'wk') wkView(); })
+    .withFailureHandler(function(e){ toast((e && e.message) || '불러오지 못했습니다.'); })
+    .wkAdminList(KEY);
+}
+function wkView(){
+  if (!WK) return wkLoad();
+  const box = $('list'); box.innerHTML = '';
+  const sw = el('div',{cls:'chips', style:'margin-bottom:10px'});
+  [['sum','한눈에 보기'],['list','신청 목록'],['cl','날짜 마감']].forEach(function(p){
+    sw.appendChild(el('button',{cls:'chip', style: WK_SUB === p[0] ? 'border:2px solid var(--green);font-weight:700' : '', on:{click:function(){ WK_SUB = p[0]; wkView(); }}}, p[1]));
+  });
+  sw.appendChild(el('button',{cls:'chip', on:{click:function(){ WK = null; wkView(); }}}, '새로고침'));
+  box.appendChild(sw);
+  if (WK_SUB === 'cl') return wkClose(box);
+  if (WK_SUB === 'sum') return wkSum(box);
+  const rows = WK.rows.slice();
+  const n = function(s){ return rows.filter(function(r){ return r.status === s; }).length; };
+  const sum = rows.filter(function(r){ return r.status !== '취소'; }).reduce(function(a,r){ return a + r.total; }, 0);
+  box.appendChild(el('div',{cls:'card'}, el('div',{cls:'sec'}, '겨울 특강 신청 ' + rows.length + '명'),
+    el('p',{cls:'help'}, '새 신청 ' + n('새 신청') + ' · 연락함 ' + n('연락함') + ' · 등록 확정 ' + n('등록 확정') + ' · 취소 ' + n('취소') + ' · 교육비 합계 ' + sum.toLocaleString('ko-KR') + '원'),
+    el('p',{cls:'help'}, '1부 ' + rows.filter(function(r){ return r.status !== '취소' && /^1부/.test(r.part); }).length + '명 · 2부 ' + rows.filter(function(r){ return r.status !== '취소' && /^2부/.test(r.part); }).length + '명 (취소 제외)')));
+  box.appendChild(wkAcctCard());
+  if (!rows.length) { box.appendChild(el('div',{cls:'empty'}, '아직 특강 신청이 없습니다.')); return; }
+  rows.map(function(r, i){ return [r, i + 1]; }).reverse().forEach(function(p){ box.appendChild(wkCard(p[0], p[1])); }); // 최근 신청이 맨 위, 번호는 접수 순서 그대로
+}
+// 안내문(2026-11-23 원장: 문자 앱은 원장 개인 번호로 나가서 → 복사해서 학원 카톡·학원폰으로 보내기)
+function wkDay(s){ const p = String(s).trim().split('/'); if (p.length !== 2) return s; const d = new Date(2027, +p[0] - 1, +p[1]); return (+p[0]) + '월 ' + (+p[1]) + '일(' + '일월화수목금토'[d.getDay()] + ')'; }
+function wkMsg(r, kind){
+  const ds = r.dates.split(',').map(function(s){ return s.trim(); }).filter(String);
+  const start = (r.part.match(/(\d{1,2}:\d{2})~/) || [])[1] || '';
+  const info = '■ 수업 시간: ' + (r.part || '-') + '\n■ 수강 횟수: ' + r.count + (r.total ? ' (교육비 ' + r.total.toLocaleString('ko-KR') + '원)' : '') + '\n■ 수업 날짜: ' + r.dates;
+  if (kind === 'got') return '안녕하세요, 책나무 산동독서논술학원입니다.\n' + r.name + ' 학생의 겨울방학 몰입독서 특강 신청이 접수되었습니다.\n\n' + info +
+    '\n\n아직 수강 확정은 아닙니다. 신청 인원이 최소 인원에 미치지 못하면 반이 열리지 않을 수 있으며, 인원이 모이는 대로 바로 연락드리겠습니다.\n\n※ 특강 수업은 차량을 운행하지 않습니다. (차량은 정규 수업만 운행)\n감사합니다.';
+  const pay = /카드/.test(r.pay) ? '■ 결제: 비대면 카드 결제 링크를 따로 보내 드리겠습니다.'
+    : '■ 결제: 계좌 이체\n' + (WK.acct ? '   ' + WK.acct + '\n   (입금자명은 학생 이름으로 부탁드립니다)' : '   입금 계좌는 따로 안내해 드리겠습니다.');
+  return '안녕하세요, 책나무 산동독서논술학원입니다.\n' + r.name + ' 학생의 겨울방학 몰입독서 특강 수강이 확정되었습니다.\n\n' + info + '\n' + pay +
+    (ds.length ? '\n\n첫 수업은 ' + wkDay(ds[0]) + (start ? ' ' + start : '') + '입니다.' : '') + '\n※ 특강 수업은 차량을 운행하지 않습니다. (차량은 정규 수업만 운행)\n감사합니다.';
+}
+function wkAcctCard(){
+  const inp = el('input',{placeholder:'예) 대구은행 000-00-000000 예금주 ○○○', style:'flex:1;min-width:0;font:inherit;padding:8px;border:1px solid #ddd;border-radius:10px'});
+  inp.value = WK.acct || '';
+  const b = el('button',{cls:'chip', on:{click:function(){
+    b.disabled = true;
+    google.script.run.withSuccessHandler(function(a){ WK.acct = a; b.disabled = false; toast('입금 계좌를 저장했습니다'); })
+      .withFailureHandler(function(e){ b.disabled = false; toast((e && e.message) || '저장하지 못했습니다.'); })
+      .wkAdminSetAcct(KEY, inp.value);
+  }}}, '저장');
+  return el('div',{cls:'card'}, el('div',{cls:'sec'}, '안내문에 넣을 입금 계좌'),
+    el('p',{cls:'help'}, '「확정 안내 복사」에서 계좌 이체 신청자 안내문에 들어갑니다. 비워 두면 "따로 안내"로 나갑니다.'),
+    el('div',{style:'display:flex;gap:6px'}, inp, b));
+}
+// 한눈에 보기: 반·시간, 학년, 날짜별 명단, 전체 명단 (취소 빼고)
+function wkGrade(g){ const m = String(g).match(/(초|중|고)\s*(\d)/); if (!m) return '기타'; if (m[1] === '초') return +m[2] <= 2 ? '초1~2' : +m[2] <= 4 ? '초3~4' : '초5~6'; return m[1] === '중' ? '중등' : '고등'; }
+function wkSum(box){
+  const rows = WK.rows.map(function(r, i){ return Object.assign({ no: i + 1 }, r); }).filter(function(r){ return r.status !== '취소'; });
+  if (!rows.length) { box.appendChild(el('div',{cls:'empty'}, '아직 특강 신청이 없습니다.')); return; }
+  const cnt = function(f){ return rows.filter(f).length; };
+  const sum = rows.reduce(function(a,r){ return a + r.total; }, 0);
+  const stat = function(lab, val, sub){ return el('div',{style:'flex:1;min-width:90px;background:#F4F7F5;border-radius:12px;padding:10px 12px'},
+    el('div',{style:'font-size:12.5px;color:#777'}, lab), el('div',{style:'font-size:22px;font-weight:800;margin-top:2px'}, val), sub ? el('div',{style:'font-size:12px;color:#888'}, sub) : null); };
+  box.appendChild(el('div',{cls:'card'}, el('div',{cls:'sec'}, '겨울 특강 한눈에 (취소 빼고)'),
+    el('div',{style:'display:flex;flex-wrap:wrap;gap:8px'},
+      stat('신청 학생', rows.length + '명', '확정 ' + cnt(function(r){ return r.status === '등록 확정'; }) + ' · 대기 ' + cnt(function(r){ return r.status !== '등록 확정'; })),
+      stat('교육비 합계', Math.round(sum / 10000).toLocaleString('ko-KR') + '만원', sum.toLocaleString('ko-KR') + '원'),
+      stat('결제 방법', '카드 ' + cnt(function(r){ return /카드/.test(r.pay); }) + '명', '계좌 이체 ' + cnt(function(r){ return /계좌/.test(r.pay); }) + '명'))));
+  // 반·시간
+  const cell = function(p, b){ const l = rows.filter(function(r){ return r.part.indexOf(p) === 0 && r.part.indexOf(b) >= 0; });
+    return el('td',{style:'border:1px solid #e3e3e3;padding:8px;vertical-align:top'}, el('b',{style:'font-size:17px'}, l.length + '명'),
+      el('div',{style:'font-size:13px;color:#555;margin-top:2px;line-height:1.5'}, l.map(function(r){ return r.name + '(' + r.grade + ')'; }).join(', ') || '-')); };
+  const th = function(t){ return el('th',{style:'border:1px solid #e3e3e3;padding:6px;background:#F4F7F5;font-size:13px'}, t); };
+  box.appendChild(el('div',{cls:'card'}, el('div',{cls:'sec'}, '반 · 시간'),
+    el('table',{style:'width:100%;border-collapse:collapse;table-layout:fixed'},
+      el('tr',{}, th(''), th('A반 60분'), th('B반 80분')),
+      el('tr',{}, th('1부 10:30'), cell('1부','A반'), cell('1부','B반')),
+      el('tr',{}, th('2부 11:30'), cell('2부','A반'), cell('2부','B반')))));
+  // 학년
+  const gs = {}; rows.forEach(function(r){ (gs[wkGrade(r.grade)] = gs[wkGrade(r.grade)] || []).push(r.name); });
+  box.appendChild(el('div',{cls:'card'}, el('div',{cls:'sec'}, '학년'),
+    ['초1~2','초3~4','초5~6','중등','고등','기타'].filter(function(k){ return gs[k]; }).map(function(k){
+      return el('div',{style:'display:flex;gap:10px;padding:6px 0;border-bottom:1px dashed #e6e6e6'}, el('b',{style:'width:84px;flex:none'}, k + ' ' + gs[k].length + '명'),
+        el('span',{style:'font-size:14px;color:#555'}, gs[k].join(', '))); })));
+  // 날짜별 명단
+  const byDay = {};
+  rows.forEach(function(r){ r.dates.split(',').forEach(function(s){ s = s.trim(); if (!s) return; const p = s.split('/');
+    const k = '2027-' + pad(p[0]) + '-' + pad(p[1]); (byDay[k] = byDay[k] || { s: s, a: [], b: [] })[/^2부/.test(r.part) ? 'b' : 'a'].push(r.name); }); });
+  const days = Object.keys(byDay).sort();
+  const dl = el('div',{});
+  days.forEach(function(k){ const d = byDay[k];
+    dl.appendChild(el('div',{style:'padding:7px 0;border-bottom:1px dashed #e6e6e6;display:flex;gap:10px;align-items:flex-start'},
+      el('b',{style:'width:92px;flex:none;font-size:14px'}, wkDay(d.s), el('div',{style:'font-size:12px;color:#888;font-weight:400'}, (d.a.length + d.b.length) + '명')),
+      el('div',{style:'font-size:14px;line-height:1.6'},
+        el('div',{}, el('span',{style:'color:var(--green);font-weight:700'}, '1부 '), d.a.join(', ') || '-'),
+        el('div',{}, el('span',{style:'color:#a8792a;font-weight:700'}, '2부 '), d.b.join(', ') || '-')))); });
+  box.appendChild(el('div',{cls:'card'}, el('div',{cls:'sec'}, '날짜별 출석 명단'), el('p',{cls:'help'}, '수업이 있는 날만 보입니다.'), dl));
+  // 전체 명단 표
+  const td = function(t, s){ return el('td',{style:'border-bottom:1px solid #eee;padding:7px 6px;font-size:13.5px;white-space:nowrap;' + (s || '')}, t); };
+  const tb = el('table',{style:'border-collapse:collapse;width:100%'},
+    el('tr',{}, ['','이름','학교·학년','반·시간','횟수','교육비','결제','상태'].map(function(t){ return el('th',{style:'text-align:left;padding:6px;font-size:12.5px;color:#777;border-bottom:2px solid #ddd;white-space:nowrap'}, t); })));
+  rows.forEach(function(r){ tb.appendChild(el('tr',{}, td(String(r.no), 'color:#999'), td(r.name, 'font-weight:700'), td(r.school + ' ' + r.grade), td(r.part.replace(/\s.*$/, '') + ' ' + ((r.part.match(/[AB]반/) || [''])[0])),
+    td(r.count), td(r.total.toLocaleString('ko-KR')), td(r.pay || '-'), td(r.status, r.status === '등록 확정' ? 'color:var(--green);font-weight:700' : 'color:#a8792a'))); });
+  const txt = rows.map(function(r){ return [r.no, r.name, r.school + ' ' + r.grade, r.part, r.count, r.total, r.pay, r.status].join('\t'); });
+  box.appendChild(el('div',{cls:'card'}, el('div',{style:'display:flex;justify-content:space-between;align-items:center'}, el('div',{cls:'sec'}, '전체 명단'),
+      el('button',{cls:'chip', on:{click:function(){ copy(['번호\t이름\t학교·학년\t시간\t횟수\t교육비\t결제\t상태'].concat(txt).join('\n')); }}}, '명단 복사')),
+    el('div',{style:'overflow-x:auto'}, tb)));
+}
+function wkCard(r, no){
+  const tel = r.phone.replace(/\D/g,'');
+  const memo = el('textarea',{rows:'2', placeholder:'메모 (상담 내용, 결제 여부 등)', style:'width:100%;margin-top:8px;font:inherit;padding:8px;border:1px solid #ddd;border-radius:10px;box-sizing:border-box'});
+  memo.value = r.memo;
+  const done = function(res){
+    const x = res && res.sent;
+    if (x === 'wait') toast('알림톡은 아직 카카오 검수 중이라 못 보냈습니다. 「확정 안내 복사」로 보내 주세요', 4500);
+    else if (x === 'fail') toast('알림톡을 보내지 못했습니다' + (res.error ? ': ' + res.error : '') + '. 「확정 안내 복사」로 보내 주세요', 4500);
+    else if (x && x !== 'already') { r.sent = x; toast('학부모님께 확정 알림톡을 보냈습니다', 3000); }
+    else toast('저장했습니다');
+  };
+  // 누르면 화면부터 바로 바꾸고, 저장·알림톡은 뒤에서 (실패하면 되돌림)
+  const save = function(s, noSend){
+    const prev = { status: r.status, memo: r.memo };
+    r.status = s; r.memo = memo.value;
+    r._busy = '저장 중…';
+    wkView();
+    google.script.run.withSuccessHandler(function(res){ r._busy = ''; done(res); wkKeep(); if (TAB === 'wk') wkView(); })
+      .withFailureHandler(function(e){ r._busy = ''; r.status = prev.status; r.memo = prev.memo; if (TAB === 'wk') wkView(); toast((e && e.message) || '저장하지 못했습니다.'); })
+      .wkAdminSave(KEY, r.row, s, memo.value, !!noSend);
+  };
+  const resend = function(){
+    r._busy = '알림톡 보내는 중…'; wkView();
+    google.script.run.withSuccessHandler(function(res){ r._busy = ''; done(res); wkKeep(); if (TAB === 'wk') wkView(); })
+      .withFailureHandler(function(er){ r._busy = ''; if (TAB === 'wk') wkView(); toast((er && er.message) || '보내지 못했습니다.'); })
+      .wkAdminSendOk(KEY, r.row);
+  };
+  const sendRecv = function(){
+    r._busy = '접수 알림톡 보내는 중…'; wkView();
+    google.script.run.withSuccessHandler(function(res){ r._busy = ''; const x = res && res.sent;
+        if (x === 'wait') toast('접수 알림톡은 아직 카카오 검수 중입니다(보통 1~3일). 그동안은 「접수 안내 복사」로 보내 주세요', 5000);
+        else if (x === 'fail') toast('보내지 못했습니다' + (res.error ? ': ' + res.error : '') + '. 「접수 안내 복사」로 보내 주세요', 4500);
+        else if (x) { r.recv = x; toast('학부모님께 접수 알림톡을 보냈습니다', 3000); }
+        wkKeep(); if (TAB === 'wk') wkView(); })
+      .withFailureHandler(function(er){ r._busy = ''; if (TAB === 'wk') wkView(); toast((er && er.message) || '보내지 못했습니다.'); })
+      .wkAdminSendRecv(KEY, r.row);
+  };
+  const st = el('div',{cls:'chips', style:'margin-top:8px'});
+  WK_ST.forEach(function(s){ st.appendChild(el('button',{cls:'chip', style: r.status === s ? 'background:var(--green);color:#fff;border-color:var(--green)' : '', on:{click:function(){ save(s); }}}, s)); });
+  return el('div',{cls:'card', style: r.status === '취소' ? 'opacity:.55' : ''},
+    el('div',{style:'display:flex;justify-content:space-between;gap:8px'},
+      el('b',{style:'font-size:18px'}, r.name + ' ', el('span',{style:'font-size:14px;color:#777'}, r.school + ' ' + r.grade)),
+      el('span',{style:'font-size:12px;color:#888;text-align:right'}, no + '번째 · ' + r.time)),
+    el('div',{style:'margin-top:6px;font-weight:700'}, (r.part ? r.part + ' · ' : '') + r.count + ' · ' + r.total.toLocaleString('ko-KR') + '원 · ' + (r.pay || '-') + ' · ' + r.member),
+    el('div',{style:'margin-top:4px;font-size:14px'}, '수업 날짜 ' + r.dates),
+    r.question ? el('div',{style:'margin-top:4px;font-size:14px;color:#555'}, '남기실 말 ' + r.question) : null,
+    el('div',{cls:'chips', style:'margin-top:8px'},
+      el('a',{cls:'chip', href:'tel:' + tel}, '전화 ' + r.phone),
+      el('button',{cls:'chip', on:{click:function(){ copy(wkMsg(r, 'got')); }}}, '접수 안내 복사'),
+      el('button',{cls:'chip', style:'border-color:var(--green);color:var(--green);font-weight:700', on:{click:function(){ copy(wkMsg(r, 'ok')); }}}, '확정 안내 복사'),
+      el('button',{cls:'chip', on:{click:function(){ copy(tel); }}}, '번호 복사')),
+    st,
+    r._busy ? el('div',{style:'margin-top:6px;font-size:13.5px;color:#5b6660'}, '⏳ ' + r._busy) :
+    r.status !== '취소' ? el('div',{style:'margin-top:6px;font-size:13.5px;display:flex;align-items:center;gap:8px;flex-wrap:wrap'},
+      r.recv ? el('span',{style:'color:var(--green);font-weight:700'}, '✓ 접수 알림톡 보냄 ' + r.recv) : el('span',{style:'color:#a8792a'}, '접수 알림톡 아직 안 보냄'),
+      el('button',{cls:'chip', on:{click:sendRecv}}, r.recv ? '다시 보내기' : '접수 알림톡 보내기')) : null,
+    r._busy ? null : r.status === '등록 확정' ? el('div',{style:'margin-top:6px;font-size:13.5px;display:flex;align-items:center;gap:8px;flex-wrap:wrap'},
+      r.sent ? el('span',{style:'color:var(--green);font-weight:700'}, '✓ 확정 알림톡 보냄 ' + r.sent) : el('span',{style:'color:#a8792a'}, '확정 알림톡 아직 안 보냄'),
+      el('button',{cls:'chip', on:{click:resend}}, r.sent ? '다시 보내기' : '알림톡 보내기')) : null,
+    memo,
+    el('div',{style:'text-align:right;margin-top:6px'}, el('button',{cls:'chip', on:{click:function(){ save(r.status, true); }}}, '메모 저장')),
+    editRow(editBtn('wk', r, [['name','학생 이름',r.name],['school','학교',r.school],['grade','학년',r.grade],['phone','연락처',r.phone]], function(o){ Object.assign(r, o); wkView(); }),
+      el('button',{cls:'btn ghost', style:'font-size:13px;padding:6px 12px', on:{click:function(e){
+        if (!confirm(r.name + ' 학생 특강 신청을 삭제할까요? 시트에서도 지워집니다.')) return;
+        e.target.disabled = true;
+        google.script.run.withSuccessHandler(function(){ toast('삭제했습니다'); WK = null; wkView(); })
+          .withFailureHandler(function(er){ e.target.disabled = false; toast((er && er.message) || '지우지 못했습니다'); })
+          .adminEditRec(KEY, 'wkdel', r.row, r.name, {});
+      }}}, '삭제')));
+}
+function wkClose(box){
+  const cnt = {}, c1 = {}, c2 = {};
+  WK.rows.filter(function(r){ return r.status !== '취소'; }).forEach(function(r){
+    r.dates.split(',').forEach(function(s){ const p = s.trim().split('/'); if (p.length === 2) { const k = '2027-' + pad(p[0]) + '-' + pad(p[1]); cnt[k] = (cnt[k] || 0) + 1;
+      if (/^1부/.test(r.part)) c1[k] = (c1[k] || 0) + 1; else if (/^2부/.test(r.part)) c2[k] = (c2[k] || 0) + 1; } });
+  });
+  const g = el('div',{style:'display:grid;grid-template-columns:repeat(5,1fr);gap:6px;text-align:center'});
+  ['월','화','수','목','금'].forEach(function(x){ g.appendChild(el('div',{style:'font-size:12px;color:#888'}, x)); });
+  let lm = -1;
+  for (let wk = new Date(2027,0,11); wk <= new Date(2027,1,26); wk.setDate(wk.getDate() + 7)) {
+    for (let i = 0; i < 5; i++) {
+      const d = new Date(wk); d.setDate(wk.getDate() + i);
+      const k = d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
+      const lab = d.getMonth() !== lm ? (d.getMonth() + 1) + '/' + d.getDate() : String(d.getDate()); lm = d.getMonth();
+      if (WK_HOL[k]) { g.appendChild(el('div',{style:'border:1px dashed #ccc;border-radius:10px;padding:6px 0;color:#bbb'}, lab, el('div',{style:'font-size:11px'}, '휴강'))); continue; }
+      const on = !!WK_CL[k];
+      g.appendChild(el('button',{style:'border:1.5px solid ' + (on ? 'var(--green)' : '#ddd') + ';background:' + (on ? 'var(--green)' : '#fff') + ';color:' + (on ? '#fff' : 'inherit') + ';border-radius:10px;padding:6px 0;font:inherit;font-weight:700',
+        on:{click:function(){ if (WK_CL[k]) delete WK_CL[k]; else WK_CL[k] = 1; wkView(); }}}, lab, el('div',{style:'font-size:11px;font-weight:400'}, on ? '마감' : (c1[k] || c2[k] ? (c1[k] || 0) + '·' + (c2[k] || 0) : (cnt[k] || 0) + '명'))));
+    }
+  }
+  // 요일 마감(2026-11-25 원장: 보강 마감처럼) — 누르면 특강 기간의 그 요일을 모두 마감/열림
+  const wdays = function(w){ const out = []; for (let d = new Date(2027,0,11); d <= new Date(2027,1,26); d.setDate(d.getDate() + 1)) { if (d.getDay() !== w) continue; const k = d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); if (!WK_HOL[k]) out.push(k); } return out; };
+  const wrow = el('div',{style:'display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:4px 0 12px'});
+  [['월',1],['화',2],['수',3],['목',4],['금',5]].forEach(function(p){ const ks = wdays(p[1]), all = ks.length && ks.every(function(k){ return WK_CL[k]; });
+    wrow.appendChild(el('button',{style:'border:1.5px solid ' + (all ? 'var(--green)' : '#ddd') + ';background:' + (all ? 'var(--green)' : '#fff') + ';color:' + (all ? '#fff' : 'inherit') + ';border-radius:10px;padding:8px 0;font:inherit;font-weight:700',
+      on:{click:function(){ ks.forEach(function(k){ if (all) delete WK_CL[k]; else WK_CL[k] = 1; }); wkView(); }}}, '매주 ' + p[0], el('div',{style:'font-size:11px;font-weight:400'}, all ? '마감' : '열림'))); });
+  const sv = el('button',{cls:'chip', style:'background:var(--green);color:#fff;border-color:var(--green)', on:{click:function(){
+    sv.disabled = true;
+    google.script.run.withSuccessHandler(function(l){ WK.closed = l; WK_CL = {}; l.forEach(function(k){ WK_CL[k] = 1; }); toast('마감 날짜를 저장했습니다'); wkView(); })
+      .withFailureHandler(function(e){ sv.disabled = false; toast((e && e.message) || '저장하지 못했습니다.'); })
+      .wkAdminSetClosed(KEY, Object.keys(WK_CL));
+  }}}, '저장');
+  box.appendChild(el('div',{cls:'card'}, el('div',{cls:'sec'}, '특강 날짜 마감'),
+    el('p',{cls:'help'}, '요일을 누르면 특강 기간의 그 요일이 모두 마감(초록)·열림으로 바뀝니다. 날짜를 하나씩 눌러도 됩니다. 숫자는 그날 신청한 학생 수(1부·2부)입니다. 다 고른 뒤 저장을 누르세요. 마감한 날은 학부모 신청 화면에서 고를 수 없습니다.'),
+    el('div',{style:'font-size:13px;font-weight:700;margin-top:4px'}, '요일 마감'), wrow,
+    el('div',{style:'font-size:13px;font-weight:700'}, '날짜 마감'), g, el('div',{style:'display:flex;justify-content:space-between;align-items:center;margin-top:12px'}, el('span',{style:'font-size:13px;color:#888'}, '마감 ' + Object.keys(WK_CL).length + '일'), sv)));
+}
+
+
+/* ===== 오늘 한마디 ===== */
+let TN_OPEN = {}; // 문구 묶음 펼침 상태
+let TN = null, TN_LOADING = false, TN_SEL = [], TN_PH = [], TN_EXTRA = '', TN_PHOTO = null, TN_Q = '', TN_EDIT = false, TN_BUSY = false, TN_RES = null, TN_UP = false;
+const TN_DOTS = ['#176943', '#B08D57', '#4C7BA8', '#B4624E', '#7A6BA8', '#5E8C6A'];
+function tnLoad(){
+  TN_LOADING = true;
+  google.script.run.withSuccessHandler(d => { TN = d; TN_LOADING = false; const ks = new Set(d.students.map(s => s.k)); TN_SEL = TN_SEL.filter(k => ks.has(k) || k.indexOf('T:') === 0); if (TAB === 'tn') render(); })
+    .withFailureHandler(e => { TN_LOADING = false; TN = { err: (e && e.message) || '불러오지 못했습니다.' }; if (TAB === 'tn') render(); })
+    .adminTodayNote(KEY);
+}
+function tnStu(k){
+  if (k.indexOf('T:') === 0) return { k, name: k.slice(2), grade: '', school: '', masked: '', has: false, test: true };
+  return TN.students.find(s => s.k === k);
+}
+function tnDup(name){ return TN.students.filter(s => s.name === name).length > 1; }
+function tnChip(k){
+  const s = tnStu(k);
+  if (!s) return null;
+  const c = el('button',{cls:'tn-chip' + (TN_SEL.includes(k) ? ' on' : ''), 'data-k': k, on:{click:() => { tnToggle(k); tnSync(); }}}, s.name);
+  if (s.test) c.appendChild(el('small',{}, '발송 안 함'));
+  else if (tnDup(s.name)) c.appendChild(el('small',{}, [s.grade, s.school].filter(Boolean).join('·') || s.masked));
+  if (!s.has && !s.test) { c.classList.add('off'); c.title = '연락처 없음'; c.appendChild(el('small',{}, '번호 없음')); }
+  return c;
+}
+function tnToggle(k, force){
+  const on = TN_SEL.includes(k);
+  const want = force === undefined ? !on : force;
+  if (want && !on) TN_SEL.push(k);
+  if (!want && on) TN_SEL = TN_SEL.filter(x => x !== k);
+}
+function tnBody(){
+  const lines = TN_PH.map(t => '· ' + t);
+  const ex = TN_EXTRA.trim();
+  if (ex) lines.push(ex);
+  return lines.join('\n');
+}
+function tnInRoster(k){ return (TN.groups || []).some(g => g.items.some(it => it.keys.includes(k))); }
+function tnSync(){
+  document.querySelectorAll('.tn-chip[data-k]').forEach(c => c.classList.toggle('on', TN_SEL.includes(c.dataset.k)));
+  document.querySelectorAll('.tn-tbtn').forEach(b => { const ks = JSON.parse(b.dataset.ks); b.classList.toggle('on', ks.length > 0 && ks.every(k => TN_SEL.includes(k))); });
+  const cnt = $('tn-cnt'); if (cnt) cnt.textContent = TN_SEL.length ? TN_SEL.length + '명 선택' : '';
+  const pk = $('tn-picked');
+  if (pk) {
+    pk.innerHTML = '';
+    const extra = TN_SEL.filter(k => !tnInRoster(k));
+    if (extra.length) { pk.appendChild(el('div',{cls:'tn-sub', style:'margin-top:8px'}, '이름으로 고른 학생')); pk.appendChild(el('div',{cls:'tn-chips'}, extra.map(tnChip))); }
+  }
+  document.querySelectorAll('.tn-chip[data-p]').forEach(c => c.classList.toggle('on', TN_PH.includes(c.dataset.p)));
+  tnPreview();
+}
+function tnPreview(){
+  const pv = $('tn-pv'); if (!pv) return;
+  const first = TN_SEL.map(tnStu).find(Boolean);
+  const name = first ? first.name : '○○○';
+  const body = tnBody();
+  pv.innerHTML = '';
+  pv.appendChild(document.createTextNode('[책나무 산동독서논술학원]\n' + name + ' 학생의 수업 속 한 장면을 전해 드립니다.\n\n'));
+  if (body) pv.appendChild(document.createTextNode(body));
+  else pv.appendChild(el('span',{cls:'ph0'}, '(고른 문구가 여기에 들어갑니다)'));
+  pv.appendChild(document.createTextNode('\n\n'));
+  const pb = $('tn-pvbtn'); if (pb) pb.style.display = TN_PHOTO ? '' : 'none';
+  pv.appendChild(document.createTextNode('늘 따뜻한 관심 감사합니다.'));
+  const len = $('tn-len');
+  if (len) { const over = body.length > (TN.max || 700); len.textContent = (TN_SEL.length > 1 ? '첫 번째 학생 이름으로 보여 드립니다 · ' : '') + '내용 ' + body.length + ' / ' + (TN.max || 700) + '자'; len.classList.toggle('over', over); }
+  const who = TN_SEL.map(tnStu).filter(Boolean);
+  const sendable = who.filter(s => s.has || s.test).length;
+  const info = $('tn-info');
+  if (info) {
+    info.innerHTML = '';
+    info.appendChild(el('b',{}, TN_SEL.length + '명'));
+    info.appendChild(document.createTextNode(' 선택 · 문구 ' + (TN_PH.length + (TN_EXTRA.trim() ? 1 : 0)) + '개' + (TN_PHOTO ? ' · 사진' : '')));
+    const no = who.length - sendable;
+    if (no) info.appendChild(el('div',{style:'color:#9A3B2E;font-size:12px'}, '번호 없는 학생 ' + no + '명은 빠집니다'));
+  }
+  const sb = $('tn-send');
+  if (sb) { sb.disabled = TN_BUSY || TN_UP || !sendable || !body || body.length > (TN.max || 700); sb.textContent = TN_BUSY ? '보내는 중...' : '보내기' + (sendable ? ' (' + sendable + '명)' : ''); }
+}
+function tnSavePhrases(groups, done){
+  google.script.run.withSuccessHandler(ph => { TN.phrases = ph; TN_PH = TN_PH.filter(t => ph.some(g => g.items.includes(t))); render(); toast(done || '저장했습니다'); })
+    .withFailureHandler(e => toast((e && e.message) || '저장하지 못했습니다', 2500))
+    .adminTnSavePhrases(KEY, groups);
+}
+// 공지 사진(A4 안내문)은 글씨가 보이게 더 크게: 긴 쪽 1800px, 약 1MB까지
+function ntResize(file){
+  const draw = (src, iw, ih) => {
+    const sc = Math.min(1, 1800 / Math.max(iw, ih));
+    const w = Math.round(iw * sc), h = Math.round(ih * sc);
+    const cv = document.createElement('canvas'); cv.width = w; cv.height = h;
+    const cx = cv.getContext('2d'); cx.fillStyle = '#fff'; cx.fillRect(0, 0, w, h); cx.drawImage(src, 0, 0, w, h);
+    let q = 0.85, d = cv.toDataURL('image/jpeg', q);
+    while (d.length > 1100000 && q > 0.45) { q -= 0.08; d = cv.toDataURL('image/jpeg', q); }
+    return d;
+  };
+  if (window.createImageBitmap) return createImageBitmap(file, { imageOrientation: 'from-image' }).then(b => { const d = draw(b, b.width, b.height); if (b.close) b.close(); return d; }).catch(() => tnResizeImg(file, draw));
+  return tnResizeImg(file, draw);
+}
+function tnResize(file){
+  // 폰 사진(4000px·몇 MB)을 1024px·약 300KB로 줄여서 올림 — 학부모 폰 화면에는 이 정도면 충분
+  const draw = (src, iw, ih) => {
+    const max = 1024, sc = Math.min(1, max / Math.max(iw, ih));
+    const w = Math.round(iw * sc), h = Math.round(ih * sc);
+    const cv = document.createElement('canvas'); cv.width = w; cv.height = h;
+    const cx = cv.getContext('2d'); cx.fillStyle = '#fff'; cx.fillRect(0, 0, w, h); cx.drawImage(src, 0, 0, w, h);
+    let q = 0.72, d = cv.toDataURL('image/jpeg', q);
+    while (d.length > 420000 && q > 0.4) { q -= 0.08; d = cv.toDataURL('image/jpeg', q); }
+    return d;
+  };
+  if (window.createImageBitmap) {
+    return createImageBitmap(file, { imageOrientation: 'from-image' }).then(b => { const d = draw(b, b.width, b.height); if (b.close) b.close(); return d; })
+      .catch(() => tnResizeImg(file, draw));
+  }
+  return tnResizeImg(file, draw);
+}
+function tnResizeImg(file, draw){
+  return new Promise((res, rej) => {
+    const url = URL.createObjectURL(file);
+    const img = new Image();
+    img.onload = () => { URL.revokeObjectURL(url); try { res(draw(img, img.naturalWidth, img.naturalHeight)); } catch (e) { rej(e); } };
+    img.onerror = () => { URL.revokeObjectURL(url); rej(new Error('사진을 열지 못했습니다')); };
+    img.src = url;
+  });
+}
+function tnResizeOld_(file){
+  return new Promise((res, rej) => {
+    const url = URL.createObjectURL(file);
+    const img = new Image();
+    img.onload = () => {
+      const max = 1280, sc = Math.min(1, max / Math.max(img.width, img.height));
+      const w = Math.round(img.width * sc), h = Math.round(img.height * sc);
+      const cv = document.createElement('canvas'); cv.width = w; cv.height = h;
+      const cx = cv.getContext('2d'); cx.fillStyle = '#fff'; cx.fillRect(0, 0, w, h); cx.drawImage(img, 0, 0, w, h);
+      URL.revokeObjectURL(url);
+      let q = 0.8, d = cv.toDataURL('image/jpeg', q);
+      while (d.length > 1100000 && q > 0.4) { q -= 0.1; d = cv.toDataURL('image/jpeg', q); }
+      res(d);
+    };
+    img.onerror = () => { URL.revokeObjectURL(url); rej(new Error('사진을 열지 못했습니다')); };
+    img.src = url;
+  });
+}
+let TN_UPTHUMB = '';
+function tnPickPhoto(file){
+  if (!file) return;
+  // 고르자마자 사진을 보여 주고, 올리는 동안 학생·문구는 계속 고를 수 있게 (보내기만 다 올라간 뒤에 눌림)
+  TN_UP = true; TN_UPTHUMB = ''; render();
+  tnResize(file).then(d => {
+    TN_UPTHUMB = d; render();
+    google.script.run.withSuccessHandler(r => { TN_UP = false; TN_UPTHUMB = ''; TN_PHOTO = { id: r.id, url: r.url, thumb: d }; render(); })
+      .withFailureHandler(e => { TN_UP = false; TN_UPTHUMB = ''; render(); toast((e && e.message) || '사진을 올리지 못했습니다', 2500); })
+      .adminTnUploadPhoto(KEY, d, 'image/jpeg');
+  }).catch(e => { TN_UP = false; TN_UPTHUMB = ''; render(); toast(e.message, 2500); });
+}
+function tnRemovePhoto(){
+  const p = TN_PHOTO; TN_PHOTO = null; render();
+  if (p) google.script.run.withFailureHandler(() => {}).adminTnDeletePhoto(KEY, p.id);
+}
+function tnAsk(q, d, ok, fn){
+  const m = el('div',{cls:'tn-modal'});
+  const close = () => m.remove();
+  m.addEventListener('click', e => { if (e.target === m) close(); });
+  m.appendChild(el('div',{cls:'tn-sheet'}, el('div',{cls:'q'}, q), d ? el('div',{cls:'d'}, d) : null,
+    el('div',{cls:'bt'}, el('button',{on:{click:close}}, '취소'), el('button',{cls:'go', on:{click:() => { close(); fn(); }}}, ok))));
+  document.body.appendChild(m);
+}
+function tnSend(){
+  const who = TN_SEL.map(tnStu).filter(Boolean);
+  const ok = who.filter(s => s.has || s.test);
+  const no = who.filter(s => !s.has && !s.test);
+  const body = tnBody();
+  if (!ok.length || !body) return;
+  tnAsk(ok.length + '명 학부모님께 보낼까요?', ok.map(s => s.name).join(', ') + (no.length ? '\n\n번호 없는 학생은 빠집니다: ' + no.map(s => s.name).join(', ') : '') + (TN_PHOTO ? '\n\n사진 1장이 함께 갑니다.' : ''), '보내기', () => tnGo(ok));
+}
+// 「내 폰으로 미리 받기」: 지금 쓴 문구·사진 그대로 원장님 산동폰으로만 한 통 (고른 학생·문구는 그대로 둠)
+function tnMe(){
+  const body = tnBody();
+  if (!body) { toast('문구를 고르거나 직접 써 주세요', 2200); return; }
+  if (TN_UP) { toast('사진이 다 올라간 뒤에 눌러 주세요', 2200); return; }
+  const first = TN_SEL.map(tnStu).find(Boolean);
+  const nm = first ? first.name : '테스트';
+  const b = $('tn-me'); if (b) { b.disabled = true; b.textContent = '보내는 중...'; }
+  google.script.run.withSuccessHandler(r => {
+    TN.log = r.log; if (b) { b.disabled = false; b.textContent = '내 폰으로 미리 받기'; }
+    const x = r.results[0] || {};
+    toast(x.ok ? '원장님 폰으로 보냈습니다. 카톡을 확인해 주세요' : (x.err || '보내지 못했습니다'), 3200);
+    render();
+  }).withFailureHandler(e => { if (b) { b.disabled = false; b.textContent = '내 폰으로 미리 받기'; } toast((e && e.message) || '보내지 못했습니다', 3200); })
+    .adminTnSend(KEY, { keys: ['ME:' + nm], phrases: TN_PH, extra: TN_EXTRA, photoId: TN_PHOTO ? TN_PHOTO.id : '' });
+}
+function tnGo(ok){
+  TN_BUSY = true; tnPreview();
+  google.script.run.withSuccessHandler(r => {
+    TN_BUSY = false; TN.log = r.log; TN_RES = r.results;
+    const sent = r.results.filter(x => x.ok || x.test).length;
+    if (sent) { TN_SEL = []; TN_PH = []; TN_EXTRA = ''; TN_PHOTO = null; }
+    render(); window.scrollTo(0, 0);
+    toast(r.results.some(x => x.ok) ? '보냈습니다' : (r.results[0] && r.results[0].err) || '보내지 못했습니다', 2600);
+  }).withFailureHandler(e => { TN_BUSY = false; tnPreview(); toast((e && e.message) || '보내지 못했습니다', 2600); })
+    .adminTnSend(KEY, { keys: ok.map(s => s.k), phrases: TN_PH, extra: TN_EXTRA, photoId: TN_PHOTO ? TN_PHOTO.id : '' });
+}
+// 「오늘 보낸 기록」 카톡 도착 확인 (탭 열 때 한 번, 그 뒤 1분마다)
+let TN_ST_AT = 0;
+function tnStatusCheck(force){
+  if (!TN || !TN.log || TN.err) return;
+  if (!force && Date.now() - TN_ST_AT < 60000) return;
+  if (!force && !TN.log.some(o => o.result === '보냄' && o.ref && !o.deliv)) return;
+  TN_ST_AT = Date.now();
+  google.script.run.withSuccessHandler(l => { TN.log = l; if (TAB === 'tn') render(); }).withFailureHandler(() => {}).adminTnStatus(KEY);
+}
+setInterval(() => { if (!document.hidden && TAB === 'tn') tnStatusCheck(false); }, 60000);
+function tnView(){
+  const box = $('list'); box.innerHTML = '';
+  if (!TN || TN.err) {
+    if (!TN && !TN_LOADING) tnLoad();
+    box.appendChild(el('div',{cls:'empty'}, TN && TN.err ? TN.err : '불러오는 중...'));
+    if (TN && TN.err) box.appendChild(el('div',{cls:'acts', style:'justify-content:center'}, el('button',{cls:'btn ghost', on:{click:() => { TN = null; render(); }}}, '다시 불러오기')));
+    return;
+  }
+  const st = TN.tpl || {};
+  if (st.todayNote === 'OFF') box.appendChild(el('div',{cls:'tn-warn'}, '알림톡 연결 설정이 필요합니다. (시간 마감 탭 > 알림톡 설정)'));
+  else if (st.todayNote && st.todayNote !== 'APPROVED') box.appendChild(el('div',{cls:'tn-warn'}, '알림톡 심사 중이라 아직 보낼 수 없습니다. 심사가 끝나면(보통 1~2일) 바로 보낼 수 있습니다. 미리 골라 보고 미리 보기는 할 수 있습니다.'));
+  else if (st.todayNotePhoto && st.todayNotePhoto !== 'APPROVED' && st.todayNotePhoto !== 'OFF') box.appendChild(el('div',{cls:'tn-warn'}, '사진 알림톡은 아직 심사 중입니다. 사진 없이 보내 주세요.'));
+
+  if (TN_RES) {
+    const ok = TN_RES.filter(x => x.ok), te = TN_RES.filter(x => x.test), bad = TN_RES.filter(x => !x.ok && !x.test);
+    const rc = el('div',{cls:'tn-step tn-res'}, el('div',{cls:'tn-h'}, '보낸 결과', el('button',{cls:'tn-mini', on:{click:() => { TN_RES = null; render(); }}}, '닫기')));
+    if (ok.length) rc.appendChild(el('div',{cls:'ok', style:'font-size:14.5px'}, '보냄 ' + ok.length + '명 · ' + ok.map(x => x.name).join(', ')));
+    if (te.length) rc.appendChild(el('div',{style:'font-size:13.5px;color:var(--sub)'}, '테스트: ' + te.map(x => x.name).join(', ') + ' (실제로 보내지 않음)'));
+    bad.forEach(x => rc.appendChild(el('div',{cls:'bad', style:'font-size:13.5px'}, x.name + ' · ' + x.err)));
+    if (bad.length) rc.appendChild(el('div',{cls:'tn-help'}, '못 보낸 내용도 아래 기록에 남아 있습니다.'));
+    box.appendChild(rc);
+  }
+
+  // 1 학생
+  const s1 = el('div',{cls:'tn-step'}, el('div',{cls:'tn-h'}, el('span',{cls:'tn-no'}, '1'), '학생 고르기', el('span',{cls:'tn-cnt', id:'tn-cnt'})));
+  if (TN.groups && TN.groups.length) {
+    s1.appendChild(el('div',{cls:'tn-sub'}, '오늘 수업 ' + TN.dayLabel + ' · 시간을 누르면 그 시간 학생 모두 선택'));
+    TN.groups.forEach((g, gi) => {
+      const auto = [];
+      g.items.forEach(it => { if (it.keys.length === 1 && (tnStu(it.keys[0]) || {}).has) auto.push(it.keys[0]); });
+      const tb = el('button',{cls:'tn-tbtn', 'data-ks': JSON.stringify(auto), on:{click:() => { const all = auto.length && auto.every(k => TN_SEL.includes(k)); auto.forEach(k => tnToggle(k, !all)); tnSync(); }}}, g.time);
+      const chips = el('div',{cls:'tn-chips'});
+      g.items.forEach(it => {
+        if (!it.keys.length) chips.appendChild(el('span',{cls:'tn-chip off', title:'연락처 명단에 없음'}, it.name, el('small',{}, '명단 없음')));
+        else it.keys.forEach(k => chips.appendChild(tnChip(k)));
+      });
+      s1.appendChild(el('div',{cls:'tn-time' + (gi ? '' : ' first')}, tb, chips));
+    });
+  } else {
+    s1.appendChild(el('div',{cls:'tn-sub'}, TN.rosterErr || ('오늘(' + (TN.dayLabel || '') + ') 수업일지 탭이 없어 이름으로 찾습니다.')));
+  }
+  const q = el('input',{cls:'tn-in', type:'search', placeholder:'이름으로 찾아 더하기', value: TN_Q, style:'margin-top:8px'});
+  const found = el('div',{cls:'tn-chips', style:'margin-top:6px'});
+  const showFound = () => {
+    found.innerHTML = '';
+    const v = TN_Q.trim();
+    if (!v) return;
+    const hits = TN.students.filter(s => s.name.indexOf(v) >= 0).slice(0, 15);
+    hits.forEach(s => found.appendChild(tnChip(s.k)));
+    if (/^테스트/.test(v) && !hits.length) found.appendChild(tnChip('T:' + v.slice(0, 20)));
+    found.querySelectorAll('.tn-chip').forEach(c => c.addEventListener('click', () => { if (TN_SEL.includes(c.dataset.k)) { TN_Q = ''; q.value = ''; showFound(); } }));
+    if (!found.childNodes.length) found.appendChild(el('span',{cls:'tn-sub'}, '찾는 이름이 연락처 명단에 없습니다.'));
+  };
+  q.addEventListener('input', () => { TN_Q = q.value; showFound(); });
+  s1.appendChild(q); s1.appendChild(found); showFound();
+  s1.appendChild(el('div',{id:'tn-picked'}));
+  box.appendChild(s1);
+
+  // 2 문구
+  const s2 = el('div',{cls:'tn-step'}, el('div',{cls:'tn-h'}, el('span',{cls:'tn-no'}, '3'), '문구 고르기', el('span',{cls:'tn-opt'}, '누른 순서대로'),
+    el('button',{cls:'tn-mini' + (TN_EDIT ? ' on' : ''), on:{click:() => { TN_EDIT = !TN_EDIT; render(); }}}, TN_EDIT ? '고치기 끝' : '문구 고치기')));
+  if (TN_EDIT) s2.appendChild(el('div',{cls:'tn-help', style:'margin:0 0 4px'}, '문구를 누르면 고칠 수 있고, × 를 누르면 지워집니다. 칸에 써서 더하면 그 묶음에 들어갑니다.'));
+  TN.phrases.forEach((g, gi) => {
+    const open = TN_EDIT || !!TN_OPEN[g.g];
+    const cnt = el('span',{style:'margin-left:6px;font-size:12.5px;font-weight:700;color:var(--green-d)'}, '');
+    const setCnt = () => { const n = g.items.filter(t => TN_PH.includes(t)).length; cnt.textContent = n ? n + '개 고름' : ''; };
+    setCnt();
+    s2.appendChild(el('button',{cls:'tn-grp', style:'display:flex;align-items:center;width:100%;border:1px solid var(--line);background:#fff;border-radius:10px;padding:9px 12px;margin:6px 0 0;font:inherit;cursor:pointer;text-align:left', on:{click:() => { if (TN_EDIT) return; TN_OPEN[g.g] = !TN_OPEN[g.g]; render(); }}},
+      el('span',{cls:'tn-dot', style:'background:' + TN_DOTS[gi % TN_DOTS.length]}), g.g, el('span',{style:'margin-left:6px;font-size:12.5px;color:var(--sub);font-weight:400'}, g.items.length + '개'), cnt,
+      TN_EDIT ? null : el('span',{style:'margin-left:auto;color:var(--sub);font-size:14px'}, open ? '▲' : '▼')));
+    if (!open) return;
+    const chips = el('div',{cls:'tn-chips', style:'margin-top:6px'});
+    g.items.forEach(t => {
+      if (TN_EDIT) chips.appendChild(el('button',{cls:'tn-chip tp', on:{click:e => {
+        if (e.target.classList.contains('x')) return tnAsk('이 문구를 지울까요?', t, '지우기', () => tnSavePhrases(TN.phrases.map(x => x === g ? { g: x.g, items: x.items.filter(y => y !== t) } : x), '지웠습니다'));
+        const v = prompt('문구를 고쳐 주세요.', t); if (v == null) return; const nv = v.trim();
+        if (!nv) return tnAsk('이 문구를 지울까요?', t, '지우기', () => tnSavePhrases(TN.phrases.map(x => x === g ? { g: x.g, items: x.items.filter(y => y !== t) } : x), '지웠습니다'));
+        if (nv === t) return; if (g.items.includes(nv)) return toast('이미 있는 문구입니다');
+        tnSavePhrases(TN.phrases.map(x => x === g ? { g: x.g, items: x.items.map(y => y === t ? nv : y) } : x), '고쳤습니다');
+      }}}, t, el('span',{cls:'x'}, '×')));
+      else chips.appendChild(el('button',{cls:'tn-chip tp' + (TN_PH.includes(t) ? ' on' : ''), 'data-p': t, on:{click:() => { TN_PH = TN_PH.includes(t) ? TN_PH.filter(x => x !== t) : TN_PH.concat(t); tnSync(); setCnt(); }}}, t));
+    });
+    s2.appendChild(chips);
+    if (TN_EDIT) {
+      const inp = el('input',{cls:'tn-in', placeholder:'새 문구 (예: ~했습니다.)', maxlength:'100'});
+      const add = () => { const v = inp.value.trim(); if (!v) return; if (g.items.includes(v)) return toast('이미 있는 문구입니다'); tnSavePhrases(TN.phrases.map(x => x === g ? { g: x.g, items: x.items.concat(v) } : x), '더했습니다'); };
+      inp.addEventListener('keydown', e => { if (e.key === 'Enter') add(); });
+      s2.appendChild(el('div',{cls:'tn-add'}, inp, el('button',{on:{click:add}}, '더하기')));
+    }
+  });
+  if (TN_EDIT) s2.appendChild(el('div',{style:'text-align:right;margin-top:10px'}, el('button',{cls:'tn-mini', on:{click:() => tnAsk('기본 문구로 되돌릴까요?', '직접 더한 문구는 지워집니다.', '되돌리기', () => tnSavePhrases('reset', '기본 문구로 되돌렸습니다'))}}, '기본 문구로 되돌리기')));
+  else {
+    s2.appendChild(el('div',{cls:'tn-grp'}, el('span',{cls:'tn-dot', style:'background:#9A9A92'}), '직접 쓰기 (선택)'));
+    const ta = el('textarea',{cls:'tn-in', rows:'2', maxlength:'300', placeholder:'예) 오늘 발표를 아주 잘했습니다.'});
+    ta.value = TN_EXTRA;
+    ta.addEventListener('input', () => { TN_EXTRA = ta.value; tnPreview(); });
+    s2.appendChild(ta);
+  }
+
+  // 2 사진 (문구보다 먼저)
+  const s3 = el('div',{cls:'tn-step'}, el('div',{cls:'tn-h'}, el('span',{cls:'tn-no'}, '2'), '사진', el('span',{cls:'tn-opt'}, '선택')));
+  if (TN_PHOTO) {
+    s3.appendChild(el('div',{cls:'tn-photo has'}, el('img',{src: TN_PHOTO.thumb, alt:'올린 사진'}),
+      el('div',{cls:'pinfo'}, el('b',{}, '사진을 올렸습니다'), '고른 학생 모두에게 같은 사진이 갑니다.'),
+      el('button',{cls:'tn-mini', style:'margin-left:0', on:{click:tnRemovePhoto}}, '사진 빼기')));
+  } else {
+    if (TN_UP) { s3.appendChild(TN_UPTHUMB ? el('div',{cls:'tn-photo has'}, el('img',{src: TN_UPTHUMB, alt:'올리는 사진', style:'opacity:.6'}), el('div',{cls:'pinfo'}, el('b',{}, '사진 올리는 중...'), '그동안 학생과 문구를 골라 두세요.')) : el('div',{cls:'tn-photo'}, '사진 줄이는 중...')); } else {
+      const mk = (cam, label) => { const fi = el('input', cam ? {type:'file', accept:'image/*', capture:'environment', style:'display:none'} : {type:'file', accept:'image/*', style:'display:none'}); fi.addEventListener('change', () => tnPickPhoto(fi.files && fi.files[0])); return el('label',{cls:'tn-photo', style:'flex:1;margin:0'}, fi, cam ? el('span',{cls:'cam'}) : null, label); };
+      s3.appendChild(el('div',{style:'display:flex;gap:8px'}, mk(true, '사진 찍기'), mk(false, '앨범에서 고르기')));
+    }
+    s3.appendChild(el('div',{cls:'tn-help'}, '사진 한 장이 고른 학생 모두에게 같이 갑니다. 사진은 30일 뒤 자동으로 지워집니다.'));
+  }
+  box.appendChild(s3);
+  box.appendChild(s2); // 3 문구
+
+  // 미리 보기
+  box.appendChild(el('div',{cls:'tn-step'}, el('div',{cls:'tn-h'}, el('span',{cls:'tn-no', style:'background:var(--gold)'}, '✓'), '학부모님이 받는 모습'),
+    el('div',{cls:'tn-kakao'}, el('div',{cls:'tn-from'}, '책나무 산동독서논술학원'),
+      el('div',{cls:'tn-bub'}, el('div',{cls:'tn-bub-h'}, '알림톡 도착'), el('img',{src: TN_HEAD_IMG, alt:'수업 속 한 장면', style:'display:block;width:100%'}), el('div',{cls:'tn-bub-b', id:'tn-pv'}),
+        el('div',{cls:'tn-bub-f'}, '이 메시지는 수강 중인 학생의 학부모님께 보내 드리는 수업 안내입니다.\n상담 문의 010-2069-0885'), el('div',{cls:'tn-bub-btn', id:'tn-pvbtn', style:'display:none'}, '수업 사진 보기'))),
+    el('div',{cls:'tn-len', id:'tn-len'})));
+
+  // 오늘 보낸 기록
+  const lg = el('div',{cls:'tn-step'}, el('div',{cls:'tn-h'}, '오늘 보낸 기록', el('span',{cls:'tn-cnt', style:'color:var(--sub);font-weight:500'}, (TN.log || []).length ? (TN.log.length + '건') : ''), (TN.log || []).length ? el('button',{cls:'tn-mini', on:{click:() => { tnStatusCheck(true); toast('카톡 도착을 확인하는 중...', 1500); }}}, '도착 확인') : null));
+  setTimeout(() => tnStatusCheck(false), 300);
+  if (!(TN.log || []).length) lg.appendChild(el('div',{cls:'tn-sub', style:'margin:0'}, '아직 보낸 한 장면이 없습니다.'));
+  else {
+    lg.appendChild(el('div',{cls:'tn-sub', style:'margin:0 0 6px'}, '× 를 누르면 기록만 지워집니다. 이미 간 알림톡은 취소되지 않아요.'));
+    const L = el('div',{cls:'tn-log'});
+    TN.log.forEach(o => {
+      const r = o.result === '보냄' ? el('span',{cls:'s'}, '보냄') : /^테스트/.test(o.result) ? el('span',{cls:'s te'}, '테스트') : el('span',{cls:'s no', title:o.result}, '못 보냄');
+      const dv = o.result !== '보냄' ? null : o.deliv === '도착' ? el('span',{style:'font-size:12px;font-weight:700;color:#176943;white-space:nowrap'}, '카톡 도착') : /^못 받음/.test(o.deliv) ? el('span',{style:'font-size:12px;font-weight:700;color:#B5523F;white-space:nowrap', title:o.deliv}, '못 받음') : o.ref ? el('span',{style:'font-size:12px;color:var(--sub);white-space:nowrap'}, '확인 중') : null;
+      const row = el('div',{cls:'r'}, el('span',{cls:'t'}, o.ts), el('span',{cls:'n'}, o.name), el('span',{cls:'b'}, (o.photo ? '[사진] ' : '') + o.body.replace(/\n/g, ' ')), r, dv);
+      row.addEventListener('click', e => { if (e.target.dataset.del) return; toast(o.result === '보냄' ? o.name + ' · 보냄' : o.name + ' · ' + o.result, 2600); });
+      const del = el('button',{'data-del':'1', style:'border:none;background:none;font:inherit;font-size:13px;color:var(--sub);padding:2px 4px;cursor:pointer;white-space:nowrap'}, '×');
+      del.addEventListener('click', ev => {
+        ev.stopPropagation();
+        if (!del.dataset.ask) { del.dataset.ask = '1'; del.textContent = '지우기'; del.style.color = '#B5523F'; del.style.fontWeight = '700'; setTimeout(() => { if (del.isConnected && del.dataset.ask) { delete del.dataset.ask; del.textContent = '×'; del.style.color = 'var(--sub)'; del.style.fontWeight = ''; } }, 5000); return; }
+        del.disabled = true;
+        google.script.run.withSuccessHandler(l => { TN.log = l; render(); toast('기록을 지웠습니다'); })
+          .withFailureHandler(er => { del.disabled = false; toast((er && er.message) || '지우지 못했습니다', 2500); })
+          .adminTnDeleteLog(KEY, o.row);
+      });
+      row.appendChild(del);
+      L.appendChild(row);
+      if (o.reply) L.appendChild(el('div',{style:'margin:-2px 0 6px 52px;padding:6px 10px;background:#FFF8E6;border-radius:8px;font-size:13.5px;color:#5A4410'}, '💬 학부모 답장: ' + o.reply));
+    });
+    lg.appendChild(L);
+  }
+  box.appendChild(lg);
+
+  // 아래 고정 줄
+  box.appendChild(el('div',{cls:'tn-bar'}, el('div',{cls:'info', id:'tn-info'}), el('button',{cls:'tn-mini', id:'tn-me', style:'margin:0;padding:10px 12px;white-space:nowrap', on:{click:tnMe}}, '내 폰으로 미리 받기'), el('button',{cls:'tn-send', id:'tn-send', on:{click:tnSend}}, '보내기')));
+  tnSync();
+}
+
+document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => { TAB = t.dataset.t; render(); }));
+$('refresh').onclick = () => { if (TAB === 'tn') { TN = null; TN_RES = null; } load(); };
+load();
+// 한 장면 보내기는 읽을 것이 많아서, 화면이 뜨자마자 뒤에서 미리 불러 둠
+setTimeout(() => { if (!TN && !TN_LOADING) tnLoad(); }, 200);
+</script>
+</body>
+</html>
